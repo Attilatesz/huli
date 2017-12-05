@@ -1,10 +1,12 @@
-%body
-	%form{role: "form"}
-	.form-group
-		%label{for: "username"} Username
-		%input#username.form-control{name: "username", type: "text"}/
-	.form-group
-		%label{for: "password"} Password
-		%input#password.form-control{name: "password", type: "password"}/
-	%input{type: "submit", value: "Login"}/
-	%input{type: "button", value: "Cancel"}/
+!!!
+%html{lang: "en"}
+%style @import url('https://fonts.googleapis.com/css?family=Poiret+One')
+%nav.navbar.navbar-default
+  .container-fluid
+  .navbar-header
+  %a.navbar-brand{href: "#"} Jade
+  %ul.nav.navbar-nav
+    =link_to "Login", user_github_omniauth_authorize_path, class: 'btn btn-success'
+.container
+  %h2 Welcome!
+  %p To start please hit the login button!
