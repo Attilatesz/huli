@@ -19,9 +19,9 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-# Authorization
-gem 'bcrypt', :platforms => :ruby # gem install bcrypt --platform=ruby
+# Authentication
 # platform in bundler might not work on windows, need to manually run gem install
+gem 'bcrypt', platforms: :ruby # gem install bcrypt --platform=ruby
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
@@ -48,8 +48,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'certified' 
   # Prevents SSH oauth issue on localhost
+  gem 'certified' 
 end
 
 group :development do
