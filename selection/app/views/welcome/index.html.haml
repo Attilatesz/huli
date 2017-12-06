@@ -1,12 +1,9 @@
-!!!
-%html{lang: "en"}
-%style @import url('https://fonts.googleapis.com/css?family=Poiret+One')
 %nav.navbar.navbar-default
   .container-fluid
   .navbar-header
-  %a.navbar-brand{href: "#"} Jade
+  = link_to "Jade", root_path, class: 'navbar-brand'
   %ul.nav.navbar-nav
-    =link_to "Login", user_github_omniauth_authorize_path, class: 'btn btn-success'
+    = link_to "Login", user_github_omniauth_authorize_path, class: 'btn btn-success'
 .container
   %h2 Welcome!
-  %p To start please hit the login button!
+  %p.start-instruction To start please hit the login button!
