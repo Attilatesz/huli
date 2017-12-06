@@ -1,0 +1,19 @@
+%h2 Welcome #{@user.full_name}!
+%p You are logged in with GitHub handle: #{@user.github_handle}
+.container
+  %h2 Profile
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th
+          %th Full name
+          %th E-mail
+          %th GitHub
+      %tbody
+        %tr
+          %td
+          %td= @user.full_name
+          %td= @user.email
+          %td= @user.github_handle
+          
