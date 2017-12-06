@@ -1,0 +1,20 @@
+%h2 Welcome = current_user.full_name
+%p You are logged in with GitHub handle: = current_user.github_handle
+
+.container
+  %h2 Table
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th
+          %th Full name
+          %th E-mail
+          %th GitHub
+      %tbody
+        %tr
+          %td
+          %td current_user.full_name
+          %td current_user.email
+          %td current_user.github_handle
+          

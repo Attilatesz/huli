@@ -1,13 +1,3 @@
-%nav.navbar.navbar-default
-  .container-fluid
-  .navbar-header
-  = link_to "Jade", root_path, class: 'navbar-brand'
-  %ul.nav.navbar-nav
-    - if current_user
-      = link_to "Logout", destroy_user_session_path, class: 'btn btn-success', method: :delete
-    - else 
-      = link_to "Login", user_github_omniauth_authorize_path, class: 'btn btn-success'
-      
 .container
   %h2 Welcome!
   %p.start-instruction To start please hit the login button!
