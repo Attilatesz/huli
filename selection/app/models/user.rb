@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :registerable, :rememberable, :trackable,
+  devise :rememberable, :trackable,
          :omniauthable, omniauth_providers: [:github]
 
   def self.from_omniauth(auth)
