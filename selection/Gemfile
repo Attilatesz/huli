@@ -22,8 +22,9 @@ gem 'autoprefixer-rails'
 gem 'jquery-rails'
 
 # Authentication
-# platform in bundler might not work on windows, need to manually run gem install
-gem 'bcrypt', platforms: :ruby # gem install bcrypt --platform=ruby
+# need to manually run 'gem install bcrypt --platform=ruby' install on windows
+# having bcrypt in the gemfile causes issues when running bundle install
+# gem 'bcrypt'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
@@ -51,7 +52,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   # Prevents SSH oauth issue on localhost
-  gem 'certified' 
+  gem 'certified'
 end
 
 group :development do
