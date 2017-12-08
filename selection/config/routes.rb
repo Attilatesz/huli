@@ -11,6 +11,5 @@ Rails.application.routes.draw do
   end
 
   get 'welcome/profile'
-
   root 'welcome#index'
 end
