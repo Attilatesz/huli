@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     delete 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
+  get 'welcome/profile'
   root 'welcome#index'
 end
