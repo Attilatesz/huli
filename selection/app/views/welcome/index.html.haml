@@ -1,3 +1,4 @@
 .container
-  %h1 Welcome!
-  %p.start-instruction To start please hit the login button!
+  %h1 Welcome#{@user ? ' ' + @user.full_name : ''}!
+  - unless @user
+    %p.start-instruction To start please hit the login button!
