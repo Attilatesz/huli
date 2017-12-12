@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
   get 'welcome/profile'
   root 'welcome#index'
+  get 'applicants/new'
 end
