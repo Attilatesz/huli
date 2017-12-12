@@ -28,7 +28,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
-
+gem 'state_machines-activerecord'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

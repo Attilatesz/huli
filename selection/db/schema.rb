@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208075623) do
+ActiveRecord::Schema.define(version: 20171212091305) do
 
   create_table "applicants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20171208075623) do
     t.string "payment_option"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "profile_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "upload_state"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_profile_pictures_on_user_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -43,4 +51,5 @@ ActiveRecord::Schema.define(version: 20171208075623) do
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
+  add_foreign_key "profile_pictures", "users"
 end
