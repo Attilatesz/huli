@@ -1,0 +1,4 @@
+%h1 edit page
+= form_with model: @picture, method: :patch do |f|
+  = f.file_field :image 
+  = f.submit

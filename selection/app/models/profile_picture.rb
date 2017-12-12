@@ -1,4 +1,5 @@
 class ProfilePicture < ApplicationRecord
+  dragonfly_accessor :image
   belongs_to :user
 
   state_machine :upload_state, initial: :awaiting_upload do
