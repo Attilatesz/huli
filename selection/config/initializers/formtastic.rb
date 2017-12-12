@@ -75,6 +75,7 @@
 # this proc.
 # Formtastic::Helpers::FormHelper.default_form_model_class_proc = proc { |model_class_name| model_class_name }
 
+
 # Allows to set a custom field_error_proc wrapper. By default this wrapper
 # is disabled since `formtastic` already adds an error class to the LI tag
 # containing the input.
@@ -111,3 +112,4 @@ Formtastic::FormBuilder.action_class_finder = Formtastic::ActionClassFinder
 
 # Which columns to skip when automatically rendering a form without any fields specified.
 # Formtastic::FormBuilder.skipped_columns = [:created_at, :updated_at, :created_on, :updated_on, :lock_version, :version]
+Formtastic::Helpers::FormHelper.builder = FormtasticBootstrap::FormBuilder
