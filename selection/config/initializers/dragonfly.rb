@@ -20,6 +20,7 @@ Dragonfly.app.configure do
       root_path: Rails.root.join('public/system/dragonfly', Rails.env),
         server_root: Rails.root.join('public')
   end
+end
 
 # Logger
 Dragonfly.logger = Rails.logger
