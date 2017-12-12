@@ -8,4 +8,9 @@ class WelcomeController < ApplicationController
     @user = current_user
     redirect_to root_path unless @user
   end
+
+  def upload_profile_picture
+    @user = current_user
+    redirect_to root_path unless @user
+  end
 end

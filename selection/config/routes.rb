@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   end
 
   get 'welcome/profile'
+  get 'welcome/upload_profile_picture'
   root 'welcome#index'
 end
