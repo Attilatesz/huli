@@ -1,6 +1,8 @@
 class ProfilePicture < ApplicationRecord
   dragonfly_accessor :image
   belongs_to :user
+  validates :image_uid, format: { with: /\.(jpg|png|jpeg)\z/,
+                                  message: 'Only pdf and jpg file formats are allowed' }
 
   state_machine :upload_state, initial: :awaiting_upload do
     event :upload do

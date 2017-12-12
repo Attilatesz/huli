@@ -1,14 +1,18 @@
 class ProfilePicturesController < ApplicationController
   def edit
-    @user = current_user
-    redirect_to root_path unless @user
+    @profile_picture = current_user.profile_picture
+    redirect_to root_path unless current_user
   end
 
   def update
     @profile_picture = current_user.profile_picture
     is_update_successful = @profile_picture.update(profile_picture_params)
-    @profile_picture.upload if is_update_successful
-    redirect_to root_path
+    if is_update_successful
+      @profile_picture.upload
+      redirect_to root_path
+    else
+      render 'edit'
+    end
   end
 
   private
