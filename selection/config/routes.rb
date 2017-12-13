@@ -10,8 +10,9 @@ Rails.application.routes.draw do
     delete 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  get 'profile_pictures/edit'
-  patch 'profile_pictures/update', as: 'profile_picture'
+  resources :profile_pictures, only: [:create, :new]
+  # get 'profile_pictures/new', as: 'profile_pictures'
+  # post 'profile_pictures/'
 
   get 'welcome/profile'
   root 'welcome#index'

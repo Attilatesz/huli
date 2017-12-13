@@ -1,8 +1,0 @@
-%h1 Upload Profile Picture
-- if @profile_picture.errors.any?
-  - @profile_picture.errors.messages[:image_uid].each do |message|
-    = message
-  
-= form_with model: @profile_picture, method: :patch, local: true do |f|
-  = f.file_field :image
-  = f.submit
