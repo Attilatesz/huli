@@ -23,6 +23,11 @@ gem 'jquery-rails'
 gem 'formtastic', '~> 3.0'
 gem 'formtastic-bootstrap'
 
+# Image/asset management 
+gem 'dragonfly'
+group :production, :staging do
+  gem 'dragonfly-s3_data_store'
+end
 # Authentication
 # need to manually run 'gem install bcrypt --platform=ruby' install on windows
 # having bcrypt in the gemfile causes issues when running bundle install
@@ -30,7 +35,6 @@ gem 'formtastic-bootstrap'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
-
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
