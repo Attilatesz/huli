@@ -7,7 +7,7 @@
     = f.input :phone_number, label: "Phone number (in the following format: 0036201234567)"
     = f.input :highest_education, as: :select, collection: ['Primary school','Vocational secondary school', 'Secondary school', 'College/BSc/BA', 'University/MSc/MA', 'Doctoral'], include_blank: false, label: "What's your level of education?"
     = f.input :english_knowledge, as: :select, collection: ['Beginner', 'Intermediate', 'Advanced', 'Native'], include_blank: false, label: "What's your level of English?"
-    = f.input :english_class, as: :radio, label: "Would you prefer to study in an English-speaking group, if possible?"
-    = f.input :payment_option, as: :radio, collection: ['Prepayment with headhunting service (990 000 HUF + VAT)', 'Prepayment without headhunting service (1 290 000 HUF + VAT)', 'Post-payment with headhunting service (1 290 000 HUF + VAT)'], label: "Which payment option do you wish to choose?"
+    = f.input :english_class, as: :radio, collection: [['Sure','English'], ['No, thanks', 'Hungarian']], label: "Would you prefer to study in an English-speaking group, if possible?"
+    = f.input :payment_option, as: :radio, collection: [['Prepayment with headhunting service (990 000 HUF + VAT)', 'Prepayment-headhunting'], ['Prepayment without headhunting service (1 290 000 HUF + VAT)', 'Prepayment'], ['Post-payment with headhunting service (1 290 000 HUF + VAT)', 'Post payment']], label: "Which payment option do you wish to choose?"
     = f.action :submit, as: :button, label: "Submit my application"
     
