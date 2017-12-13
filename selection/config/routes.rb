@@ -12,5 +12,5 @@ Rails.application.routes.draw do
 
   get 'welcome/profile'
   root 'welcome#index'
-  resources :applicants, :except => [:edit, :delete]
+  resources :applicants, :except => [:edit, :destroy ]
 end
