@@ -17,5 +17,4 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         user.create_profile_picture
       end
     end
-  
 end
