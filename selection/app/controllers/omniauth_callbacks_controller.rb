@@ -14,6 +14,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         user.github_handle = auth.info.nickname
         user.full_name = auth.info.name
         user.access_token = auth.credentials.token
+        user.create_profile_picture
       end
     end
   
