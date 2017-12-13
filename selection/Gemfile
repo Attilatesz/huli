@@ -23,6 +23,7 @@ gem 'jquery-rails'
 gem 'formtastic', '~> 3.0'
 gem 'formtastic-bootstrap'
 
+
 # Authentication
 # need to manually run 'gem install bcrypt --platform=ruby' install on windows
 # having bcrypt in the gemfile causes issues when running bundle install
