@@ -12,8 +12,6 @@ Rails.application.routes.draw do
 
   resources :cvs, only: [:create, :new]
   resources :profile_pictures, only: [:create, :new]
-  # get 'profile_pictures/new', as: 'profile_pictures'
-  # post 'profile_pictures/'
 
   get 'welcome/profile'
   root 'welcome#index'

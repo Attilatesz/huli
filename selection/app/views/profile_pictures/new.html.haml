@@ -1,8 +1,10 @@
-%h1 Upload Profile Picture
-- if @profile_picture && @profile_picture.errors.any?
-  - @profile_picture.errors.messages[:image].each do |message|
-    = message
+.fluid-container.upload-form
+  %h1 Upload Profile Picture
+  - if @profile_picture && @profile_picture.errors.any?
+    - @profile_picture.errors.messages[:image].each do |message|
+      = message
   
-= form_with model: ProfilePicture.new, method: :post, local: true do |f|
-  = f.file_field :image
-  = f.submit
+  .transparent-container
+    = semantic_form_for ProfilePicture.new, method: :post, local: true do |f|
+      = f.file_field :image
+      = f.submit
