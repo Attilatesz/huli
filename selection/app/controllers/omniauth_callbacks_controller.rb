@@ -20,7 +20,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def is_admin
       domain = user.email.split("@").last
       if domain = "greenfox-academy.com"
-        user.update_attribute (:admin, true)
+        user.update_attribute (:admin true)
       end
     end
       
