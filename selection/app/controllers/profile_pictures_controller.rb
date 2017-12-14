@@ -16,9 +16,7 @@ class ProfilePicturesController < ApplicationController
 
   def edit
     @profile_picture = current_user.profile_picture
-    unless @profile_picture
-      redirect_to new_profile_picture_path
-    end
+    redirect_to new_profile_picture_path unless @profile_picture
   end
 
   def update

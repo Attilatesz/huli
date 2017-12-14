@@ -1,15 +1,31 @@
 class CvsController < ApplicationController
   def new
+    @cv = Cv.new
     redirect_to root_path unless current_user
   end
 
   def create
     @cv = current_user.create_cv(cv_params)
-    unless @cv.errors.any?
+    if @cv.errors.any?
+      render 'new'
+    else
       @cv.upload
       redirect_to root_path
+    end
+  end
+
+  def edit
+    @cv = current_user.cv
+    redirect_to new_profile_picture_path unless @cv
+  end
+
+  def update
+    @cv = current_user.cv.update(cv_params)
+    if @cv.errors.any?
+      render 'edit'
     else
-      render 'new'
+      @cv.upload
+      redirect_to root_path
     end
   end
 

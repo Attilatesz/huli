@@ -1,4 +1,8 @@
 class Cv < ApplicationRecord
+  # this is required for singular resources to work properly with forms
+  # when only specifying the model
+  model_name.instance_variable_set(:@route_key, 'cv')
+
   belongs_to :user
   dragonfly_accessor :cv
   validates_presence_of :cv
