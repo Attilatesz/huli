@@ -16,5 +16,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         user.access_token = auth.credentials.token
       end
     end
+
+    def is_admin
+      domain = user.email.split("@").last
+      if domain = "greenfox-academy.com"
+        user.update_attribute (:admin, true)
+      end
+    end
+      
   
 end
