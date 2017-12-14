@@ -22,6 +22,7 @@ gem 'autoprefixer-rails'
 gem 'jquery-rails'
 gem 'formtastic', '~> 3.0'
 gem 'formtastic-bootstrap'
+gem 'rails-i18n', '~> 5.0.0'
 
 
 # Authentication

@@ -1,5 +1,6 @@
 class Applicant < ApplicationRecord
-  validates_presence_of :first_name, :last_name,
+  validates_presence_of :first_name,
+                        :last_name,
                         :email_address, :phone_number,
                         :highest_education, :english_knowledge,
                         message: "This field can't be blank"
