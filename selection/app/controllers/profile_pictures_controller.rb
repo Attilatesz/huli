@@ -1,5 +1,6 @@
 class ProfilePicturesController < ApplicationController
   def new
+    @profile_picture = ProfilePicture.new
     redirect_to root_path unless current_user
   end
 
