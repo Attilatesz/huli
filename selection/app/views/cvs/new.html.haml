@@ -1,8 +1,8 @@
-%h1 Upload Profile Picture
+%h1 Upload CV
 - if @cv && @cv.errors.any?
   - @cv.errors.full_messages.each do |message|
     = message
   
 = form_with model: Cv.new, method: :post, local: true do |f|
-  = f.file_field :image
+  = f.file_field :cv
   = f.submit

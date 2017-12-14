@@ -16,6 +16,6 @@ class CvsController < ApplicationController
   private
 
     def cv_params
-      params.require(:profile_picture).permit(:image)
+      params.require(:cv).permit(:cv)
     end
 end
