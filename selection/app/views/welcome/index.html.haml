@@ -1,4 +1,4 @@
 .container.welcome-text
-  %h1 Welcome#{@user ? ' ' + @user.full_name : ''}!
-  - unless @user
+  %h1 Welcome#{current_user ? ' ' + current_user.full_name : ''}!
+  - unless current_user
     %p.start-instruction To start please hit the login button!
