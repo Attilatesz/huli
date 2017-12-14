@@ -1,0 +1,5 @@
+.fluid-container.upload-form
+  %h1 Change Profile Picture
+  .transparent-container
+    = render 'shared/error-messages', model: @profile_picture
+    = render 'form', profile_picture: @profile_picture

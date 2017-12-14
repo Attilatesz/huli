@@ -1,4 +1,8 @@
 class ProfilePicture < ApplicationRecord
+  # this is required for singular resources to work properly with forms
+  # when only specifying the model
+  model_name.instance_variable_set(:@route_key, 'profile_picture')
+
   dragonfly_accessor :image
   belongs_to :user
   validates_presence_of :image
