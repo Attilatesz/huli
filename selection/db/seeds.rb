@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create([
   {email: "faklijta@gmail.com", provider: "github", uid: "29408150", github_handle: "faklijta", full_name: "Admin", access_token: nil, admin: true},
-  {email: "attilanagy002@gmail.com", provider: "github", uid: "34302757", github_handle: "@alkyr81", full_name: "Applicant", access_token: nil, admin: false}
+  {email: "attilanagy002@gmail.com", provider: "github", uid: "34302757", github_handle: "@alkyr81", full_name: "Applicant", access_token: nil, admin: false},
+  {email: "attilanagy002@gmail.com", provider: "github", uid: "112960232968503665124", github_handle: "tofiz", full_name: "Kristof", access_token: nil, admin: true
 ])
 Applicant.create([
   {first_name: "Attila", last_name: "Nagy", email_address: "attilanagy002@gmail.com", phone_number: "304770314", highest_education: "College/BSc/BA", english_knowledge: "Advanced"},
   {first_name: "Cica", last_name: "Kiss", email_address: "cica@gmail.com", phone_number: "5555554", highest_education: "College/BSc/BA", english_knowledge: "Advanced"}
 ])
-
