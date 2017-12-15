@@ -19,3 +19,5 @@
 .byebug_history
 
 secrets.yml
+
+public\system\dragonfly\development\
