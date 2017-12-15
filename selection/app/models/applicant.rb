@@ -1,5 +1,6 @@
 class Applicant < ApplicationRecord
-  belongs_to :user
+  has_one :cv, dependent: :destroy
+  has_one :profile_picture, dependent: :destroy
 
   validates_presence_of :first_name,
                         :last_name,
