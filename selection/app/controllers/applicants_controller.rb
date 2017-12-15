@@ -12,9 +12,12 @@ class ApplicantsController < ApplicationController
     end
   end
 
-  private
-
-  def applicant_params
-    params.require(:applicant).permit(:first_name, :last_name, :email_address, :phone_number, :highest_education, :english_knowledge, :english_class, :payment_option)
+  def list
+    @applicants = Applicant.all
   end
+  
+  private
+    def applicant_params
+      params.require(:applicant).permit(:first_name, :last_name, :email_address, :phone_number, :highest_education, :english_knowledge, :english_class, :payment_option)
+    end
 end

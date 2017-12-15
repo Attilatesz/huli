@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20171214083411) do
 
   create_table "applicants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 20171214083411) do
     t.string "github_handle"
     t.string "full_name"
     t.string "access_token"
+    t.boolean "admin", default: false
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 

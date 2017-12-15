@@ -1,0 +1,14 @@
+%h1 Applicants
+%table
+  %tr
+    %th Last name
+    %th First name
+    %th
+    %th
+    %th
+  - @applicants.each do |a|
+    %tr
+      %td= a.last_name
+      %td= a.first_name
+      %td= link_to "Show", a
+%br/
