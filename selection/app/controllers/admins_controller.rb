@@ -5,6 +5,6 @@ class AdminsController < ApplicationController
   end
 
   def show
-    @applicant = Applicant.find(1)
+    @applicant = Applicant.find(params[:id])
   end
 end
