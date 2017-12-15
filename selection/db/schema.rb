@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171215102312) do
+ActiveRecord::Schema.define(version: 20171215122606) do
 
   create_table "applicants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -23,8 +23,6 @@ ActiveRecord::Schema.define(version: 20171215102312) do
     t.string "payment_option"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "profile_picture_id"
-    t.index ["profile_picture_id"], name: "index_applicants_on_profile_picture_id"
   end
 
   create_table "cvs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -40,7 +38,9 @@ ActiveRecord::Schema.define(version: 20171215102312) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "upload_state"
+    t.bigint "user_id"
     t.string "image_uid"
+    t.index ["user_id"], name: "index_profile_pictures_on_user_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -59,9 +59,12 @@ ActiveRecord::Schema.define(version: 20171215102312) do
     t.string "full_name"
     t.string "access_token"
     t.boolean "admin", default: false
+    t.bigint "applicant_id"
+    t.index ["applicant_id"], name: "index_users_on_applicant_id"
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
-  add_foreign_key "applicants", "profile_pictures"
   add_foreign_key "cvs", "users"
+  add_foreign_key "profile_pictures", "users"
+  add_foreign_key "users", "applicants"
 end
