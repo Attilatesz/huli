@@ -1,0 +1,5 @@
+.fluid-container.upload-form
+  %h1 Upload Your CV
+  .transparent-container
+    = render 'shared/error-messages', model: @cv
+    = render 'form', user_cv: @cv
