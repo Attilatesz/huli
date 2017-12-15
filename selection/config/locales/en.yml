@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+  blank: "This field can't be blank"
+  too_short: 'Minimum 3 characters'
+  select: 'Please choose one of the options'
+  only_letters: 'Only letters allowed'
+  only_numbers: 'Only numbers allowed'
+  email_format: "The format of the e-mail address isn't correct"
+  
