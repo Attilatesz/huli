@@ -1,6 +1,8 @@
 class ApplicantsController < ApplicationController
   def new
     @applicant = Applicant.new
+    @span = Option.where(category: "Language").select(:message)
+    @language = Option.where(category: "Language").select(:name)
   end
 
   def create

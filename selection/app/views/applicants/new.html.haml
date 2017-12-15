@@ -25,8 +25,8 @@
               label: "What's your level of English?"
     = f.input :english_class,
               as: :radio,
-              collection: [['Sure','English'],
-              ['No, thanks', 'Hungarian']],
+              collection: @language,
+              @span,
               label: "Would you prefer to study in an English-speaking group, if possible?"
     = f.input :payment_option,
               as: :radio,

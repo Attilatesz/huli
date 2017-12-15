@@ -13,4 +13,8 @@ Applicant.create([
   {first_name: "Attila", last_name: "Nagy", email_address: "attilanagy002@gmail.com", phone_number: "304770314", highest_education: "College/BSc/BA", english_knowledge: "Advanced"},
   {first_name: "Cica", last_name: "Kiss", email_address: "cica@gmail.com", phone_number: "5555554", highest_education: "College/BSc/BA", english_knowledge: "Advanced"}
 ])
+Option.create([
+  {category: "Language", name: "English", message: "Sure"},
+  {category: "Language", name: "Hungarian", message: "No, thanks"}
+])
 
