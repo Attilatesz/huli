@@ -14,8 +14,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Poiret+One');
+@import "base";
 @import "welcome";
 @import "profile";
 @import "formtastic";
 @import "formtastic-bootstrap";
-@import "applicants"
+@import "applicants";
+@import "upload-form";
+@import 'error-messages';
