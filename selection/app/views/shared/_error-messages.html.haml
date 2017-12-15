@@ -1,0 +1,4 @@
+- if model.errors.any?
+  %ul.error-explanation
+    - model.errors.full_messages.each do |message|
+      %li #{message}

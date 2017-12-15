@@ -16,5 +16,4 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         user.access_token = auth.credentials.token
       end
     end
-  
 end
