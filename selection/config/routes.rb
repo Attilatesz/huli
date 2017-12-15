@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :applicants, :except => [:edit, :destroy ]
 
-  get 'admins/list_applicant'
-  
+  get 'admins/list'
+
 end

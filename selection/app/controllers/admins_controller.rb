@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
   
-  def listApplicants
-    @applicants = Applicant.find(:all)
+  def list
+    @applicants = Applicant.all
   end
 
 end

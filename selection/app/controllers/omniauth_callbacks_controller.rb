@@ -14,15 +14,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         user.github_handle = auth.info.nickname
         user.full_name = auth.info.name
         user.access_token = auth.credentials.token
+        user.admin = is_admin(auth.info.email)
       end
     end
 
-    def is_admin
-      domain = user.email.split("@").last
-      if domain = "greenfox-academy.com"
-        user.update_attribute (:admin true)
-      end
+    def is_admin(email)
+      email.split("@").last == "greenfox-academy.com"
     end
-      
-  
 end

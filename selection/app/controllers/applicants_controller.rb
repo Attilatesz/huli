@@ -12,6 +12,10 @@ class ApplicantsController < ApplicationController
     end
   end
 
+  def list
+    @applicants = Applicant.all
+  end
+
     private
 
       def applicant_params
