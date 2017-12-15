@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171215115204) do
+ActiveRecord::Schema.define(version: 20171215122606) do
 
   create_table "applicants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -59,9 +59,12 @@ ActiveRecord::Schema.define(version: 20171215115204) do
     t.string "full_name"
     t.string "access_token"
     t.boolean "admin", default: false
+    t.bigint "applicant_id"
+    t.index ["applicant_id"], name: "index_users_on_applicant_id"
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
   add_foreign_key "applicants", "cvs"
   add_foreign_key "applicants", "profile_pictures"
+  add_foreign_key "users", "applicants"
 end
