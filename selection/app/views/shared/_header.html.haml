@@ -3,7 +3,7 @@
   = link_to "Jade", root_path, class: 'navbar-brand'
   - if current_user
     = link_to "Profile", welcome_profile_path, class: 'navbar-brand'
-  - if current_user.admin
+  - if current_user && current_user.admin
     = link_to "Applicants", admins_list_path, class: 'navbar-brand'
   %ul.nav.navbar-nav
     - if current_user
