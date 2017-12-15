@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20171215144048) do
     t.string "github_handle"
     t.string "full_name"
     t.string "access_token"
+    t.boolean "admin", default: false
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 

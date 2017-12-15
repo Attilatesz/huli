@@ -9,7 +9,7 @@ class ProfilePicturesController < ApplicationController
     if @profile_picture.errors.any?
       render 'new'
     else
-      # @profile_picture.upload
+      @profile_picture.upload
       redirect_to root_path
     end
   end
