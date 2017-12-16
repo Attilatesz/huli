@@ -5,7 +5,7 @@ class ProfilePicturesController < ApplicationController
   end
 
   def create
-    @profile_picture = current_user.create_profile_picture(profile_picture_params)
+    @profile_picture = current_user.applicant.create_profile_picture(profile_picture_params)
     if @profile_picture.errors.any?
       render 'new'
     else
@@ -15,12 +15,12 @@ class ProfilePicturesController < ApplicationController
   end
 
   def edit
-    @profile_picture = current_user.profile_picture
+    @profile_picture = current_user.applicant.profile_picture
     redirect_to new_profile_picture_path unless @profile_picture
   end
 
   def update
-    @profile_picture = current_user.profile_picture.update(profile_picture_params)
+    @profile_picture = current_user.applicant.profile_picture.update(profile_picture_params)
     if @profile_picture.errors.any?
       render 'edit'
     else

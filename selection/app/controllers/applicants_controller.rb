@@ -4,7 +4,7 @@ class ApplicantsController < ApplicationController
   end
 
   def create
-    @applicant = Applicant.new(applicant_params)
+    @applicant = current_user.create_applicant(applicant_params)
     if @applicant.save
       redirect_to welcome_profile_path
     else

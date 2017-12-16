@@ -5,7 +5,7 @@ class CvsController < ApplicationController
   end
 
   def create
-    @cv = current_user.create_cv(cv_params)
+    @cv = current_user.applicant.create_cv(cv_params)
     if @cv.errors.any?
       render 'new'
     else
@@ -16,7 +16,7 @@ class CvsController < ApplicationController
   end
 
   def edit
-    @cv = current_user.cv
+    @cv = current_user.applicant.cv
     redirect_to new_profile_picture_path unless @cv
   end
 

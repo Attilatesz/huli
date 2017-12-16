@@ -3,7 +3,7 @@ class Cv < ApplicationRecord
   # when only specifying the model
   model_name.instance_variable_set(:@route_key, 'cv')
 
-  belongs_to :user
+  belongs_to :applicant
   dragonfly_accessor :cv
   validates_presence_of :cv
   validates_size_of :cv, maximum: 5000.kilobytes,
