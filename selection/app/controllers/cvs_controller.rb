@@ -9,6 +9,7 @@ class CvsController < ApplicationController
     if @cv.errors.any?
       render 'new'
     else
+      flash[:success] = 'Thank you for uploading your CV. We will be in touch with you.'
       @cv.upload
       redirect_to root_path
     end
