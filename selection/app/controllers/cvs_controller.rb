@@ -25,6 +25,7 @@ class CvsController < ApplicationController
     if @cv.errors.any?
       render 'edit'
     else
+      flash[:success] = 'You successfully updated your CV.'
       @cv.upload
       redirect_to root_path
     end
