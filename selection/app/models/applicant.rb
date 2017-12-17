@@ -4,7 +4,7 @@ class Applicant < ApplicationRecord
 
   validates_presence_of :first_name,
                         :last_name,
-                        :email_address, :phone_number,
+                        :email_address,:phone_number,
                         :highest_education, :english_knowledge,
                         message: I18n.t(:blank)
 
