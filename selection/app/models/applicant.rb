@@ -41,5 +41,4 @@ class Applicant < ApplicationRecord
                       with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
                       allow_blank: true,
                       message: I18n.t(:email_format)
-                      
 end
