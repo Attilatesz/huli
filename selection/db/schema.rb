@@ -66,7 +66,5 @@ ActiveRecord::Schema.define(version: 20171215122606) do
 
   add_foreign_key "cvs", "users"
   add_foreign_key "profile_pictures", "users"
-
   add_foreign_key "users", "applicants"
-
 end
