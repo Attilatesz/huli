@@ -15,10 +15,12 @@ Rails.application.routes.draw do
 
   get 'welcome/profile'
   root 'welcome#index'
-  
-  resources :applicants, except: [:edit, :destroy, :update]
 
   get 'admins/list'
   
   get 'applicants/:id', to: 'admins#show'
+
+  resources :applicants, except: [:edit, :destroy, :update]
+
+
 end
