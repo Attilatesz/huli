@@ -64,8 +64,14 @@ ActiveRecord::Schema.define(version: 20171215144048) do
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
+<<<<<<< HEAD
+  add_foreign_key "cvs", "users"
+  add_foreign_key "profile_pictures", "users"
+  add_foreign_key "users", "applicants"
+=======
   add_foreign_key "applicants", "users"
   add_foreign_key "cvs", "applicants"
   add_foreign_key "profile_pictures", "applicants"
 
+>>>>>>> 87659975581a7b78a637ed00da5ebed8fdc03939
 end
