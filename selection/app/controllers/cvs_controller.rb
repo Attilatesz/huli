@@ -1,4 +1,6 @@
 class CvsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @cv = Cv.new
     redirect_to root_path unless current_user
@@ -21,13 +23,13 @@ class CvsController < ApplicationController
   end
 
   def update
-    @cv = current_user.cv.update(cv_params)
-    if @cv.errors.any?
-      render 'edit'
-    else
+    @cv = current_user.applicant.cv
+    if @cv.update(cv_params)
       flash[:success] = 'You successfully updated your CV.'
       @cv.upload
       redirect_to root_path
+    else
+      render 'edit'
     end
   end
 

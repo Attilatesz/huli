@@ -21,13 +21,13 @@ class ProfilePicturesController < ApplicationController
   end
 
   def update
-    @profile_picture = current_user.applicant.profile_picture.update(profile_picture_params)
-    if @profile_picture.errors.any?
-      render 'edit'
-    else
+    @profile_picture = current_user.applicant.profile_picture
+    if @profile_picture.update(profile_picture_params)
       flash[:success] = 'You successfully updated your profile picture.'
       @profile_picture.upload
       redirect_to root_path
+    else
+      render 'edit'
     end
   end
 
