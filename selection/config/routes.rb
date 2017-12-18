@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   get 'welcome/profile'
   root 'welcome#index'
 
-  get 'admins/list'
+  scope '/admins' do
+    get 'list', to: 'admins#list', as: 'admins_list'
+  end
   
   get 'applicant/:id', to: 'admins#show', as: 'applicant_admin'
 
