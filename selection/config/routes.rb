@@ -18,5 +18,9 @@ Rails.application.routes.draw do
 
   get 'admins/list'
   
-  resources :applicants, except: [:edit, :destroy, :update]
+  get 'applicant/:id', to: 'admins#show', as: 'applicant_admin'
+
+  resources :applicants, except: [:edit, :destroy, :update, :show]
+
+
 end

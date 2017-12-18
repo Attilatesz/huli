@@ -10,7 +10,5 @@
   %ul.nav.navbar-nav
     - if current_user
       = link_to "Logout", destroy_user_session_path, class: 'btn btn-success', method: :delete
-    - else 
-      = link_to "Login", user_github_omniauth_authorize_path, class: 'btn btn-success'
-      
-      
+    - else
+      = link_to "Login", user_google_oauth2_omniauth_authorize_path, class: 'btn btn-success'

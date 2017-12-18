@@ -23,7 +23,9 @@ ActiveRecord::Schema.define(version: 20171215160353) do
     t.string "payment_option"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "profile_picture_id"
     t.bigint "user_id"
+    t.index ["profile_picture_id"], name: "index_applicants_on_profile_picture_id"
     t.index ["user_id"], name: "index_applicants_on_user_id"
   end
 
@@ -72,6 +74,7 @@ ActiveRecord::Schema.define(version: 20171215160353) do
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
+  add_foreign_key "applicants", "profile_pictures"
   add_foreign_key "applicants", "users"
   add_foreign_key "cvs", "applicants"
   add_foreign_key "profile_pictures", "applicants"
