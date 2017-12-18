@@ -4,8 +4,9 @@ class ApplicantsController < ApplicationController
   end
 
   def create
-    @applicant = Applicant.new(applicant_params)
+    @applicant = current_user.create_applicant(applicant_params)
     if @applicant.save
+      flash[:success] = 'Thank you for applying to our course. We will be in touch with you.'
       redirect_to welcome_profile_path
     else
       render 'new'

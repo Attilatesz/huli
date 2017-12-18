@@ -3,8 +3,8 @@ class ProfilePicture < ApplicationRecord
   # when only specifying the model
   model_name.instance_variable_set(:@route_key, 'profile_picture')
 
+  belongs_to :applicant
   dragonfly_accessor :image
-  belongs_to :user
   validates_presence_of :image
   validates_size_of :image, maximum: 5000.kilobytes, message: 'Maximum file size is 5.0 megabytes'
 
