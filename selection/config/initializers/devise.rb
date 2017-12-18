@@ -252,7 +252,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :github, Rails.application.secrets[:github_client_id], Rails.application.secrets[:github_client_secret]
-  
+  config.omniauth :google_oauth2, Rails.application.secrets[:google_client_id], Rails.application.secrets[:google_client_secreet], {
+    redirect_uri: 'http://localhost:3000/users/auth/google_oauth2/callback'}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -275,5 +276,5 @@ Devise.setup do |config|
   #
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
-  # config.omniauth_path_prefix = '/my_engine/users/auth'  
+  # config.omniauth_path_prefix = '/my_engine/users/auth'
 end
