@@ -1,5 +1,4 @@
 .container.welcome-text
-  = render 'shared/flash' if flash.any?
   %h1 Welcome#{current_user ? ' ' + current_user.full_name : ''}!
   - unless current_user
     %p.start-instruction To start please hit the login button!
