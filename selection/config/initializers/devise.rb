@@ -253,7 +253,9 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :github, Rails.application.secrets[:github_client_id], Rails.application.secrets[:github_client_secret]
   config.omniauth :google_oauth2, Rails.application.secrets[:google_client_id], Rails.application.secrets[:google_client_secreet], {
-    redirect_uri: 'http://localhost:3000/users/auth/google_oauth2/callback'}
+    redirect_uri: 'http://localhost:3000/users/auth/google_oauth2/callback',
+    skip_jwt: true
+  }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
