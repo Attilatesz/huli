@@ -6,4 +6,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
 
+    def is_admin(email)
+      email.split("@").last == "greenfoxacademy.com"
+    end
+
 end
