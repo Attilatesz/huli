@@ -6,33 +6,33 @@ class Applicant < ApplicationRecord
                         :last_name,
                         :email_address, :phone_number,
                         :highest_education, :english_knowledge,
-                        message: I18n.t(:blank)
+                        message: I18n.t('errors.blank')
 
   validates_length_of :first_name, :last_name,
                       allow_blank: true,
                       minimum: 3, maximum: 35,
-                      message: I18n.t(:too_short)
+                      message: I18n.t('errors.too_short')
 
   validates_length_of :phone_number,
                       allow_blank: true, in: 10..15,
-                      message: I18n.t(:too_short)
+                      message: I18n.t('errors.too_short')
 
   validates_presence_of :english_class, :payment_option,
-                        message: I18n.t(:select)
+                        message: I18n.t('errors.select')
 
   validates_format_of :first_name, :last_name,
                       allow_blank: true, 
                       with: /\A[a-zA-Z]+\z/,
-                      message: I18n.t(:only_letters)
+                      message: I18n.t('errors.only_letters')
 
   validates_numericality_of :phone_number,
                             allow_blank: true,
                             only_integer: true,
-                            message: I18n.t(:only_numbers)
+                            message: I18n.t('errors.only_numbers')
 
   validates_format_of :email_address,
                       with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
                       allow_blank: true,
-                      message: I18n.t(:email_format)
+                      message: I18n.t('errors.email_format')
 
 end
