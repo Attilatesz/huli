@@ -29,7 +29,7 @@ class Applicant < ApplicationRecord
   validates_format_of :first_name,
                       :last_name,
                       allow_blank: true, 
-                      with: /\A[a-zA-Z]+\z/,
+                      with: /\A[a-zA-ZÀ-ÖØ-öø-ÿ]+\z/,
                       message: I18n.t(:only_letters)
 
   validates_numericality_of :phone_number,
