@@ -13,6 +13,10 @@ class Cv < ApplicationRecord
   validates_property :ext, of: :cv, as: 'pdf',
                       message: 'Invalid File Format: Only pdf is allowed'
 
+  after_save do
+    applicant.cv_upload if upload_state == 'approved'
+  end
+
   state_machine :upload_state, initial: :awaiting_upload do
     event :upload do
       transition awaiting_upload: :approval_pending
