@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20171219084248) do
+=======
+ActiveRecord::Schema.define(version: 20171215144048) do
+>>>>>>> ddd8936f2fa3788a7d9f8ca1064b5d12a3267f4f
 
   create_table "applicants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
