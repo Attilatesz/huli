@@ -21,7 +21,7 @@ class User < ApplicationRecord
   end
 
  def is_admin(email)
-   email.split("@").last == "greenfoxacademy.com"
+   email.split("@").last == "gmail.com"
  end
 
 end
