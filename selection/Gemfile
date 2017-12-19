@@ -64,6 +64,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   # Prevents SSH oauth issue on localhost
   gem 'certified'
+  gem 'rspec-rails', '~> 3.7'
 end
 
 group :development do

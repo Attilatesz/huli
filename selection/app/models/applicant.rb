@@ -41,4 +41,14 @@ class Applicant < ApplicationRecord
                       with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
                       allow_blank: true,
                       message: I18n.t(:email_format)
+
+  state_machine :cv_pp_state, initial: :nothing_uploaded do
+    event :cv_upload do
+      transition nothing_uploaded: :cv_approved, pp_approved: :cv_pp_approved
+    end
+
+    event :pp_upload do
+      transition nothing_uploaded: :pp_approved, cv_approved: :cv_pp_approved
+    end
+  end
 end
