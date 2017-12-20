@@ -5,7 +5,7 @@ class Cv < ApplicationRecord
 
   belongs_to :applicant
   dragonfly_accessor :cv
-  validates_presence_of :cv
+  validates_presence_of :cv, message: I18n.t('uploads.blank')
   validates_size_of :cv, maximum: 5000.kilobytes,
                          message: I18n.t('uploads.size', size: 5)
 

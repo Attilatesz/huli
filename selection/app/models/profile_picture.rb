@@ -5,7 +5,7 @@ class ProfilePicture < ApplicationRecord
 
   belongs_to :applicant
   dragonfly_accessor :image
-  validates_presence_of :image
+  validates_presence_of :image, message: I18n.t('uploads.blank')
   validates_size_of :image, maximum: 5000.kilobytes, 
                             message: I18n.t('uploads.size', size: 5)
 

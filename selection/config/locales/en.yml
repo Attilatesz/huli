@@ -41,6 +41,7 @@ en:
   uploads:
     size: "Maximum file size is %{size} megabytes"
     format: "Invalid File Format. The only formats allowed: %{formats}"
+    blank: "Please upload a file"
   flash:
     authentication_error: "Authentication error!"
     application_success: "Thank you for applying to our course. We will be in touch with you."
