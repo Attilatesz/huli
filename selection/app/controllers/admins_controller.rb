@@ -12,7 +12,7 @@ class AdminsController < ApplicationController
   private
     def redirect_unless_admin
       unless current_user && current_user.admin
-        flash[:danger] = 'Authentication error!'
+        flash[:danger] = I18n.t('flash.authentication_error')
         redirect_to root_path
       end
     end
