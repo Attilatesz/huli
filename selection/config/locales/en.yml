@@ -37,4 +37,6 @@ en:
   only_letters: 'Only letters allowed'
   only_numbers: 'Only numbers allowed'
   email_format: "The format of the e-mail address isn't correct"
-  
+  uploads:
+    size: "Maximum file size is %{size} megabytes"
+    format: "Invalid File Format. The only formats allowed: %{formats}"

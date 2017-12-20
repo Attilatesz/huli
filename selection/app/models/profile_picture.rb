@@ -6,11 +6,12 @@ class ProfilePicture < ApplicationRecord
   belongs_to :applicant
   dragonfly_accessor :image
   validates_presence_of :image
-  validates_size_of :image, maximum: 5000.kilobytes, message: 'Maximum file size is 5.0 megabytes'
+  validates_size_of :image, maximum: 5000.kilobytes, 
+                            message: I18n.t('uploads.size', size: 5)
 
   # Check the file extension
   validates_property :ext, of: :image, in: ['jpg', 'jpeg', 'png'], 
-                      message: 'Invalid File Format: Only jpg and png formats are allowed'
+                     message: I18n.t('uploads.format', formats: 'jpg, jpeg, png')
 
   after_save do
     upload if upload_state == 'awaiting_upload'
