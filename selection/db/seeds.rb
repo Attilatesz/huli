@@ -15,6 +15,23 @@ User.create([
   {email: "erosp@freemail.com", provider: "google_oauth2", full_name: "Erős Pista", access_token: nil, 
   admin: false}
 ])
+Option.create([
+  {category: 'Language', name: 'English', message: 'Sure'},
+  {category: 'Language', name: 'Hungarian', message: 'No, thanks'},
+  {category: 'Payment', name: 'Prepayment-headhunting', message:'Prepayment with headhunting service (990 000 HUF + VAT)'},
+  {category: 'Payment', name: 'Prepayment', message: 'Prepayment without headhunting service (1 290 000 HUF + VAT)'},
+  {category: 'Payment', name: 'Post payment', message: 'Post-payment with headhunting service (1 290 000 HUF + VAT)'},
+  {category: 'Education', name: 'Primary school'},
+  {category: 'Education', name: 'Vocational secondary school'},
+  {category: 'Education', name: 'Secondary school'},
+  {category: 'Education', name: 'College/BSc/BA'},
+  {category: 'Education', name: 'University/MSc/MA'},
+  {category: 'Education', name: 'Doctoral'},
+  {category: 'English level', name: 'Beginner'},
+  {category: 'English level', name: 'Intermediate'},
+  {category: 'English level', name: 'Advanced'},
+  {category: 'English level', name: 'Native'}
+])
 
 Applicant.create([
   {first_name: "Edes", last_name: "Anna", email_address: "edesanna@hotmail.com", 

@@ -12,6 +12,11 @@ class ProfilePicture < ApplicationRecord
   validates_property :ext, of: :image, in: ['jpg', 'jpeg', 'png'], 
                       message: 'Invalid File Format: Only jpg and png formats are allowed'
 
+  after_save do
+    upload if upload_state == 'awaiting_upload'
+    applicant.pp_upload if upload_state == 'approved'
+  end
+
   state_machine :upload_state, initial: :awaiting_upload do
     event :upload do
       transition awaiting_upload: :approval_pending

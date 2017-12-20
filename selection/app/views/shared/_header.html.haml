@@ -3,6 +3,8 @@
   = link_to "Jade", root_path, class: 'navbar-brand'
   - if current_user
     = link_to "Profile", welcome_profile_path, class: 'navbar-brand'
+  - if current_user
+    = link_to "Application", new_applicant_path, class: 'navbar-brand'
   - if current_user && current_user.admin
     = link_to "Applicants", admins_list_path, class: 'navbar-brand'
   %ul.nav.navbar-nav
@@ -10,3 +12,19 @@
       = link_to "Logout", destroy_user_session_path, class: 'btn btn-success', method: :delete
     - else
       = link_to "Login", user_google_oauth2_omniauth_authorize_path, class: 'btn btn-success'
+- if current_user && current_user.admin
+  %nav.navbar.navbar-default
+    = link_to "Dashboard", root_path, class: 'navbar-brand'
+    = link_to "Basic", root_path, class: 'navbar-brand'
+    = link_to "DRT", root_path, class: 'navbar-brand'
+    = link_to "Video", root_path, class: 'navbar-brand'
+    = link_to "Interview", root_path, class: 'navbar-brand'
+    = link_to "Simulation", root_path, class: 'navbar-brand'
+    = link_to "Contract", root_path, class: 'navbar-brand'
+    = link_to "Approved", root_path, class: 'navbar-brand'
+    = link_to "Enrolled", root_path, class: 'navbar-brand'
+    .search-input-main
+      %form.form-search.form-horizontal.pull-right
+        %input.search-query.input-large{:placeholder => "Search...", :type => "text"}/
+              
+

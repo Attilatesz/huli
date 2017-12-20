@@ -11,7 +11,6 @@ class CvsController < ApplicationController
       render 'new'
     else
       flash[:success] = 'Thank you for uploading your CV. We will be in touch with you.'
-      @cv.upload
       redirect_to root_path
     end
   end
@@ -25,7 +24,6 @@ class CvsController < ApplicationController
     @cv = current_user.applicant.cv
     if @cv.update(cv_params)
       flash[:success] = 'You successfully updated your CV.'
-      @cv.upload
       redirect_to root_path
     else
       render 'edit'

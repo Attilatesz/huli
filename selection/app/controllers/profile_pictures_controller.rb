@@ -10,7 +10,6 @@ class ProfilePicturesController < ApplicationController
       render 'new'
     else
       flash[:success] = 'Thank you for uploading your profile picture. We will be in touch with you.'
-      @profile_picture.upload
       redirect_to root_path
     end
   end
@@ -24,7 +23,6 @@ class ProfilePicturesController < ApplicationController
     @profile_picture = current_user.applicant.profile_picture
     if @profile_picture.update(profile_picture_params)
       flash[:success] = 'You successfully updated your profile picture.'
-      @profile_picture.upload
       redirect_to root_path
     else
       render 'edit'
