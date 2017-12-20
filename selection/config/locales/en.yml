@@ -31,12 +31,18 @@
 
 en:
   hello: "Hello world"
-  blank: "This field can't be blank"
-  too_short: 'Minimum 3 characters'
-  select: 'Please choose one of the options'
-  only_letters: 'Only letters allowed'
-  only_numbers: 'Only numbers allowed'
-  email_format: "The format of the e-mail address isn't correct"
+  form:
+    blank: "This field can't be blank"
+    length: "Length should be between %{min} and %{max} characters"
+    select: "Please choose one of the options"
+    only_letters: "Only letters allowed"
+    only_numbers: "Only numbers allowed"
+    email_format: "The format of the e-mail address isn't correct"
   uploads:
     size: "Maximum file size is %{size} megabytes"
     format: "Invalid File Format. The only formats allowed: %{formats}"
+  flash:
+    authentication_error: "Authentication error!"
+    application_success: "Thank you for applying to our course. We will be in touch with you."
+    upload_new_success: "Thank you for uploading your %{upload}. We will be in touch with you."
+    upload_update_success: "You successfully updated your %{upload}."

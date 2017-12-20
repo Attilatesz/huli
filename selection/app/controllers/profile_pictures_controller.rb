@@ -9,7 +9,7 @@ class ProfilePicturesController < ApplicationController
     if @profile_picture.errors.any?
       render 'new'
     else
-      flash[:success] = 'Thank you for uploading your profile picture. We will be in touch with you.'
+      flash[:success] = flash[:success] = I18n.t('flash.upload_new_success', upload: 'profile picture')
       redirect_to root_path
     end
   end
@@ -22,7 +22,7 @@ class ProfilePicturesController < ApplicationController
   def update
     @profile_picture = current_user.applicant.profile_picture
     if @profile_picture.update(profile_picture_params)
-      flash[:success] = 'You successfully updated your profile picture.'
+      flash[:success] = flash[:success] = I18n.t('flash.upload_update_success', upload: 'profile picture')
       redirect_to root_path
     else
       render 'edit'
