@@ -5,9 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create([
-  {email: "faklijta@gmail.com", provider: "google_oauth2", full_name: "Admin", access_token: nil, admin: true}
-])
+
+# To set yourself admin profile plese fill in the below template with your details and run rails db:seed
+
+User.create(
+  email: "faklijta@gmail.com", provider: "google_oauth2", uid: 115601089802879136625, admin: true)
+
+# To seed your database with below values please run rails db:seed
+
 Option.create([
   {category: 'Language', name: 'English', message: 'Sure'},
   {category: 'Language', name: 'Hungarian', message: 'No, thanks'},
@@ -26,3 +31,35 @@ Option.create([
   {category: 'English level', name: 'Native'}
 ])
 
+User.create(
+  email: "edesanna@hotmail.com", provider: "google_oauth2", full_name: "Édes Anna", access_token: nil, 
+  admin: false
+  )
+
+Applicant.create(
+  first_name: "Edes", last_name: "Anna", email_address: "edesanna@hotmail.com", 
+  phone_number: "063055555555", highest_education: "College/BSc/BA", english_knowledge: "Advanced", 
+  english_class: "English", payment_option: "Prepayment_headhunting", user_id: User.last.id
+)
+
+User.create(
+  email: "KKriszti@hotmail.com", provider: "google_oauth2", full_name: "Kiss Krisztina", access_token: nil, 
+  admin: false
+  )
+
+Applicant.create(
+  first_name: "Kiss", last_name: "Krisztina", email_address: "KKriszti@hotmail.com", 
+  phone_number: "06308888888", highest_education: "College/BSc/BA", english_knowledge: "Advanced", 
+  english_class: "English", payment_option: "Prepayment_headhunting", user_id: User.last.id
+  )
+
+User.create(
+  email: "erosp@freemail.com", provider: "google_oauth2", full_name: "Erős Pista", access_token: nil, 
+  admin: false
+  )
+
+Applicant.create(
+  first_name: "Eros", last_name: "Pista", email_address: "erosp@freemail.com", 
+  phone_number: "06307777777", highest_education: "College/BSc/BA", english_knowledge: "Advanced", 
+  english_class: "English", payment_option: "Prepayment_headhunting", user_id: User.last.id
+  )
