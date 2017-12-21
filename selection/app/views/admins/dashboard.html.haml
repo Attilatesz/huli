@@ -1,0 +1,15 @@
+.container
+  .table-responsive.transparent-container
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Status
+          %th Action
+          %th When
+      - @applicants.each do |a|
+        %tr
+          %td #{a.first_name} #{a.last_name}
+          %td= status_string(a.cv_pp_state)
+          %td Action
+          %td= a.updated_at
