@@ -1,9 +1,12 @@
 %h1 Application form
 .applicant-form
   = semantic_form_for @applicant do |f|
-    = f.input :first_name
-    = f.input :last_name
+    = f.input :first_name,
+              input_html: {value: session[:first_name]}
+    = f.input :last_name,
+              input_html: {value: session[:last_name]}
     = f.input :email_address,
+              input_html: {value: session[:email]},
               label: "E-mail" 
     = f.input :phone_number,
               label: "Phone number (in the following format: 0036201234567)"
