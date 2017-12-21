@@ -5,13 +5,18 @@ class Cv < ApplicationRecord
 
   belongs_to :applicant
   dragonfly_accessor :cv
-  validates_presence_of :cv
+  validates_presence_of :cv, message: I18n.t('uploads.blank')
   validates_size_of :cv, maximum: 5000.kilobytes,
-                         message: 'Maximum file size is 5.0 megabytes'
+                         message: I18n.t('uploads.size', size: 5)
 
   # Check the file extension
   validates_property :ext, of: :cv, as: 'pdf',
-                      message: 'Invalid File Format: Only pdf is allowed'
+                      message: I18n.t('uploads.format', formats: 'pdf')
+
+  after_save do
+    upload if upload_state == 'awaiting_upload'
+    applicant.cv_upload if upload_state == 'approved'
+  end
 
   state_machine :upload_state, initial: :awaiting_upload do
     event :upload do
