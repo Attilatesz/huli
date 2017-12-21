@@ -1,0 +1,16 @@
+.container.admin-settings
+  .transparent-container
+    %table.table.table-hover
+      %thead
+        %tr
+          %td #
+          %td Payment option
+          %td Message
+      %tbody
+        - @options.each_with_index do |option, i|
+          %tr
+            %td #{ i }
+            %td #{ option.name }
+            %td #{ option.message }
+    = link_to 'Add', [:new_option, category: 'payment']
+            

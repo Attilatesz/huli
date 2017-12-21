@@ -22,6 +22,5 @@ Rails.application.routes.draw do
   end
 
   resources :applicants, except: [:edit, :destroy, :update, :show]
-
-
+  resources :options
 end
