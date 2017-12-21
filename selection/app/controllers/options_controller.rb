@@ -19,6 +19,11 @@ class OptionsController < ApplicationController
     end
   end
 
+  def destroy
+    Option.find(params[:id]).delete
+    redirect_to options_path(category: params[:category])
+  end
+
   private
 
     def option_params

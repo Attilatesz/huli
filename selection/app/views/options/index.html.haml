@@ -6,11 +6,16 @@
           %td #
           %td Payment option
           %td Message
+          %td
       %tbody
         - @options.each_with_index do |option, i|
           %tr
-            %td #{ i }
-            %td #{ option.name }
-            %td #{ option.message }
-    = link_to 'Add', [:new_option, category: 'payment']
+            %td= i
+            %td= option.name
+            %td= option.message
+            %td
+              = link_to [:option, category: 'payment', id: option.id], method: :delete do
+                %span.glyphicon.glyphicon-trash
+
+    = link_to 'Add', [:new_option, category: 'payment'], class: 'btn btn-primary'
             
