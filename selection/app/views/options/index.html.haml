@@ -7,12 +7,16 @@
           %td Payment option
           %td Message
           %td
+          %td
       %tbody
         - @options.each_with_index do |option, i|
           %tr
             %td= i
             %td= option.name
             %td= option.message
+            %td
+              = link_to [:edit_option, category: 'payment', id: option.id] do
+                %span.glyphicon.glyphicon-pencil
             %td
               = link_to [:option, category: 'payment', id: option.id], method: :delete do
                 %span.glyphicon.glyphicon-trash

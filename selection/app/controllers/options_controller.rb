@@ -10,12 +10,26 @@ class OptionsController < ApplicationController
     @option = Option.new
   end
 
+  def edit
+    @category = params[:category]
+    @option = Option.find(params[:id])
+  end
+
   def create
     @option = Option.create(option_params)
     if @option.errors.any?
       render 'new'
     else
       redirect_to options_path(option_params)
+    end
+  end
+
+  def update
+    @option = Option.find(params[:id])
+    if @option.update(option_params)
+      redirect_to options_path(option_params)
+    else
+      render 'edit'
     end
   end
 
