@@ -12,4 +12,4 @@
           %td #{a.first_name} #{a.last_name}
           %td= status_string(a.cv_pp_state)
           %td= status_button(a.cv_pp_state)
-          %td= a.updated_at
+          %td= time_ago_in_words(a.updated_at) + ' ago'
