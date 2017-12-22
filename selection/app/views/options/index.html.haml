@@ -16,10 +16,10 @@
             %td= option.message
             %td
               = link_to [:edit_option, category: @category, id: option.id] do
-                %span.glyphicon.glyphicon-pencil
+                %span.glyphicon.glyphicon-pencil.btn-primary
             %td
               = link_to [:option, category: @category, id: option.id], method: :delete do
-                %span.glyphicon.glyphicon-trash
-
-    = link_to 'Add', [:new_option, category: @category], class: 'btn btn-primary'
+                %span.glyphicon.glyphicon-trash.btn-danger
+    %div.fluid-container
+      = link_to 'Add', [:new_option, category: @category], class: 'btn btn-primary'
             
