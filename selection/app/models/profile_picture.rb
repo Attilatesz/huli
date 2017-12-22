@@ -15,7 +15,7 @@ class ProfilePicture < ApplicationRecord
 
   after_save do
     upload if upload_state == 'awaiting_upload'
-    applicant.pp_upload if upload_state == 'approved'
+    applicant.change if upload_state == 'approved'
   end
 
   state_machine :upload_state, initial: :awaiting_upload do

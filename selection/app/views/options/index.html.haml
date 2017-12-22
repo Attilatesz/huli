@@ -1,0 +1,25 @@
+.container.admin-settings
+  .transparent-container
+    %table.table.table-hover
+      %thead
+        %tr
+          %td #
+          %td Payment option
+          %td Message
+          %td
+          %td
+      %tbody
+        - @options.each_with_index do |option, i|
+          %tr
+            %td= i
+            %td= option.name
+            %td= option.message
+            %td
+              = link_to [:edit_option, category: @category, id: option.id] do
+                %span.glyphicon.glyphicon-pencil.btn-primary
+            %td
+              = link_to [:option, category: @category, id: option.id], method: :delete do
+                %span.glyphicon.glyphicon-trash.btn-danger
+    %div.fluid-container
+      = link_to 'Add', [:new_option, category: @category], class: 'btn btn-primary'
+            

@@ -17,11 +17,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   scope '/admins' do
-    get 'list', to: 'admins#list', as: 'admins_list'
+    get 'dashboard', to: 'admins#dashboard', as: 'admins_dashboard'
     get 'applicant/:id', to: 'admins#show', as: 'applicant_admin'
   end
 
   resources :applicants, except: [:edit, :destroy, :update, :show]
-
-
+  resources :options
 end
