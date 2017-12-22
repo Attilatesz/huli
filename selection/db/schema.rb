@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171219084248) do
+ActiveRecord::Schema.define(version: 20171222111211) do
 
   create_table "applicants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -24,10 +24,7 @@ ActiveRecord::Schema.define(version: 20171219084248) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-<<<<<<< HEAD
-=======
-    t.string "cv_pp_state"
->>>>>>> 9e58b35277826247efe25a447cd1cfaa7c479d33
+    t.string "status"
     t.index ["user_id"], name: "index_applicants_on_user_id"
   end
 

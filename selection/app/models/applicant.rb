@@ -42,13 +42,16 @@ class Applicant < ApplicationRecord
                       allow_blank: true,
                       message: I18n.t('form.email_format')
 
-  state_machine :cv_pp_state, initial: :nothing_uploaded do
-    event :cv_upload do
-      transition nothing_uploaded: :cv_approved, pp_approved: :cv_pp_approved
-    end
+  before_save do
+    throw :abort unless (cv && profile_picture) && 
+                 status == 'drt' && 
+                 cv.upload_state == 'approved' &&
+                 profile_picture.upload_state == 'approved'
+  end
 
-    event :pp_upload do
-      transition nothing_uploaded: :pp_approved, cv_approved: :cv_pp_approved
+  state_machine :status, initial: :basic do
+    event :change do
+      transition basic: :drt
     end
   end
 end
