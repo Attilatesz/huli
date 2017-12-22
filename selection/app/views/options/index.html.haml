@@ -15,11 +15,11 @@
             %td= option.name
             %td= option.message
             %td
-              = link_to [:edit_option, category: 'payment', id: option.id] do
+              = link_to [:edit_option, category: @category, id: option.id] do
                 %span.glyphicon.glyphicon-pencil
             %td
-              = link_to [:option, category: 'payment', id: option.id], method: :delete do
+              = link_to [:option, category: @category, id: option.id], method: :delete do
                 %span.glyphicon.glyphicon-trash
 
-    = link_to 'Add', [:new_option, category: 'payment'], class: 'btn btn-primary'
+    = link_to 'Add', [:new_option, category: @category], class: 'btn btn-primary'
             
