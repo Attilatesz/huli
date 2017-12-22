@@ -1,0 +1,14 @@
+.navbar.navbar-default
+  %ul.nav.navbar-nav.navbar-left
+    %li= link_to "Dashboard", admins_dashboard_path
+    %li= link_to "Basic", root_path
+    %li= link_to "DRT", root_path
+    %li= link_to "Video", root_path
+    %li= link_to "Interview", root_path
+    %li= link_to "Simulation", root_path
+    %li= link_to "Contract", root_path
+    %li= link_to "Approved", root_path
+    %li= link_to "Enrolled", root_path
+    .search-input-main
+      %form.form-search.form-horizontal.pull-right
+        %input.search-query.input-large{:placeholder => "Search...", :type => "text"}
