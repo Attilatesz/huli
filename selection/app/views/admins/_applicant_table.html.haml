@@ -10,6 +10,6 @@
       - @applicants.each do |a|
         %tr
           %td #{a.first_name} #{a.last_name}
-          %td= status_string(a.cv_pp_state)
-          %td= status_button(a.cv_pp_state)
+          %td= status_string(a.status)
+          %td= status_button(a.status)
           %td= time_ago_in_words(a.updated_at) + ' ago'
