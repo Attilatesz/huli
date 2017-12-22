@@ -28,8 +28,8 @@ class Applicant < ApplicationRecord
 
   validates_format_of :first_name,
                       :last_name,
-                      allow_blank: true, 
-                      with: /\A[a-zA-Z]+\z/,
+                      allow_blank: true,
+                      with: /\A[a-zA-ZÀ-ÖØ-öø-ÿ]+\z/,
                       message: I18n.t('form.only_letters')
 
   validates_numericality_of :phone_number,
@@ -43,10 +43,11 @@ class Applicant < ApplicationRecord
                       message: I18n.t('form.email_format')
 
   before_save do
-    throw :abort unless (cv && profile_picture) && 
-                 status == 'drt' && 
-                 cv.upload_state == 'approved' &&
-                 profile_picture.upload_state == 'approved'
+    if status == 'drt'
+      throw :abort unless (cv && profile_picture) &&
+                          cv.upload_state == 'approved' &&
+                          profile_picture.upload_state == 'approved'
+    end
   end
 
   state_machine :status, initial: :basic do

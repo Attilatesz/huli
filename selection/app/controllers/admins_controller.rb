@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
   before_action :redirect_unless_admin
 
-  def list
+  def dashboard
     @applicants = Applicant.all
   end
 
