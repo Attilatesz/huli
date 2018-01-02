@@ -1,9 +1,8 @@
 class OptionsController < ApplicationController
   before_action :redirect_unless_admin
-  before_action :get_category, only: [:index, :new, :edit]
 
   def index
-    @options = Option.where(["category = ?", params[:category]])
+    @options = Option.where(['category = ?', params[:category]])
   end
 
   def new
@@ -41,10 +40,6 @@ class OptionsController < ApplicationController
 
   def option_params
     params.require(:option).permit(:category, :name, :message)
-  end
-
-  def get_category
-    @category = params[:category]
   end
 
   def redirect_unless_admin
