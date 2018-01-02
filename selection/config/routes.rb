@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   scope '/admins' do
     get 'dashboard', to: 'admins#dashboard', as: 'admins_dashboard'
+    get 'basic', to: 'admins#basic', as: 'admins_basic'
+    get 'drt', to: 'admins#drt', as: 'admins_drt'
     get 'applicant/:id', to: 'admins#show', as: 'applicant_admin'
   end
 

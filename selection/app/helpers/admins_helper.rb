@@ -4,12 +4,10 @@ module AdminsHelper
     status.gsub('_', ' ').capitalize
   end
 
-  def status_button(status)
-    case status
-    when "nothing_uploaded"
-      content_tag(:div, status.gsub('_', ' ').capitalize, class: 'btn-static btn-warning')
-    when "cv_pp_approved"
-      content_tag(:div, status.gsub('_', ' ').capitalize, class: 'btn btn-primary')
+  def status_button(applicant)
+    if (applicant.cv && applicant.cv.upload_state == 'approval_pending') ||
+       (applicant.profile_picture && applicant.profile_picture.upload_state == 'approval_pending')
+      content_tag(:div, 'Check', class: 'btn btn-primary')
     end
   end
 end

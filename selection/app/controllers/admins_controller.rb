@@ -5,6 +5,14 @@ class AdminsController < ApplicationController
     @applicants = Applicant.all
   end
 
+  def basic
+    @applicants = Applicant.where(status: 'basic')
+  end
+
+  def drt
+    @applicants = Applicant.where(status: 'drt')
+  end
+
   def show
     @applicant = Applicant.find(params[:id])
   end
