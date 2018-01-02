@@ -3,7 +3,7 @@ class OptionsController < ApplicationController
   before_action :get_category, only: [:index, :new, :edit]
 
   def index
-    @options = Option.where(["category = ?", @category])
+    @options = Option.where(["category = ?", params[:category]])
   end
 
   def new
@@ -19,14 +19,14 @@ class OptionsController < ApplicationController
     if @option.errors.any?
       render 'new'
     else
-      redirect_to options_path(option_params)
+      redirect_to list_options_path(category: params[:option][:category])
     end
   end
 
   def update
     @option = Option.find(params[:id])
     if @option.update(option_params)
-      redirect_to options_path(option_params)
+      redirect_to list_options_path(category: params[:option][:category])
     else
       render 'edit'
     end
@@ -34,7 +34,7 @@ class OptionsController < ApplicationController
 
   def destroy
     Option.find(params[:id]).delete
-    redirect_to options_path(category: params[:category])
+    redirect_to list_options_path(category: params[:category])
   end
 
   private

@@ -1,5 +1,5 @@
 .navbar.navbar-default
   %ul.nav.navbar-nav.navbar-left
-    %li= link_to "Payment", [:options, category: 'Payment']
-    %li= link_to "English level", [:options, category: 'English level']
-    %li= link_to "Education", [:options, category: 'Education'] 
+    %li= link_to 'Payment', list_options_path(category: 'payment')
+    %li= link_to 'Language', list_options_path(category: 'english level')
+    %li= link_to 'Education', list_options_path(category: 'education')
