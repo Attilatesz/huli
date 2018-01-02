@@ -5,12 +5,8 @@ class AdminsController < ApplicationController
     @applicants = Applicant.all
   end
 
-  def basic
-    @applicants = Applicant.where(status: 'basic')
-  end
-
-  def drt
-    @applicants = Applicant.where(status: 'drt')
+  def update_status
+    @applicants = Applicant.where(status: params[:status])
   end
 
   def show
