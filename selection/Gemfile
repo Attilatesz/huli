@@ -65,6 +65,7 @@ group :development, :test do
   # Prevents SSH oauth issue on localhost
   gem 'certified'
   gem 'rspec-rails', '~> 3.7'
+  gem 'factory_bot_rails', '~> 4.0'
 end
 
 group :development do
