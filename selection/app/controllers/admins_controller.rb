@@ -11,6 +11,7 @@ class AdminsController < ApplicationController
 
   def show
     @applicant = Applicant.find(params[:id])
+    @profile_picture = current_user.applicant.profile_picture
   end
 
   private

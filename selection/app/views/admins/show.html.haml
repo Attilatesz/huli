@@ -1,28 +1,38 @@
 = render 'header'
 .container
-  %h2 Applicant details
+  %h2= @applicant.first_name + ' ' + @applicant.last_name
+  = image_tag @profile_picture.image.url if @profile_picture
   .table-responsive.transparent-container
     %table.table
       %thead
         %tr
-          %th First name
-          %th Last name
           %th E-mail
           %th Phone
           %th Education
           %th English level
           %th English speaking class
-          %th Prefered payment 
+          %th Prefered payment
+          %th CV
+          %th PP
           %th 
         %tr
-          %td= @applicant.first_name
-          %td= @applicant.last_name
           %td= @applicant.email_address
           %td= @applicant.phone_number
           %td= @applicant.highest_education
           %td= @applicant.english_knowledge
           %td= @applicant.english_class
           %td= @applicant.payment_option
+          %td= 'CV'
+          %td= 'PP'
           %td= link_to "Back", admins_dashboard_path
+  .table-responsive.transparent-container
+    %table.table
+      %thead
+        %tr
+          %th CV
+          %th Profile Picture
+        %tr
+          %td= 'cv'
+          %td= 'pp'
 
 %br/
