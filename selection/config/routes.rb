@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'admins#dashboard', as: 'admins_dashboard'
     get 'dashboard/:status', to: 'admins#update_status', as: 'applicant_status'
     get 'applicant/:id', to: 'admins#show', as: 'applicant_admin'
+    # resource :applicants, only: [:show] do
+    #   get :status, to: 'admins#update_status', as: 'applicant_status'
+    # end
   end
 
   resources :applicants, except: [:edit, :destroy, :update, :show]
