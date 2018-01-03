@@ -20,5 +20,12 @@ RSpec.describe User, type: :model do
     end
   end
 
+  context '#is_admin' do
+    it 'sets admin to true if email end with gmail.com' do
+      user = build(:user, email: 'johndoe@gmail.com')
+      expect(user.is_admin(user.email)).to eq(true)
+    end
+  end
+   
 end
 
