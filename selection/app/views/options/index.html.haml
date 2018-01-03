@@ -16,7 +16,7 @@
             %td= option.name
             %td= option.message
             %td
-              = link_to edit_option_path(category: category, id: option.id) do
+              = link_to edit_option_path(id: option.id, category: category) do
                 %span.glyphicon.glyphicon-pencil.btn-primary
             %td
               = link_to delete_option_path(category: category, id: option.id), method: :delete do
