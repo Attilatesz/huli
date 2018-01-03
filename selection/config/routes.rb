@@ -25,3 +25,4 @@ Rails.application.routes.draw do
   resources :applicants, except: [:edit, :destroy, :update, :show]
   resources :options
 end
+
