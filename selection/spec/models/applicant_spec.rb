@@ -7,8 +7,8 @@ RSpec.describe Applicant, type: :model do
   end
 
   describe 'invalid' do
-    it 'when no email present' do
-      expect(build :applicant, email: nil).to be_invalid
+    it 'has no email present' do
+      expect(build :applicant, email_address: nil).to be_invalid
     end
   end
 end

@@ -7,8 +7,8 @@ RSpec.describe User, type: :model do
   end
 
   describe 'invalid' do
-    it 'when no email present' do
-      expect(build :user, email: nil).to be_invalid
+    it 'has no uid present' do
+      expect(build :user, uid: nil).to be_invalid
     end
   end
 end
