@@ -6,6 +6,12 @@ class User < ApplicationRecord
   devise :rememberable, :trackable,
          :omniauthable, omniauth_providers: [:github, :google_oauth2]
 
+  validates_presence_of :provider,
+                        :uid,
+                        :email,
+                        :access_token
+
+
   def self.from_omniauth(auth)
     User.where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.provider = auth.provider
