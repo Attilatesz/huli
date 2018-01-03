@@ -1,9 +1,9 @@
 class DeviseCreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
-      t.boolean :admin
+      t.boolean :admin, default: false
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
+      t.string :email, null: false, default: ""
 
       ## Rememberable
       t.datetime :remember_created_at
