@@ -52,6 +52,9 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  #Letter Opener is in our development environment
+  config.action_mailer.delivery_method = :letter_opener
+
   # Devise
   # Ensure you have defined default url options in your environments files. Here
   # is an example of default_url_options appropriate for a development environment
