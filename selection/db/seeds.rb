@@ -25,10 +25,10 @@ Option.create([
   {category: 'Education', name: 'College/BSc/BA'},
   {category: 'Education', name: 'University/MSc/MA'},
   {category: 'Education', name: 'Doctoral'},
-  {category: 'English level', name: 'Beginner'},
-  {category: 'English level', name: 'Intermediate'},
-  {category: 'English level', name: 'Advanced'},
-  {category: 'English level', name: 'Native'}
+  {category: 'English_level', name: 'Beginner'},
+  {category: 'English_level', name: 'Intermediate'},
+  {category: 'English_level', name: 'Advanced'},
+  {category: 'English_level', name: 'Native'}
 ])
 
 User.create(
