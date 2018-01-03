@@ -10,7 +10,7 @@ class User < ApplicationRecord
     User.where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.provider = auth.provider
     user.uid = auth.uid
-    user.email = auth.info.email if auth.info.email
+    user.email = auth.info.email
     user.access_token = auth.credentials.token
     user.admin = user.is_admin(auth.info.email)
     end
