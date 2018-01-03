@@ -1,8 +1,9 @@
 class OptionsController < ApplicationController
+  include OptionsHelper
   before_action :redirect_unless_admin
 
   def index
-    @options = Option.where(['category = ?', params[:category]])
+    @options = Option.where(['category = ?', category])
   end
 
   def new
@@ -10,7 +11,7 @@ class OptionsController < ApplicationController
   end
 
   def edit
-    @option = Option.find(params[:id])
+    @option = Option.find(category)
   end
 
   def create
@@ -18,14 +19,14 @@ class OptionsController < ApplicationController
     if @option.errors.any?
       render 'new'
     else
-      redirect_to list_options_path(category: params[:option][:category])
+      redirect_to list_options_path(category: category)
     end
   end
 
   def update
     @option = Option.find(params[:id])
     if @option.update(option_params)
-      redirect_to list_options_path(category: params[:option][:category])
+      redirect_to list_options_path(category: category)
     else
       render 'edit'
     end
@@ -33,7 +34,7 @@ class OptionsController < ApplicationController
 
   def destroy
     Option.find(params[:id]).delete
-    redirect_to list_options_path(category: params[:category])
+    redirect_to list_options_path(category: category)
   end
 
   private
