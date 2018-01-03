@@ -11,7 +11,7 @@ class OptionsController < ApplicationController
   end
 
   def edit
-    @option = Option.find(params[:id])
+    @option = Option.find(category)
   end
 
   def create
