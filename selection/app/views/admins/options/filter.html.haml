@@ -19,7 +19,7 @@
               = link_to edit_admins_option_path(id: option.id, category: category) do
                 %span.glyphicon.glyphicon-pencil.btn-primary
             %td
-              = link_to admins_delete_option_path(category: category, id: option.id), method: :delete do
+              = link_to destroy_admins_options_path(category: category, id: option.id), method: :delete do
                 %span.glyphicon.glyphicon-trash.btn-danger
     %div.fluid-container
       = link_to 'Add', new_admins_option_path(category: category), class: 'btn btn-primary'

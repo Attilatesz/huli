@@ -22,11 +22,9 @@ Rails.application.routes.draw do
     get 'dashboard/:status', to: 'admin_applicant#update_status', as: 'applicant_status'
     get 'applicant/:id', to: 'admin_applicant#show', as: 'applicant'
     resources :options, except: [:show, :index, :destroy],
-                        path_names: { new: 'new/:category',
-                                      edit: ':category' }
-    scope '/options' do
-      get ':category', to: 'options#index', as: 'list_options'
-      delete ':category/:id', to: 'options#destroy', as: 'delete_option'
+                        path_names: { new: 'new/:category', edit: ':category' } do
+      get ':category', to: 'options#filter', as: 'filter', on: :collection
+      delete ':category/:id', to: 'options#destroy', as: 'destroy', on: :collection
     end
   end
 

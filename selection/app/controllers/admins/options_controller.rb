@@ -2,7 +2,7 @@ class Admins::OptionsController < Admins::AdminController
   include OptionsHelper
   before_action :redirect_unless_admin
 
-  def index
+  def filter
     @options = Option.where(['category = ?', category])
   end
 
@@ -19,14 +19,14 @@ class Admins::OptionsController < Admins::AdminController
     if @option.errors.any?
       render 'new'
     else
-      redirect_to admins_list_options_path(category: category)
+      redirect_to filter_admins_options_path(category: category)
     end
   end
 
   def update
     @option = Option.find(params[:id])
     if @option.update(option_params)
-      redirect_to admins_list_options_path(category: category)
+      redirect_to filter_admins_options_path(category: category)
     else
       render 'edit'
     end
@@ -34,7 +34,7 @@ class Admins::OptionsController < Admins::AdminController
 
   def destroy
     Option.find(params[:id]).delete
-    redirect_to admins_list_options_path(category: category)
+    redirect_to filter_admins_options_path(category: category)
   end
 
   private
