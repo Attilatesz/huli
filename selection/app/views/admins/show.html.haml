@@ -54,15 +54,15 @@
         %tr
           %td
             -if @applicant.profile_picture && @applicant.profile_picture.upload_state == 'approval_pending'
-              = link_to root_path do
+              = link_to decision_path(applicant_id: @applicant.id, status: 'profile_picture', decision: 'accept') do
                 %span.glyphicon.glyphicon-ok.btn.btn-success
-              = link_to root_path do
+              = link_to decision_path(applicant_id: @applicant.id, status: 'profile_picture', decision: 'decline') do
                 %span.glyphicon.glyphicon-remove.btn.btn-danger
           %td
             -if @applicant.cv && @applicant.cv.upload_state == 'approval_pending'
-              = link_to root_path do
+              = link_to decision_path(applicant_id: @applicant.id, status: 'cv', decision: 'accept') do
                 %span.glyphicon.glyphicon-ok.btn.btn-success
-              = link_to root_path do
+              = link_to decision_path(applicant_id: @applicant.id, status: 'cv', decision: 'decline') do
                 %span.glyphicon.glyphicon-remove.btn.btn-danger
         %tr
           %td= link_to "Dashboard", admins_dashboard_path, class: 'btn btn-primary'     
