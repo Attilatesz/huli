@@ -1,5 +1,4 @@
 class Admins::AdminApplicantController < Admins::AdminController
-  before_action :redirect_unless_admin
 
   def dashboard
     @applicants = Applicant.all

@@ -1,6 +1,5 @@
 class Admins::OptionsController < Admins::AdminController
   include OptionsHelper
-  before_action :redirect_unless_admin
 
   def filter
     @options = Option.where(['category = ?', category])
