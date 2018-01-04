@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   get 'welcome/profile'
   root 'welcome#index'
 
-
   namespace :admins  do
     get 'dashboard', to: 'admin_applicant#dashboard', as: 'dashboard'
     get 'dashboard/:status', to: 'admin_applicant#update_status', as: 'applicant_status'
@@ -28,6 +27,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :applicants, except: [:edit, :destroy, :update, :show]
+  resources :applicants, except: [:edit, :destroy, :update, :show] do
+    get ':status/:decision', to: 'applicants#status_update', as: 'decision'
+  end
 end
 
