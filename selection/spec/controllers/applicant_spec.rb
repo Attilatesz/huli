@@ -9,7 +9,7 @@ RSpec.describe ApplicantsController, type: :controller do
       expect(subject).to render_template('applicants/new')
     end
 
-    it 'returns a 200 status code' do
+    it 'returns a 200 OK status code' do
       get :new
       expect(response).to have_http_status(200)
     end
@@ -37,6 +37,9 @@ RSpec.describe ApplicantsController, type: :controller do
     #   expect(build :applicant).to redirect_to(welcome_profile_path)
     # end
 
+    it 'responds with error if email missing' do
+      expect(build :applicant, email_address: nil).to raise_error "This field can't be blank"
+    end
   end
 
 
