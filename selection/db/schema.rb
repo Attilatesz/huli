@@ -56,9 +56,11 @@ ActiveRecord::Schema.define(version: 20180103152723) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "upload_state"
+    t.bigint "user_id"
     t.string "image_uid"
     t.bigint "applicant_id"
     t.index ["applicant_id"], name: "index_profile_pictures_on_applicant_id"
+    t.index ["user_id"], name: "index_profile_pictures_on_user_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -76,14 +78,11 @@ ActiveRecord::Schema.define(version: 20180103152723) do
     t.string "github_handle"
     t.string "full_name"
     t.string "access_token"
-    t.boolean "admin", default: false
-    t.bigint "applicant_id"
-    t.index ["applicant_id"], name: "index_users_on_applicant_id"
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
   add_foreign_key "applicants", "users"
   add_foreign_key "cvs", "applicants"
   add_foreign_key "profile_pictures", "applicants"
-  add_foreign_key "users", "applicants"
+  add_foreign_key "profile_pictures", "users"
 end
