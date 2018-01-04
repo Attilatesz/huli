@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   scope '/admins' do
     get 'dashboard', to: 'admins#dashboard', as: 'admins_dashboard'
-    get 'dashboard/:status', to: 'admins#update_status', as: 'applicant_status'
+    get 'dashboard/:status', to: 'admins#dashboard_filter', as: 'applicant_status'
     get 'applicant/:id', to: 'admins#show', as: 'applicant_admin'
     # resource :applicants, only: [:show] do
     #   get :status, to: 'admins#update_status', as: 'applicant_status'

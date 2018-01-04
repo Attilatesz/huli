@@ -5,7 +5,7 @@ class AdminsController < ApplicationController
     @applicants = Applicant.all
   end
 
-  def update_status
+  def dashboard_filter
     @applicants = Applicant.where(status: params[:status])
   end
 
