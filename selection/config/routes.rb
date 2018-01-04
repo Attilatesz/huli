@@ -16,21 +16,19 @@ Rails.application.routes.draw do
   get 'welcome/profile'
   root 'welcome#index'
 
-  scope '/admins' do
-    get 'dashboard', to: 'admins#dashboard', as: 'admins_dashboard'
-    get 'dashboard/:status', to: 'admins#update_status', as: 'applicant_status'
-    get 'applicant/:id', to: 'admins#show', as: 'applicant_admin'
+  namespace :admins  do
+    get 'dashboard', to: 'admin_applicant#dashboard', as: 'dashboard'
+    get 'dashboard/:status', to: 'admin_applicant#update_status', as: 'applicant_status'
+    get 'applicant/:id', to: 'admin_applicant#show', as: 'applicant'
+    resources :options, except: [:show, :index, :destroy],
+                        path_names: { new: 'new/:category', edit: ':category' } do
+      get ':category', to: 'options#filter', as: 'filter', on: :collection
+      delete ':category/:id', to: 'options#destroy', as: 'destroy', on: :collection
+    end
   end
 
   resources :applicants, except: [:edit, :destroy, :update, :show] do
     get ':status/:decision', to: 'applicants#status_update', as: 'decision'
-  end
-  resources :options, except: [:show, :index, :destroy],
-                      path_names: { new: 'new/:category',
-                                    edit: ':category' }
-  scope '/options' do
-    get ':category', to: 'options#index', as: 'list_options'
-    delete ':category/:id', to: 'options#destroy', as: 'delete_option'
   end
 end
 
