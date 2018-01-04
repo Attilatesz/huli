@@ -22,7 +22,9 @@ Rails.application.routes.draw do
     get 'applicant/:id', to: 'admins#show', as: 'applicant_admin'
   end
 
-  resources :applicants, except: [:edit, :destroy, :update, :show]
+  resources :applicants, except: [:edit, :destroy, :update, :show] do
+    get ':status/:decision', to: 'applicants#status_update', as: 'decision'
+  end
   resources :options, except: [:show, :index, :destroy],
                       path_names: { new: 'new/:category',
                                     edit: ':category' }
