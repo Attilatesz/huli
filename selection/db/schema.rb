@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171222111211) do
+ActiveRecord::Schema.define(version: 20180103152723) do
 
   create_table "applicants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(version: 20171222111211) do
     t.string "upload_state"
     t.bigint "applicant_id"
     t.index ["applicant_id"], name: "index_cvs_on_applicant_id"
+  end
+
+  create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "headline"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

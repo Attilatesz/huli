@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  resources :notifications
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
   # Skip sessions/registration to limit authentication to oauth
   # Signout and sign_in(GET/CREATE) need to be implemented separately.
   # :authenticate_user! redirects user to sign_in GET !
