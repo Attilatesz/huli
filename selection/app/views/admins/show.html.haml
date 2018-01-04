@@ -52,4 +52,17 @@
             -else 
               No CV uploaded
         %tr
-          %td= link_to "Back", admins_dashboard_path          
+          %td
+            -if @applicant.profile_picture && @applicant.profile_picture.upload_state == 'approval_pending'
+              = link_to root_path do
+                %span.glyphicon.glyphicon-ok.btn.btn-success
+              = link_to root_path do
+                %span.glyphicon.glyphicon-remove.btn.btn-danger
+          %td
+            -if @applicant.cv && @applicant.cv.upload_state == 'approval_pending'
+              = link_to root_path do
+                %span.glyphicon.glyphicon-ok.btn.btn-success
+              = link_to root_path do
+                %span.glyphicon.glyphicon-remove.btn.btn-danger
+        %tr
+          %td= link_to "Dashboard", admins_dashboard_path, class: 'btn btn-primary'     
