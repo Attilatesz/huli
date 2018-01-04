@@ -1,5 +1,5 @@
 class ExampleMailer < ActionMailer::Base
-  default from: "tofi.zagon@gmail.com"
+  default from: "eva.simonyi@greenfoxacademy.com>"
 
   # replace user to applicant!!!
 
