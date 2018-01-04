@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   scope '/admins' do
     get 'dashboard', to: 'admins#dashboard', as: 'admins_dashboard'
+    get 'dashboard/:status', to: 'admins#update_status', as: 'applicant_status'
     get 'applicant/:id', to: 'admins#show', as: 'applicant_admin'
   end
 
@@ -30,3 +31,4 @@ Rails.application.routes.draw do
     delete ':category/:id', to: 'options#destroy', as: 'delete_option'
   end
 end
+
