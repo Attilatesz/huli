@@ -22,6 +22,10 @@ class User < ApplicationRecord
   end
 
   def is_admin(email)
-    email.split('@').last == 'gmail.com'
+    if Rails.env.development?
+      email.split('@').last == 'gmail.com'
+    else
+      email.split('@').last == 'greenfoxacademy.com'
+    end
   end
 end
