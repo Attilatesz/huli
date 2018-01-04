@@ -28,7 +28,11 @@
           %td= @applicant.created_at
         %tr
           %td English class
-          %td= @applicant.english_class
+          -if @applicant.english_class == 'English' 
+            %td= 'OK'
+          -else
+            %td= "NO"
+            
           %td= @applicant.created_at
         %tr
           %td Payment option
@@ -37,7 +41,15 @@
         %tr
           %th Documents
         %tr
-          %td PP
-          %td= 'CV'
+          %td
+            -if @applicant.profile_picture
+              %a{href: @applicant.profile_picture.image.url, download: @applicant.profile_picture.image.url, target: "blank"} Profile picture
+            -else 
+              No profile picture uploaded
+          %td
+            -if @applicant.cv
+              %a{href: @applicant.cv.cv.url, download: @applicant.cv.cv.url, target: "blank"} CV
+            -else 
+              No CV uploaded
         %tr
           %td= link_to "Back", admins_dashboard_path          
