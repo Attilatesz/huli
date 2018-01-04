@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
 
   context '#is_admin' do
     it 'sets admin to true if email end with gmail.com' do
-      user = build(:user, email: 'johndoe@gmail.com')
+      user = build(:user, email: 'johndoe@greenfoxacademy.com')
       expect(user.is_admin(user.email)).to eq(true)
     end
 
@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
   context '#from_omniauth' do
     it 'finds or creates user based on omniauth data' do
       auth = OmniAuth::AuthHash.new({
-        provider: 'twitter',
+        provider: 'google',
         uid: '123545',
         info: {email: 'johndoe@gmail.com'},
         credentials: {token: '1234564789'}
