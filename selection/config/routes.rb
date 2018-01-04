@@ -18,9 +18,17 @@ Rails.application.routes.draw do
 
   scope '/admins' do
     get 'dashboard', to: 'admins#dashboard', as: 'admins_dashboard'
+    get 'dashboard/:status', to: 'admins#update_status', as: 'applicant_status'
     get 'applicant/:id', to: 'admins#show', as: 'applicant_admin'
   end
 
   resources :applicants, except: [:edit, :destroy, :update, :show]
-  resources :options
+  resources :options, except: [:show, :index, :destroy],
+                      path_names: { new: 'new/:category',
+                                    edit: ':category' }
+  scope '/options' do
+    get ':category', to: 'options#index', as: 'list_options'
+    delete ':category/:id', to: 'options#destroy', as: 'delete_option'
+  end
 end
+
