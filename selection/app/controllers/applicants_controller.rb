@@ -17,7 +17,7 @@ class ApplicantsController < ApplicationController
     @applicant = current_user.create_applicant(applicant_params)
     if @applicant.save
       flash[:success] = I18n.t('flash.application_success')
-      redirect_to welcome_profile_path
+      redirect_to root_path
     else
       render 'new'
     end
