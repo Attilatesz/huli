@@ -1,8 +1,8 @@
 .navbar.navbar-default.admin-header
   %ul.nav.navbar-nav.navbar-left
     %li= link_to "Dashboard", admins_dashboard_path
-    %li= link_to "Basic", root_path
-    %li= link_to "DRT", root_path
+    %li= link_to "Basic", applicant_status_path(status: 'basic')
+    %li= link_to "DRT", applicant_status_path(status: 'drt')
     %li= link_to "Video", root_path
     %li= link_to "Interview", root_path
     %li= link_to "Simulation", root_path
