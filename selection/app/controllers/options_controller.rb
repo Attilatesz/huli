@@ -1,9 +1,9 @@
 class OptionsController < ApplicationController
+  include OptionsHelper
   before_action :redirect_unless_admin
-  before_action :get_category, only: [:index, :new, :edit]
 
   def index
-    @options = Option.where(["category = ?", @category])
+    @options = Option.where(['category = ?', category])
   end
 
   def new
@@ -19,14 +19,14 @@ class OptionsController < ApplicationController
     if @option.errors.any?
       render 'new'
     else
-      redirect_to options_path(option_params)
+      redirect_to list_options_path(category: category)
     end
   end
 
   def update
     @option = Option.find(params[:id])
     if @option.update(option_params)
-      redirect_to options_path(option_params)
+      redirect_to list_options_path(category: category)
     else
       render 'edit'
     end
@@ -34,22 +34,18 @@ class OptionsController < ApplicationController
 
   def destroy
     Option.find(params[:id]).delete
-    redirect_to options_path(category: params[:category])
+    redirect_to list_options_path(category: category)
   end
 
   private
 
-    def option_params
-      params.require(:option).permit(:category, :name, :message)
-    end
+  def option_params
+    params.require(:option).permit(:category, :name, :message)
+  end
 
-    def get_category
-      @category = params[:category]
-    end
-
-    def redirect_unless_admin
-      return if current_user && current_user.admin
-      flash[:danger] = I18n.t('flash.authentication_error')
-      redirect_to root_path
-    end
+  def redirect_unless_admin
+    return if current_user && current_user.admin
+    flash[:danger] = I18n.t('flash.authentication_error')
+    redirect_to root_path
+  end
 end
