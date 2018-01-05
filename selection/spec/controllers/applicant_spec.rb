@@ -59,13 +59,4 @@ RSpec.describe ApplicantsController, type: :controller do
 
   end
 
-  describe 'GET admins' do
-
-    it 'responds with 302 and redirects to root ' do
-      get '/admins'
-      get :dashboard
-      expect(response.status).to eq(302)
-      expect(response).to redirect_to(root_path)
-    end
-  end
 end
