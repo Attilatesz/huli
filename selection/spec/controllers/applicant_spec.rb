@@ -28,17 +28,13 @@ RSpec.describe ApplicantsController, type: :controller do
       it 'increases the number of applicant by one' do
         expect do
           sign_in user
-          post :create, params: { applicant: {first_name: "Edes", last_name: "Anna", email_address: "edesanna@hotmail.com",
-          phone_number: "063055555555", highest_education: "College/BSc/BA", english_knowledge: "Advanced",
-          english_class: "English", payment_option: "Prepayment_headhunting"}}
+          post :create, params: { applicant: attributes_for(:applicant)}
         end.to change(Applicant, :count).by(1)
       end
 
       it 'responds with 302 and redirects to ' do
         sign_in user
-        post :create, params: { applicant: {first_name: "Edes", last_name: "Anna", email_address: "edesanna@hotmail.com",
-        phone_number: "063055555555", highest_education: "College/BSc/BA", english_knowledge: "Advanced",
-        english_class: "English", payment_option: "Prepayment_headhunting"}}
+        post :create, params: { applicant: attributes_for(:applicant)}
         expect(response.status).to eq(302)
         expect(response).to redirect_to(welcome_profile_path)
       end
