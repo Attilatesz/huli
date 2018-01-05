@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "eva.simonyi@greenfoxacademy.com>"
+  default from: "selection@greenfoxacademy.com"
 
   def sample_email(applicant)
     @applicant = applicant
