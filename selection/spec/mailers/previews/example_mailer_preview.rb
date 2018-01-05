@@ -3,8 +3,4 @@ class ExampleMailerPreview < ActionMailer::Preview
   def sample_mail_preview
     ExampleMailer.sample_email(Applicant.first)
   end
-
-  def test_send_email
-    ExampleMailer.sample_email(Applicant.first)
-  end
 end
