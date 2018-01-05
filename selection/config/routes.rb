@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   namespace :admins  do
     get 'dashboard', to: 'admin_applicant#dashboard', as: 'dashboard'
-    get 'dashboard/:status', to: 'admin_applicant#update_status', as: 'applicant_status'
+    get 'dashboard/:status', to: 'admin_applicant#dashboard_filter', as: 'applicant_status'
     get 'applicant/:id', to: 'admin_applicant#show', as: 'applicant'
     resources :options, except: [:show, :index, :destroy],
                         path_names: { new: 'new/:category', edit: ':category' } do
@@ -26,9 +26,7 @@ Rails.application.routes.draw do
       delete ':category/:id', to: 'options#destroy', as: 'destroy', on: :collection
     end
   end
-
   resources :applicants, except: [:edit, :destroy, :update, :show] do
-    get ':status/:decision', to: 'applicants#status_update', as: 'decision'
+    get ':status/:decision', to: 'admin_applicant#update_status', as: 'decision'
   end
 end
-
