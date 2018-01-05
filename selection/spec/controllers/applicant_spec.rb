@@ -58,7 +58,4 @@ RSpec.describe ApplicantsController, type: :controller do
       end
 
   end
-
-
-
 end
