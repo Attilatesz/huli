@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ApplicantsController, type: :controller do
+  let! (:user) {create :user}
 
   describe 'GET new' do
     subject { get :new }
@@ -29,7 +30,6 @@ RSpec.describe ApplicantsController, type: :controller do
 
     it 'increases the number of applicant by one' do
       expect do
-        user = create :user
         sign_in user
         post :create, params: { applicant: {first_name: "Edes", last_name: "Anna", email_address: "edesanna@hotmail.com",
         phone_number: "063055555555", highest_education: "College/BSc/BA", english_knowledge: "Advanced",
