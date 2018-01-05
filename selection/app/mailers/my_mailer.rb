@@ -3,6 +3,6 @@ class MyMailer < ApplicationMailer
     @name = options[:name]
     @email = options[:email]
     @message = options[:message]
-    mail(to: Applicant.first, subject: 'Amazon SES Email')
+    mail(to: 'tofi.zagon@gmail.com', subject: 'Amazon SES Email')
   end
 end
