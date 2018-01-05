@@ -29,34 +29,34 @@ Option.create([
 ])
 
 User.create(
-  email: "edesanna@hotmail.com", provider: "google_oauth2", uid: "123", access_token: nil, 
+  email: "edesanna@hotmail.com", provider: "google_oauth2", uid: "123", access_token: "1",
   admin: false
   )
 
 Applicant.create(
-  first_name: "Edes", last_name: "Anna", email_address: "edesanna@hotmail.com", 
-  phone_number: "063055555555", highest_education: "College/BSc/BA", english_knowledge: "Advanced", 
+  first_name: "Edes", last_name: "Anna", email_address: "edesanna@hotmail.com",
+  phone_number: "063055555555", highest_education: "College/BSc/BA", english_knowledge: "Advanced",
   english_class: "English", payment_option: "Prepayment_headhunting", user_id: User.last.id
 )
 
 User.create(
-  email: "KKriszti@hotmail.com", provider: "google_oauth2", uid: "124", access_token: nil, 
+  email: "KKriszti@hotmail.com", provider: "google_oauth2", uid: "124", access_token: "2",
   admin: false
   )
 
 Applicant.create(
-  first_name: "Kiss", last_name: "Krisztina", email_address: "KKriszti@hotmail.com", 
-  phone_number: "06308888888", highest_education: "College/BSc/BA", english_knowledge: "Advanced", 
+  first_name: "Kiss", last_name: "Krisztina", email_address: "KKriszti@hotmail.com",
+  phone_number: "06308888888", highest_education: "College/BSc/BA", english_knowledge: "Advanced",
   english_class: "English", payment_option: "Prepayment_headhunting", user_id: User.last.id
   )
 
 User.create(
-  email: "erosp@freemail.com", provider: "google_oauth2", uid: "125", access_token: nil, 
+  email: "erosp@freemail.com", provider: "google_oauth2", uid: "125", access_token: "3",
   admin: false
   )
 
 Applicant.create(
-  first_name: "Eros", last_name: "Pista", email_address: "erosp@freemail.com", 
-  phone_number: "06307777777", highest_education: "College/BSc/BA", english_knowledge: "Advanced", 
+  first_name: "Eros", last_name: "Pista", email_address: "erosp@freemail.com",
+  phone_number: "06307777777", highest_education: "College/BSc/BA", english_knowledge: "Advanced",
   english_class: "English", payment_option: "Prepayment_headhunting", user_id: User.last.id
 )
