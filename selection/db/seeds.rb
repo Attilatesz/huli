@@ -8,9 +8,6 @@
 
 # To set yourself admin profile plese fill in the below template with your details and run rails db:seed
 
-User.create(
-  email: "faklijta@gmail.com", provider: "google_oauth2", uid: 115601089802879136625, admin: true)
-
 # To seed your database with below values please run rails db:seed
 
 Option.create([
@@ -25,14 +22,14 @@ Option.create([
   {category: 'Education', name: 'College/BSc/BA'},
   {category: 'Education', name: 'University/MSc/MA'},
   {category: 'Education', name: 'Doctoral'},
-  {category: 'English level', name: 'Beginner'},
-  {category: 'English level', name: 'Intermediate'},
-  {category: 'English level', name: 'Advanced'},
-  {category: 'English level', name: 'Native'}
+  {category: 'English_level', name: 'Beginner'},
+  {category: 'English_level', name: 'Intermediate'},
+  {category: 'English_level', name: 'Advanced'},
+  {category: 'English_level', name: 'Native'}
 ])
 
 User.create(
-  email: "edesanna@hotmail.com", provider: "google_oauth2", full_name: "Édes Anna", access_token: nil, 
+  email: "edesanna@hotmail.com", provider: "google_oauth2", uid: "123", access_token: nil, 
   admin: false
   )
 
@@ -43,7 +40,7 @@ Applicant.create(
 )
 
 User.create(
-  email: "KKriszti@hotmail.com", provider: "google_oauth2", full_name: "Kiss Krisztina", access_token: nil, 
+  email: "KKriszti@hotmail.com", provider: "google_oauth2", uid: "124", access_token: nil, 
   admin: false
   )
 
@@ -54,7 +51,7 @@ Applicant.create(
   )
 
 User.create(
-  email: "erosp@freemail.com", provider: "google_oauth2", full_name: "Erős Pista", access_token: nil, 
+  email: "erosp@freemail.com", provider: "google_oauth2", uid: "125", access_token: nil, 
   admin: false
   )
 
@@ -62,4 +59,4 @@ Applicant.create(
   first_name: "Eros", last_name: "Pista", email_address: "erosp@freemail.com", 
   phone_number: "06307777777", highest_education: "College/BSc/BA", english_knowledge: "Advanced", 
   english_class: "English", payment_option: "Prepayment_headhunting", user_id: User.last.id
-  )
+)

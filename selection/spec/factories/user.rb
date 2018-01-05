@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :user do
     provider "google"
-    uid "123456"
-    email "John@Doe.com"
-    access_token  "987654"
+    uid { Devise.friendly_token[0, 20] }
+    email { Faker::Internet.email }
+    access_token  { Devise.friendly_token[0, 20] }
     admin false
   end
 end
