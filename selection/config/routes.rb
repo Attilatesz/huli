@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resource :profile_picture, only: [:new, :create, :edit, :update]
 
   get 'welcome/profile'
+  get 'welcome/index'
+  post '/send_email', to: 'welcome#send_email', as: 'send_email'
   root 'welcome#index'
 
   scope '/admins' do
@@ -34,4 +36,3 @@ Rails.application.routes.draw do
     delete ':category/:id', to: 'options#destroy', as: 'delete_option'
   end
 end
-
