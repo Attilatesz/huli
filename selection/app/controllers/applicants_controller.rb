@@ -23,11 +23,6 @@ class ApplicantsController < ApplicationController
     end
   end
 
-  def status_update
-    Applicant.find(params[:applicant_id]).send(params[:status]).send(params[:decision])
-    redirect_back fallback_location: root_path
-  end
-
   private
 
   def applicant_params

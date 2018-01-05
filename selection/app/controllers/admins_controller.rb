@@ -9,6 +9,11 @@ class AdminsController < ApplicationController
     @applicants = Applicant.where(status: params[:status])
   end
 
+  def status_update
+    Applicant.find(params[:applicant_id]).send(params[:status]).send(params[:decision])
+    redirect_back fallback_location: root_path
+  end
+
   def show
     @applicant = Applicant.find(params[:id])
     @profile_picture = current_user.applicant.profile_picture
