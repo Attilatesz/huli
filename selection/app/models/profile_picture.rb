@@ -6,21 +6,20 @@ class ProfilePicture < ApplicationRecord
   belongs_to :applicant
   dragonfly_accessor :image
   validates_presence_of :image, message: I18n.t('uploads.blank')
-  validates_size_of :image, maximum: 5000.kilobytes, 
+  validates_size_of :image, maximum: 5000.kilobytes,
                             message: I18n.t('uploads.size', size: 5)
 
   # Check the file extension
-  validates_property :ext, of: :image, in: ['jpg', 'jpeg', 'png'], 
+  validates_property :ext, of: :image, in: ['jpg', 'jpeg', 'png'],
                      message: I18n.t('uploads.format', formats: 'jpg, jpeg, png')
 
   after_save do
-    upload if upload_state == 'awaiting_upload'
     applicant.change if upload_state == 'approved'
   end
 
   state_machine :upload_state, initial: :awaiting_upload do
     event :upload do
-      transition awaiting_upload: :approval_pending
+      transition awaiting_upload: :approval_pending, declined: :approval_pending
     end
 
     event :approve do
@@ -28,7 +27,7 @@ class ProfilePicture < ApplicationRecord
     end
 
     event :decline do
-      transition approval_pending: :awaiting_upload
+      transition approval_pending: :declined
     end
   end
 end
