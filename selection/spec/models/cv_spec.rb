@@ -14,6 +14,11 @@ RSpec.describe Cv, type: :model do
     should belong_to(:applicant)
   end
 
+  it do
+    pdf = Dragonfly.app.fetch_file('./spec/assets/pdf-sample.pdf')
+    should allow_value(pdf).for(:cv)
+  end
+
   describe 'invalid' do
     it 'is not valid without applicant' do
       expect(build :cv, applicant: nil).to be_invalid
@@ -24,11 +29,9 @@ RSpec.describe Cv, type: :model do
     end
 
     it do
-      should_not allow_values('test.jpg', 'test.doc').for(:cv)
-    end
-
-    it do
-      should_not allow_value('test.pdf').for(:cv)
+      doc = Dragonfly.app.fetch_file('./spec/assets/TestWordDoc.doc')
+      jpg = Dragonfly.app.fetch_file('./spec/assets/girl1.jpg')
+      should_not allow_values(doc, jpg).for(:cv)
     end
     
   end
