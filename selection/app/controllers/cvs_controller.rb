@@ -10,6 +10,7 @@ class CvsController < ApplicationController
     if @cv.errors.any?
       render 'new'
     else
+      @cv.upload
       flash[:success] = I18n.t('flash.upload_new_success', upload: 'CV')
       redirect_to root_path
     end
@@ -23,6 +24,7 @@ class CvsController < ApplicationController
   def update
     @cv = current_user.applicant.cv
     if @cv.update(cv_params)
+      @cv.upload
       flash[:success] = I18n.t('flash.upload_update_success', upload: 'CV')
       redirect_to root_path
     else

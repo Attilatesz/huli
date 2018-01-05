@@ -14,13 +14,12 @@ class Cv < ApplicationRecord
                       message: I18n.t('uploads.format', formats: 'pdf')
 
   after_save do
-    upload if upload_state == 'awaiting_upload'
     applicant.change if upload_state == 'approved'
   end
 
   state_machine :upload_state, initial: :awaiting_upload do
     event :upload do
-      transition awaiting_upload: :approval_pending
+      transition awaiting_upload: :approval_pending, declined: :approval_pending
     end
 
     event :approve do
@@ -28,7 +27,7 @@ class Cv < ApplicationRecord
     end
 
     event :decline do
-      transition approval_pending: :awaiting_upload
+      transition approval_pending: :declined
     end
   end
 end

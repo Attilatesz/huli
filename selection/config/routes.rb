@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'welcome/profile'
   root 'welcome#index'
 
+<<<<<<< HEAD
   scope '/admins' do
     get 'dashboard', to: 'admins#dashboard', as: 'admins_dashboard'
     get 'dashboard/:status', to: 'admins#dashboard_filter', as: 'applicant_status'
@@ -23,17 +24,21 @@ Rails.application.routes.draw do
     # resource :applicants, only: [:show] do
     #   get :status, to: 'admins#update_status', as: 'applicant_status'
     # end
+=======
+  namespace :admins  do
+    get 'dashboard', to: 'admin_applicant#dashboard', as: 'dashboard'
+    get 'dashboard/:status', to: 'admin_applicant#update_status', as: 'applicant_status'
+    get 'applicant/:id', to: 'admin_applicant#show', as: 'applicant'
+    resources :options, except: [:show, :index, :destroy],
+                        path_names: { new: 'new/:category', edit: ':category' } do
+      get ':category', to: 'options#filter', as: 'filter', on: :collection
+      delete ':category/:id', to: 'options#destroy', as: 'destroy', on: :collection
+    end
+>>>>>>> 722776d05ed4a8a5105fe7321783a9900f5abb65
   end
 
   resources :applicants, except: [:edit, :destroy, :update, :show] do
     get ':status/:decision', to: 'applicants#status_update', as: 'decision'
-  end
-  resources :options, except: [:show, :index, :destroy],
-                      path_names: { new: 'new/:category',
-                                    edit: ':category' }
-  scope '/options' do
-    get ':category', to: 'options#index', as: 'list_options'
-    delete ':category/:id', to: 'options#destroy', as: 'delete_option'
   end
 end
 
