@@ -30,9 +30,8 @@ RSpec.describe Cv, type: :model do
 
     it do
       doc = Dragonfly.app.fetch_file('./spec/assets/TestWordDoc.doc')
-      jpg = Dragonfly.app.fetch_file('./spec/assets/girl1.jpg')
-      should_not allow_values(doc, jpg).for(:cv)
+      should_not allow_value(doc).for(:cv)
     end
-    
+
   end
 end
