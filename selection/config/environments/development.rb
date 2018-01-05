@@ -28,17 +28,17 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
+  # Is it necessary?
+  config.action_mailer.perform_caching = true
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_deliveries = true
 
-  config.action_mailer.delivery_method = :smtp
-  # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: "email-smtp.eu-west-1.amazonaws.com",
     port: 587,
-    user_name: ENV['gmail_username'],
-    password: ENV['Rails.application.secrets.gmail_password'],
-    authentication: 'plain',
+    user_name: ENV["SES_SMTP_USERNAME"] = "AKIAIPGSUF7CG3OCNOAQ", #Your SMTP user
+    password: ENV["SES_SMTP_PASSWORD"] = "AmPeKPSrIK5x2obWmh4rh4XWDrcI7BIme2LGwmaBVd1N", #Your SMTP password
+    authentication: :login,
     enable_starttls_auto: true
   }
 
