@@ -18,7 +18,7 @@ class CvsController < ApplicationController
 
   def edit
     @cv = current_user.applicant.cv
-    redirect_to new_profile_picture_path unless @cv
+    redirect_to new_cv_path unless @cv
   end
 
   def update

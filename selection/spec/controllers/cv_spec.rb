@@ -77,7 +77,7 @@ describe 'GET edit' do
     it 'returns status code 302 and redirect to cv/new without cv' do
       get :edit
       expect(response).to have_http_status(302)
-      expect(response).to redirect_to ('cv/new')
+      expect(response).to redirect_to ('/cv/new')
     end
   end
 end
