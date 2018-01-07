@@ -7,7 +7,6 @@ class CvsController < ApplicationController
 
   def create
     @cv = current_user.applicant.create_cv(cv_params)
-    byebug
     if @cv.errors.any?
       render 'new'
     else
