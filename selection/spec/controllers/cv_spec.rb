@@ -60,4 +60,24 @@ describe 'POST create' do
     expect(subject).to render_template('cvs/new')
   end
 end
+
+describe 'GET edit' do
+  before(:each) do
+    sign_in user
+    user.create_applicant(attributes_for(:applicant))
+  end
+    subject { get :edit }
+    it 'returns status code 200 and renders the page' do
+      user.applicant.create_cv(attributes_for(:cv))
+      get :edit
+      expect(response).to have_http_status(200)
+      expect(subject).to render_template('cvs/edit')
+    end
+
+    it 'returns status code 302 and redirect to cv/new without cv' do
+      get :edit
+      expect(response).to have_http_status(302)
+      expect(response).to redirect_to ('cv/new')
+    end
+  end
 end
