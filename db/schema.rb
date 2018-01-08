@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171219084248) do
+ActiveRecord::Schema.define(version: 20180108143810) do
 
   create_table "applicants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 20171219084248) do
     t.datetime "updated_at", null: false
     t.bigint "applicant_id"
     t.index ["applicant_id"], name: "index_cvs_on_applicant_id"
+  end
+
+  create_table "drts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "drt_hash", null: false
+    t.bigint "applicant_id"
+    t.float "result_percentage", limit: 24
+    t.string "result_pdf_uid"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["applicant_id"], name: "index_drts_on_applicant_id"
   end
 
   create_table "options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
