@@ -1,6 +1,4 @@
-class AdminsController < ApplicationController
-  before_action :redirect_unless_admin
-
+class Admins::AdminApplicantController < Admins::AdminController
   def dashboard
     @applicants = Applicant.all
   end
@@ -16,14 +14,11 @@ class AdminsController < ApplicationController
 
   def show
     @applicant = Applicant.find(params[:id])
-    @profile_picture = current_user.applicant.profile_picture
   end
 
-  private
-
-    def redirect_unless_admin
-      return if current_user && current_user.admin
-      flash[:danger] = I18n.t('flash.authentication_error')
-      redirect_to root_path
-    end
+  def search
+    names = params[:search][:search_term].split(' ').join('|')
+    @applicants = Applicant.where('first_name RLIKE ? OR last_name RLIKE ? OR email_address RLIKE ?',
+                                  names, names, params[:search][:search_term])
+  end
 end
