@@ -76,7 +76,7 @@ describe 'GET edit' do
   end
 
   describe 'PUT update' do
-
+    
     before(:each) do
       sign_in user
       user.create_applicant(attributes_for(:applicant))
@@ -93,11 +93,15 @@ describe 'GET edit' do
 
     it "allows cv to be updated" do
       cv = create(:cv)
-      created = @cv.updated_at
-      cv = fixture_file_upload('pdf-sample.pdf', 'application/pdf')
-      put :update, params: { cv: { cv: cv } }
-      @cv.reload
-      expect(@cv.reload.updated_at).not_to eq(created)
+      created = cv.updated_at
+      puts cv.inspect
+      cvp = fixture_file_upload('pdf-sample2.pdf', 'application/pdf')
+      #puts cvp.inspect
+      put :update, params: { cv: { cv: cvp } }
+      puts cv.inspect
+      cv.reload
+      puts cv.reload.inspect
+      expect(cv.updated_at).not_to eq(created)
     end
 
     end
