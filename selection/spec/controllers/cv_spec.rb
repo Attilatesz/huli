@@ -5,12 +5,11 @@ RSpec.describe CvsController, type: :controller do
 
   describe 'GET new' do
 
-    subject { get :new }
     it 'returns status code 200 and renders cv/new' do
       sign_in user
       get :new
       expect(response).to have_http_status(200)
-      expect(subject).to render_template('cvs/new')
+      expect(response).to render_template('cvs/new')
     end
 
     it 'returns status code 302 and redirect to root without user' do
@@ -46,7 +45,6 @@ RSpec.describe CvsController, type: :controller do
       sign_in user
       user.create_applicant(attributes_for(:applicant))
       cv = fixture_file_upload('TestWordDoc.doc', 'application/doc')
-      
       post :create, params: { cv: { cv: cv } }
       expect(response).to render_template('cvs/new')
       expect(response).to have_http_status(200)
@@ -93,7 +91,6 @@ RSpec.describe CvsController, type: :controller do
     it "allows cv to be updated" do
       created = user.applicant.cv.cv_uid
       cvp = fixture_file_upload('pdf-sample2.pdf', 'application/pdf')
-      #puts cvp.inspect
       put :update, params: { cv: { cv: cvp } }
       user.applicant.cv.reload
       expect(user.applicant.cv.cv_uid).not_to eq(created)

@@ -5,12 +5,11 @@ RSpec.describe ProfilePicturesController, type: :controller do
 
 describe 'GET new' do
 
-  subject { get :new }
   it 'returns status code 200 and renders profile_picture/new' do
     sign_in user
     get :new
     expect(response).to have_http_status(200)
-    expect(subject).to render_template('profile_pictures/new')
+    expect(response).to render_template('profile_pictures/new')
   end
 
   it 'returns status code 302 and redirect to root without user' do
@@ -27,7 +26,6 @@ describe 'POST create' do
     user.create_applicant(attributes_for(:applicant))
   end
 
-  subject { get :create}
   it 'it returns status code 302 and redirect to root' do
     test_image = fixture_file_upload('girl2.jpeg', 'application/jpeg')
     post :create, params: { profile_picture: { image: test_image } }
@@ -50,12 +48,11 @@ describe 'GET edit' do
     user.create_applicant(attributes_for(:applicant))
   end
 
-  subject { get :edit }
   it 'returns status code 200 and renders the profile_picture/edit' do
     user.applicant.create_profile_picture(attributes_for(:profile_picture))
     get :edit
     expect(response).to have_http_status(200)
-    expect(subject).to render_template('profile_pictures/edit')
+    expect(response).to render_template('profile_pictures/edit')
   end
 
   it 'returns status code 302 and redirect to profile/new without image' do
