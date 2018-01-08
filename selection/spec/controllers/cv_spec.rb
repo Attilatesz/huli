@@ -71,7 +71,34 @@ describe 'GET edit' do
     it 'returns status code 302 and redirect to cv/new without cv' do
       get :edit
       expect(response).to have_http_status(302)
-      expect(response).to redirect_to ('/cv/new')
+      expect(response).to redirect_to('/cv/new')
     end
   end
+
+  describe 'PUT update' do
+
+    before(:each) do
+      sign_in user
+      user.create_applicant(attributes_for(:applicant))
+      user.applicant.create_cv(attributes_for(:cv))
+
+    end
+    it 'it returns status code 302 and redirect to root' do
+      cv = fixture_file_upload('pdf-sample.pdf', 'application/pdf')
+      put :update, params: { cv: { cv: cv } }
+      expect(response).to have_http_status(302)
+      expect(response).to redirect_to('/')
+      expect(controller).to set_flash[:success]
+    end
+
+    it "allows cv to be updated" do
+      cv = create(:cv)
+      created = @cv.updated_at
+      cv = fixture_file_upload('pdf-sample.pdf', 'application/pdf')
+      put :update, params: { cv: { cv: cv } }
+      @cv.reload
+      expect(@cv.reload.updated_at).not_to eq(created)
+    end
+
+    end
 end
