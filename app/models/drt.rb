@@ -8,6 +8,7 @@ class Drt < ApplicationRecord
 
   after_save do
     applicant.decline if status == 'declined'
+    applicant.change if status == 'approved'
   end
 
   state_machine :status, initial: :created do

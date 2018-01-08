@@ -52,7 +52,7 @@ class Applicant < ApplicationRecord
 
   state_machine :status, initial: :basic do
     event :change do
-      transition basic: :drt
+      transition basic: :drt, drt: :intreview
     end
 
     event :decline do
