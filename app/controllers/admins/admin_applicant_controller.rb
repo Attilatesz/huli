@@ -17,8 +17,14 @@ class Admins::AdminApplicantController < Admins::AdminController
   end
 
   def search
-    names = params[:search][:search_term].split(' ').join('|')
-    @applicants = Applicant.where('first_name RLIKE ? OR last_name RLIKE ? OR email_address RLIKE ?',
-                                  names, names, params[:search][:search_term])
+    names = search_params
+    @applicants = Applicant.find_applicant_by_name_or_email(names, params[:search][:search_term])
+  end
+
+  private
+
+  def search_params
+    params.require(:search).permit(:search_term)
+    params[:search][:search_term].split(' ').join('|')
   end
 end
