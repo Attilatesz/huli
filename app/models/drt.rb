@@ -6,6 +6,10 @@ class Drt < ApplicationRecord
   validates_property :ext, of: :result_pdf, as: 'pdf',
                       message: I18n.t('uploads.format', formats: 'pdf')
 
+  after_save do
+    applicant.decline if status == 'declined'
+  end
+
   state_machine :status, initial: :created do
     event :change do
       transition created: :applicant_attached,

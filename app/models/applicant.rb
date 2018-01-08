@@ -55,5 +55,9 @@ class Applicant < ApplicationRecord
     event :change do
       transition basic: :drt
     end
+
+    event :decline do
+      transition all: :declined
+    end
   end
 end
