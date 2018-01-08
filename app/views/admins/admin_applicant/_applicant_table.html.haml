@@ -1,0 +1,17 @@
+.container
+  .table-responsive.transparent-container
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Email Address
+          %th Status
+          %th Action
+          %th When
+      - @applicants.each do |a|
+        %tr
+          %td= link_to (a.first_name + ' ' + a.last_name).to_str, admins_applicant_path(id: a.id)
+          %td #{a.email_address}
+          %td= status_string(a.status)
+          %td= status_button(a)
+          %td= time_ago_in_words(a.updated_at) + ' ago'
