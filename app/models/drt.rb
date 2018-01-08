@@ -12,9 +12,12 @@ class Drt < ApplicationRecord
   end
 
   state_machine :status, initial: :created do
-    event :change do
-      transition created: :applicant_attached,
-                 applicant_attached: :result_uploaded
+    event :assign_applicant do
+      transition created: :applicant_attached
+    end
+
+    event :upload_result do
+      transition applicant_attached: :result_uploaded
     end
 
     event :approve do
