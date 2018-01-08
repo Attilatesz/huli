@@ -247,14 +247,18 @@ Devise.setup do |config|
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
 
+
+  #config.secret_key = ENV['DEVISE_SECRET_KEY']
+  config.secret_key = 'dcc4d3e396dc990ede4f7ab51aee14f18aff1b9572a521c89664b5059bce11c4713ec9adeecede4a03c2102d13185082b15ed6a8772e5032ee4fe97891995e6f'
+
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :github, Rails.application.secrets[:github_client_id], Rails.application.secrets[:github_client_secret]
   config.omniauth :google_oauth2, Rails.application.secrets[:google_client_id], Rails.application.secrets[:google_client_secreet], {
-    redirect_uri: 'http://localhost:3000/users/auth/google_oauth2/callback',
-    skip_jwt: true
+   redirect_uri: Rails.application.secrets[:redirect_uri],
+   skip_jwt: true
   }
 
   # ==> Warden configuration
