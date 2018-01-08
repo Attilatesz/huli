@@ -6,7 +6,7 @@ RSpec.describe CvsController, type: :controller do
 describe 'GET new' do
 
   subject { get :new }
-  it 'returns status code 200 and renderscv/new' do
+  it 'returns status code 200 and renders cv/new' do
     sign_in user
     get :new
     expect(response).to have_http_status(200)
