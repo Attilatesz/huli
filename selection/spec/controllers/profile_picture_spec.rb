@@ -42,5 +42,27 @@ describe 'POST create' do
         post :create, params: { profile_picture: { image: test_image } }
       end.to change(ProfilePicture, :count).by(1)
     end
+
+    describe 'GET edit' do
+
+        before(:each) do
+          sign_in user
+          user.create_applicant(attributes_for(:applicant))
+
+        end
+          subject { get :edit }
+          it 'returns status code 200 and renders the profile_picture/edit' do
+            user.applicant.create_profile_picture(attributes_for(:profile_picture))
+            get :edit
+            expect(response).to have_http_status(200)
+            expect(subject).to render_template('profile_pictures/edit')
+          end
+
+          it 'returns status code 302 and redirect to profile/new without image' do
+            get :edit
+            expect(response).to have_http_status(302)
+            expect(response).to redirect_to('/profile_picture/new')
+          end
+        end
   end
 end
