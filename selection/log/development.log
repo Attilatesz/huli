@@ -1,0 +1,15 @@
+Started GET "/admins/applicant/6" for 127.0.0.1 at 2018-01-08 15:22:26 +0100
+
+Mysql2::Error - Access denied for user 'root'@'localhost' (using password: YES):
+
+Started POST "/__better_errors/c2c1663b76e2d528/variables" for 127.0.0.1 at 2018-01-08 15:22:27 +0100
+Started GET "/" for 127.0.0.1 at 2018-01-08 15:23:18 +0100
+
+Mysql2::Error - Access denied for user 'root'@'localhost' (using password: YES):
+
+Started POST "/__better_errors/45985fae86190fff/variables" for 127.0.0.1 at 2018-01-08 15:23:18 +0100
+Started GET "/" for 127.0.0.1 at 2018-01-08 15:32:55 +0100
+
+LoadError - cannot load such file -- C:/dev/huli-selection/selection/config/routes.rb:
+
+Started POST "/__better_errors/16b61f1b9407990c/variables" for 127.0.0.1 at 2018-01-08 15:32:55 +0100
