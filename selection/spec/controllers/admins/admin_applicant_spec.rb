@@ -18,10 +18,11 @@ RSpec.describe Admins::AdminApplicantController, type: :controller do
 
     context 'without admin rights' do
 
-      it 'respond with status 302 and redirects to root' do
+      it 'respond with status 302 flashes "Authentication error!" and redirects to root' do
         sign_in user
         get :dashboard
         expect(response.status).to eq(302)
+        expect(controller).to set_flash[:danger].to match("Authentication error!")
         expect(response).to redirect_to('/')
       end
     end
