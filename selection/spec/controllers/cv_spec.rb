@@ -76,7 +76,7 @@ describe 'GET edit' do
   end
 
   describe 'PUT update' do
-    
+
     before(:each) do
       sign_in user
       user.create_applicant(attributes_for(:applicant))
@@ -103,6 +103,5 @@ describe 'GET edit' do
       puts cv.reload.inspect
       expect(cv.updated_at).not_to eq(created)
     end
-
     end
 end
