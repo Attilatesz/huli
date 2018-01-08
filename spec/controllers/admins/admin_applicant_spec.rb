@@ -34,7 +34,7 @@ RSpec.describe Admins::AdminApplicantController, type: :controller do
     context 'with admin rights' do
       it 'respond with status 200 and displays applicant details' do
         sign_in admin
-        get :show, params: { applicant: applicant.id }
+        get :show, params: { id: applicant.id }
         expect(response.status).to eq(200)
       end
     end
@@ -43,7 +43,7 @@ RSpec.describe Admins::AdminApplicantController, type: :controller do
 
       it 'respond with status 302 flashes "Authentication error!" and redirects to root' do
         sign_in user
-        get :show
+        get :show, params: { id: applicant.id }
         expect(response.status).to eq(302)
         expect(controller).to set_flash[:danger].to match("Authentication error!")
         expect(response).to redirect_to('/')
