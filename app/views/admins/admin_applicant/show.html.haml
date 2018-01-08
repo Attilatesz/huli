@@ -1,0 +1,71 @@
+= render 'header'
+.container.applicant-container
+  %h2= @applicant.first_name + ' ' + @applicant.last_name
+  .table-responsive.transparent-container.applicant-profile
+    .applicant-profile-picture
+      -if @applicant.profile_picture
+        = image_tag @applicant.profile_picture.image.url
+      -else
+        = image_tag('img_placeholder.png')
+    %table.table.applicant-profile-table
+      %thead
+        %tr
+          %th Details
+          %th
+          %th When
+        %tr
+          %td Email
+          %td= @applicant.email_address
+          %td= @applicant.updated_at
+        %tr
+          %td Phone number
+          %td= @applicant.phone_number
+          %td= @applicant.updated_at
+        %tr
+          %td Highest education
+          %td= @applicant.highest_education
+          %td= @applicant.updated_at
+        %tr
+          %td English knowledge
+          %td= @applicant.english_knowledge
+          %td= @applicant.updated_at
+        %tr
+          %td English class
+          -if @applicant.english_class == 'English'
+            %td= 'OK'
+          -else
+            %td= "NO"
+
+          %td= @applicant.updated_at
+        %tr
+          %td Payment option
+          %td= @applicant.payment_option
+          %td= @applicant.updated_at
+        %tr
+          %th Documents
+        %tr
+          %td
+            -if @applicant.profile_picture
+              %a{href: @applicant.profile_picture.image.url, download: @applicant.profile_picture.image.url, target: "blank"} Profile picture
+            -else
+              No profile picture uploaded
+          %td
+            -if @applicant.cv
+              %a{href: @applicant.cv.cv.url, download: @applicant.cv.cv.url, target: "blank"} CV
+            -else
+              No CV uploaded
+        %tr
+          %td
+            -if @applicant.profile_picture && @applicant.profile_picture.upload_state == 'approval_pending'
+              = link_to admins_decision_path(applicant_id: @applicant.id, status: 'profile_picture', decision: 'approve'), class: 'btn btn-success approve-button' do
+                %span.glyphicon.glyphicon-ok
+              = link_to admins_decision_path(applicant_id: @applicant.id, status: 'profile_picture', decision: 'decline'), class: 'btn btn-danger decline-button' do
+                %span.glyphicon.glyphicon-remove
+          %td
+            -if @applicant.cv && @applicant.cv.upload_state == 'approval_pending'
+              = link_to admins_decision_path(applicant_id: @applicant.id, status: 'cv', decision: 'approve'), class: 'btn btn-success approve-button' do
+                %span.glyphicon.glyphicon-ok
+              = link_to admins_decision_path(applicant_id: @applicant.id, status: 'cv', decision: 'decline'), class: 'btn btn-danger decline-button' do
+                %span.glyphicon.glyphicon-remove
+        %tr
+          %td= link_to "Dashboard", admins_dashboard_path, class: 'btn btn-primary'
