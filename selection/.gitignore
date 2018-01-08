@@ -21,3 +21,6 @@
 secrets.yml
 
 /public/system/dragonfly/
+
+spec/assets/*
+spec/fixtures/*
