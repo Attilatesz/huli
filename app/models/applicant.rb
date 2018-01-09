@@ -1,6 +1,7 @@
 class Applicant < ApplicationRecord
   has_one :cv, dependent: :destroy
   has_one :profile_picture, dependent: :destroy
+  has_many :comments, as: :commentable
 
   validates_presence_of :first_name,
                         :last_name,
