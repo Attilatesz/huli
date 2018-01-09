@@ -7,6 +7,7 @@ class Drt < ApplicationRecord
                       message: I18n.t('uploads.format', formats: 'pdf')
 
   after_save do
+    assign_applicant if applicant_id && status == 'created'
     applicant.decline if status == 'declined'
     applicant.change if status == 'approved'
   end
