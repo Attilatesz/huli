@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    commenter "MyString"
-    body "MyText"
+    commenter { Faker::Name.name }
+    body { Faker::Lorem.sentence }
     commentable nil
   end
 end
