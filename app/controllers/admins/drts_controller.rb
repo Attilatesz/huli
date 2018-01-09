@@ -1,4 +1,4 @@
-class Admins::DrtController < Admins::AdminController
+class Admins::DrtsController < Admins::AdminController
 
   def new
     @drt = Drt.new
