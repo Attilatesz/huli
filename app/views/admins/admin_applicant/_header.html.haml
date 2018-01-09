@@ -11,7 +11,7 @@
     %li= link_to "Enrolled", root_path
     .search-input-main
       = form_with scope: :search, url: admins_applicant_search_path, local: true do |form|
-        = form.text_field :search_term
+        = form.text_field :search_term, class: 'search-field', placeholder: 'Search...'
       -# %form.form-search.form-horizontal.pull-right
       -#   %input.search-query.input-large{:placeholder => "Search...", :type => "text"}
 
