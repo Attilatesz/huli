@@ -5,13 +5,9 @@ class Admins::DrtsController < Admins::AdminController
   end
 
   def create
-    @drt = Drt.create(drt_params)
-    if @drt.errors.any?
-      render 'new'
-    else
-      flash[:success] = I18n.t('flash.drt_success')
-      redirect_to root_path
-    end
+    @drt = drt_params[:drt_hash].split("\r\n").each {|hash| Drt.create(drt_hash: hash)}
+    flash[:success] = I18n.t('flash.drt_success')
+    redirect_to root_path
   end
 
 private
