@@ -42,10 +42,12 @@ class Applicant < ApplicationRecord
                       allow_blank: true,
                       message: I18n.t('form.email_format')
 
-  def self.find_applicant_by_name_or_email(names, email)
-    where('first_name RLIKE ? OR last_name RLIKE ? OR email_address RLIKE ?',
-          names, names, email)
-  end
+  scope :find_applicant_by_name_or_email, ->(names, email) {
+                                            where('first_name RLIKE ? OR
+                                            last_name RLIKE ? OR
+                                            email_address RLIKE ?',
+                                            names, names, email)
+                                          }
 
   before_save do
     if status == 'drt'
@@ -60,5 +62,4 @@ class Applicant < ApplicationRecord
       transition basic: :drt
     end
   end
-
 end

@@ -17,8 +17,7 @@ class Admins::AdminApplicantController < Admins::AdminController
   end
 
   def search
-    names = search_params
-    @applicants = Applicant.find_applicant_by_name_or_email(names, params[:search][:search_term])
+    @applicants = Applicant.find_applicant_by_name_or_email(search_params, params[:search][:search_term])
   end
 
   private
