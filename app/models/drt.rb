@@ -10,7 +10,7 @@ class Drt < ApplicationRecord
     assign_applicant if applicant_id && status == 'created'
     upload_result if result_pdf_uid && status == 'applicant_attached'
     applicant.decline if status == 'declined'
-    applicant.change if status == 'approved'
+    applicant.next if status == 'approved'
   end
 
   state_machine :status, initial: :created do

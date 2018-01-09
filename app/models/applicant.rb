@@ -51,7 +51,7 @@ class Applicant < ApplicationRecord
   end
 
   state_machine :status, initial: :basic do
-    event :change do
+    event :next do
       transition basic: :drt, drt: :interview
     end
 
@@ -70,7 +70,7 @@ class Applicant < ApplicationRecord
 
   def assign_drt
     drt = Drt.where(applicant_id: nil).first
-    drt.applicant_id = id
+    drt.applicant_id = self
     drt.save
   end
 end
