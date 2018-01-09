@@ -4,6 +4,7 @@ class Cv < ApplicationRecord
   model_name.instance_variable_set(:@route_key, 'cv')
 
   belongs_to :applicant
+  has_many :comments, as: :commentable
   dragonfly_accessor :cv
   validates_presence_of :cv, message: I18n.t('uploads.blank')
   validates_size_of :cv, maximum: 5000.kilobytes,
