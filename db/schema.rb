@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(version: 20180109092538) do
     t.index ["applicant_id"], name: "index_cvs_on_applicant_id"
   end
 
+  create_table "drts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "drt_hash", null: false
+    t.bigint "applicant_id"
+    t.float "result_percentage", limit: 24
+    t.string "result_pdf_uid"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["applicant_id"], name: "index_drts_on_applicant_id"
+  end
+
   create_table "options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "category"
     t.string "name"
