@@ -2,7 +2,7 @@ class Drt < ApplicationRecord
   belongs_to :applicant, optional: true
   dragonfly_accessor :result_pdf
 
-  # Check the file extension
+  validates_presence_of :drt_hash
   validates_property :ext, of: :result_pdf, as: 'pdf',
                       message: I18n.t('uploads.format', formats: 'pdf')
 
