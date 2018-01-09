@@ -27,6 +27,9 @@ Rails.application.routes.draw do
       get ':category', to: 'options#filter', as: 'filter', on: :collection
       delete ':category/:id', to: 'options#destroy', as: 'destroy', on: :collection
     end
+    get 'applicant/:id/comments', to: 'comments#new', as: 'new'
+    post 'applicant/:id/comments', to: 'comments#create', as: 'create'
+    get 'applicant/:id/comments', to: 'comments#show', as: 'show'
   end
   resources :applicants, except: [:edit, :destroy, :update, :show] do
   end
