@@ -14,6 +14,7 @@ class Admins::AdminApplicantController < Admins::AdminController
 
   def show
     @applicant = Applicant.find(params[:id])
+    @comment = Comment.new
   end
 
   def search
