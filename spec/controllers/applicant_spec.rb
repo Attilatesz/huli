@@ -32,11 +32,11 @@ RSpec.describe ApplicantsController, type: :controller do
         end.to change(Applicant, :count).by(1)
       end
 
-      it 'responds with 302 and redirects to ' do
+      it 'responds with 302 and redirects to welcome profile path' do
         sign_in user
         post :create, params: { applicant: attributes_for(:applicant)}
         expect(response.status).to eq(302)
-        expect(response).to redirect_to(welcome_profile_path)
+        expect(response).to redirect_to('/')
       end
     end
 
@@ -58,4 +58,5 @@ RSpec.describe ApplicantsController, type: :controller do
       end
 
   end
+
 end
