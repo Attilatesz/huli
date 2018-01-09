@@ -8,6 +8,7 @@ class Drt < ApplicationRecord
 
   after_save do
     assign_applicant if applicant_id && status == 'created'
+    upload_result if result_pdf_uid && status == 'applicant_attached'
     applicant.decline if status == 'declined'
     applicant.change if status == 'approved'
   end
