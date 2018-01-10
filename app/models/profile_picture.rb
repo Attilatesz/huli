@@ -4,6 +4,7 @@ class ProfilePicture < ApplicationRecord
   model_name.instance_variable_set(:@route_key, 'profile_picture')
 
   belongs_to :applicant
+  has_many :comments, as: :commentable
   dragonfly_accessor :image
   validates_presence_of :image, message: I18n.t('uploads.blank')
   validates_size_of :image, maximum: 5000.kilobytes,

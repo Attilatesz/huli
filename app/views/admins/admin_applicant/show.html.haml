@@ -1,12 +1,13 @@
 = render 'header'
 .container.applicant-container
-  %h2= @applicant.first_name + ' ' + @applicant.last_name
   .table-responsive.transparent-container.applicant-profile
-    .applicant-profile-picture
-      -if @applicant.profile_picture
-        = image_tag @applicant.profile_picture.image.url
-      -else
-        = image_tag('img_placeholder.png')
+    .name-picture-container
+      %h2= @applicant.first_name + ' ' + @applicant.last_name
+      .applicant-profile-picture
+        -if @applicant.profile_picture
+          = image_tag @applicant.profile_picture.image.url
+        -else
+          = image_tag('img_placeholder.png')
     %table.table.applicant-profile-table
       %thead
         %tr
