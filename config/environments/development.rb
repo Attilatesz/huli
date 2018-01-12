@@ -31,7 +31,7 @@ Rails.application.configure do
   # Is it necessary?
   config.action_mailer.perform_caching = true
 
-  config.action_mailer.perform_deliveries = true
+  config.action_mailer.perform_deliveries = false
 
   config.action_mailer.smtp_settings = {
     address: "email-smtp.eu-west-1.amazonaws.com",
