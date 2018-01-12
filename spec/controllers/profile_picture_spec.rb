@@ -27,8 +27,7 @@ RSpec.describe ProfilePicturesController, type: :controller do
     end
 
     it 'it returns status code 302 and redirect to root' do
-      test_image = fixture_file_upload('girl2.jpeg', 'application/jpeg')
-      post :create, params: { profile_picture: { image: test_image } }
+      post :create, params: { profile_picture: attributes_for(:profile_picture, :image_upload) }
       expect(response).to have_http_status(302)
       expect(response).to redirect_to('/')
       expect(controller).to set_flash[:success]
@@ -36,16 +35,14 @@ RSpec.describe ProfilePicturesController, type: :controller do
 
     it 'increases the number of Profile pictures by one' do
       expect do
-      test_image = fixture_file_upload('girl2.jpeg', 'application/jpeg')
-      post :create, params: { profile_picture: { image: test_image } }
+      post :create, params: { profile_picture: attributes_for(:profile_picture, :image_upload) }
       end.to change(ProfilePicture, :count).by(1)
     end
 
     it 'it returns status code 200 and reload page if the file format not valid' do
       sign_in user
       user.create_applicant(attributes_for(:applicant))
-      test_file = fixture_file_upload('TestWordDoc.doc', 'application/doc')
-      post :create, params: { profile_picture: { image: test_file } }
+      post :create, params: { profile_picture: attributes_for(:profile_picture, :wrong_image_format_upload) }
       expect(response).to render_template('profile_pictures/new')
       expect(response).to have_http_status(200)
     end
@@ -59,7 +56,7 @@ RSpec.describe ProfilePicturesController, type: :controller do
     end
 
     it 'returns status code 200 and renders the profile_picture/edit' do
-      user.applicant.create_profile_picture(attributes_for(:profile_picture))
+      user.applicant.create_profile_picture(attributes_for(:profile_picture, :image))
       get :edit
       expect(response).to have_http_status(200)
       expect(response).to render_template('profile_pictures/edit')
@@ -77,12 +74,11 @@ RSpec.describe ProfilePicturesController, type: :controller do
     before(:each) do
       sign_in user
       user.create_applicant(attributes_for(:applicant))
-      user.applicant.create_profile_picture(attributes_for(:profile_picture))
+      user.applicant.create_profile_picture(attributes_for(:profile_picture, :image))
     end
 
     it 'it returns status code 302 and redirect to root' do
-      test_image = fixture_file_upload('girl2.jpeg', 'application/jpeg')
-      put :update, params: { profile_picture: { image: test_image} }
+      put :update, params: { profile_picture: attributes_for(:profile_picture, :image2_upload) }
       expect(response).to have_http_status(302)
       expect(response).to redirect_to('/')
       expect(controller).to set_flash[:success]
@@ -90,12 +86,9 @@ RSpec.describe ProfilePicturesController, type: :controller do
 
     it "allows pp to be updated" do
       created = user.applicant.profile_picture.image_uid
-      puts created.inspect
-      test_image1 = fixture_file_upload('girl2.jpeg', 'application/jpeg')
-      put :update, params: { profile_picture: { image: test_image1 } }
+      put :update, params: { profile_picture: attributes_for(:profile_picture, :image2_upload) }
       user.applicant.profile_picture.reload
       expect(user.applicant.profile_picture.image_uid).not_to eq(created)
-      puts user.applicant.profile_picture.image_uid.inspect
     end
   end
 end
