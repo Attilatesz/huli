@@ -27,8 +27,7 @@ RSpec.describe CvsController, type: :controller do
     end
 
     it 'it returns status code 302 and redirect to root' do
-      cv = fixture_file_upload('pdf-sample.pdf', 'application/pdf')
-      post :create, params: { cv: { cv: cv } }
+      post :create, params: { cv: attributes_for(:cv, :pdf_upload) }
       expect(response).to have_http_status(302)
       expect(response).to redirect_to('/')
       expect(controller).to set_flash[:success]
@@ -36,16 +35,14 @@ RSpec.describe CvsController, type: :controller do
 
     it 'increases the number of Cvs by one' do
       expect do
-        cv = fixture_file_upload('pdf-sample.pdf', 'application/pdf')
-        post :create, params: { cv: { cv: cv } }
+        post :create, params: { cv: attributes_for(:cv, :pdf_upload) }
       end.to change(Cv, :count).by(1)
     end
 
     it 'it returns status code 200 and reload page if the file format not valid' do
       sign_in user
       user.create_applicant(attributes_for(:applicant))
-      cv = fixture_file_upload('TestWordDoc.doc', 'application/doc')
-      post :create, params: { cv: { cv: cv } }
+      post :create, params: { cv: attributes_for(:cv, :doc_upload) }
       expect(response).to render_template('cvs/new')
       expect(response).to have_http_status(200)
     end
@@ -59,7 +56,7 @@ RSpec.describe CvsController, type: :controller do
     end
 
     it 'returns status code 200 and renders the cv/edit' do
-      user.applicant.create_cv(attributes_for(:cv))
+      user.applicant.create_cv(attributes_for(:cv, :pdf))
       get :edit
       expect(response).to have_http_status(200)
       expect(response).to render_template('cvs/edit')
@@ -77,12 +74,11 @@ RSpec.describe CvsController, type: :controller do
     before(:each) do
       sign_in user
       user.create_applicant(attributes_for(:applicant))
-      user.applicant.create_cv(attributes_for(:cv))
+      user.applicant.create_cv(attributes_for(:cv, :pdf))
     end
 
     it 'it returns status code 302 and redirect to root' do
-      cv = fixture_file_upload('pdf-sample.pdf', 'application/pdf')
-      put :update, params: { cv: { cv: cv } }
+      put :update, params: { cv: attributes_for(:cv, :pdf_upload) }
       expect(response).to have_http_status(302)
       expect(response).to redirect_to('/')
       expect(controller).to set_flash[:success]
@@ -90,8 +86,7 @@ RSpec.describe CvsController, type: :controller do
 
     it "allows cv to be updated" do
       created = user.applicant.cv.cv_uid
-      cvp = fixture_file_upload('pdf-sample2.pdf', 'application/pdf')
-      put :update, params: { cv: { cv: cvp } }
+      put :update, params: { cv: attributes_for(:cv, :pdf2_upload) }
       user.applicant.cv.reload
       expect(user.applicant.cv.cv_uid).not_to eq(created)
     end
