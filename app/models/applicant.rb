@@ -49,6 +49,7 @@ class Applicant < ApplicationRecord
       throw :abort unless (cv && profile_picture) &&
                           cv.upload_state == 'approved' &&
                           profile_picture.upload_state == 'approved'
+                          ExampleMailer.sample_email(Applicant.first).deliver       
     end
   end
 
