@@ -8,7 +8,9 @@ class Admins::AdminApplicantController < Admins::AdminController
   end
 
   def status_update
-    Applicant.find(params[:applicant_id]).send(params[:status]).send(params[:decision])
+    applicant = Applicant.find(params[:applicant_id])
+    applicant.send(params[:status]).send(params[:decision])
+    flash[:danger] = applicant.errors.full_messages.first if applicant.errors.any?
     redirect_back fallback_location: root_path
   end
 

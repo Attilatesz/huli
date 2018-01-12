@@ -15,7 +15,7 @@ class ProfilePicture < ApplicationRecord
                      message: I18n.t('uploads.format', formats: 'jpg, jpeg, png')
 
   after_save do
-    applicant.change if upload_state == 'approved'
+    applicant.next if upload_state == 'approved'
   end
 
   state_machine :upload_state, initial: :awaiting_upload do

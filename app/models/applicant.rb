@@ -53,15 +53,36 @@ class Applicant < ApplicationRecord
 
   before_save do
     if status == 'drt'
-      throw :abort unless (cv && profile_picture) &&
-                          cv.upload_state == 'approved' &&
-                          profile_picture.upload_state == 'approved'
+      throw :abort unless cv_pp_approved?
+      assign_drt
     end
   end
 
   state_machine :status, initial: :basic do
-    event :change do
-      transition basic: :drt
+    event :next do
+      transition basic: :drt, drt: :interview
     end
+
+    event :decline do
+      transition all: :declined
+    end
+  end
+
+  private
+
+  def cv_pp_approved?
+    (cv && profile_picture) &&
+      cv.upload_state == 'approved' &&
+      profile_picture.upload_state == 'approved'
+  end
+
+  def assign_drt
+    drt = Drt.where(applicant_id: nil).first
+    unless drt
+      errors.add(:base, 'Applicant could not be assigned DRT. Add new DRTs!')
+      throw :abort
+    end
+    drt.applicant_id = id
+    drt.save
   end
 end
