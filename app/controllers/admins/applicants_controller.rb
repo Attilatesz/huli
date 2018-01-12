@@ -1,4 +1,4 @@
-class Admins::AdminApplicantController < Admins::AdminController
+class Admins::ApplicantsController < Admins::AdminController
   def dashboard
     @applicants = Applicant.all
   end

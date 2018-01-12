@@ -1,11 +1,11 @@
 class Admins::CommentsController < Admins::AdminController
   before_action :find_commentable
 
-  def new
+  def comments_new
     @comment = Comment.new
   end
 
-  def create
+  def comments_create
     @comment = @commentable.comments.create(comment_params)
 
     if @comment.save

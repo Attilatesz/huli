@@ -17,9 +17,12 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :admins  do
-    get 'dashboard', to: 'admin_applicant#dashboard', as: 'dashboard'
-    get 'dashboard/:status', to: 'admin_applicant#dashboard_filter', as: 'applicant_status'
-    get 'applicant/:id', to: 'admin_applicant#show', as: 'applicant'
+    get 'dashboard', to: 'admin_applicants#dashboard', as: 'dashboard'
+    get 'dashboard/:status', to: 'admin_applicants#dashboard_filter', as: 'applicant_status'
+    #get 'applicant/:id', to: 'admin_applicant#show', as: 'applicant'
+    resources :applicants, except: [:edit, :index, :destroy, :new, :create, :update] do
+      resources :comments
+    end
     get 'decision/:status/:decision', to: 'admin_applicant#status_update', as: 'decision'
     post 'search', to: 'admin_applicant#search', as: 'applicant_search'
     resources :options, except: [:show, :index, :destroy],
@@ -27,11 +30,7 @@ Rails.application.routes.draw do
       get ':category', to: 'options#filter', as: 'filter', on: :collection
       delete ':category/:id', to: 'options#destroy', as: 'destroy', on: :collection
     end
-    get 'applicant/:id/comments', to: 'comments#new', as: 'new'
-    post 'applicant/:id/comments', to: 'comments#create', as: 'create'
-    get 'applicant/:id/comments', to: 'comments#show', as: 'show'
   end
   resources :applicants, except: [:edit, :destroy, :update, :show] do
-    #resources :comments
   end
 end
