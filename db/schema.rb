@@ -48,13 +48,6 @@ ActiveRecord::Schema.define(version: 20180109092538) do
     t.index ["applicant_id"], name: "index_cvs_on_applicant_id"
   end
 
-<<<<<<< HEAD:db/schema.rb
-  create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "headline"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-=======
   create_table "drts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "drt_hash", null: false
     t.bigint "applicant_id"
@@ -64,7 +57,6 @@ ActiveRecord::Schema.define(version: 20180109092538) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["applicant_id"], name: "index_drts_on_applicant_id"
->>>>>>> 91084137ccc60d2a73e4aa74aeebd8c4665abd0a:db/schema.rb
   end
 
   create_table "options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

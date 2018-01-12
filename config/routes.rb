@@ -17,8 +17,6 @@ Rails.application.routes.draw do
   resource :profile_picture, only: [:new, :create, :edit, :update]
 
   get 'welcome/profile'
-  get 'welcome/index'
-  post '/send_email', to: 'welcome#send_email', as: 'send_email'
   root 'welcome#index'
 
   namespace :admins  do
