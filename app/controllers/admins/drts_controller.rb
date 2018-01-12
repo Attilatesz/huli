@@ -5,7 +5,7 @@ class Admins::DrtsController < Admins::AdminController
   end
 
   def create
-    @drt = drt_params[:drt_hash].split("\r\n").each {|hash| Drt.create(drt_hash: hash)}
+    @drt = drt_params[:drt_hash].split(/\r?\n/).each {|hash| Drt.create(drt_hash: hash)}
     flash[:success] = I18n.t('flash.drt_success')
     redirect_to root_path
   end
