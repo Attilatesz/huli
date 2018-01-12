@@ -17,9 +17,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :admins  do
-    get 'dashboard', to: 'admin_applicants#dashboard', as: 'dashboard'
-    get 'dashboard/:status', to: 'admin_applicants#dashboard_filter', as: 'applicant_status'
-    #get 'applicant/:id', to: 'admin_applicant#show', as: 'applicant'
+    get 'dashboard', to: 'applicants#dashboard', as: 'dashboard'
+    get 'dashboard/:status', to: 'applicants#dashboard_filter', as: 'applicant_status'
     resources :applicants, except: [:edit, :index, :destroy, :new, :create, :update] do
       resources :comments
     end

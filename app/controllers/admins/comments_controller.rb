@@ -1,27 +1,27 @@
 class Admins::CommentsController < Admins::AdminController
   before_action :find_commentable
 
-  def comments_new
+  def new
     @comment = Comment.new
   end
 
-  def comments_create
+  def create
     @comment = @commentable.comments.create(comment_params)
-
     if @comment.save
-      redirect_to :back, notice: 'Your comment was successfully posted!'
+      flash[:success] = I18n.t('flash.comment_success')
+      redirect_back fallback_location: admins_applicant_path(@commentable.id)
     else
-      redirect_to :back, notice: "Your comment wasn't posted!"
+      redirect_back fallback_location: admins_applicant_path(@commentable.id)
     end
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :user_id, :commentable_type, :commentable_id)
   end
 
   def find_commentable
-    @commentable = Applicant.find(params[:id])
+    @commentable = Applicant.find(params[:applicant_id])
   end
 end

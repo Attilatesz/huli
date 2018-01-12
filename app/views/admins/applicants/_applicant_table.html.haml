@@ -10,7 +10,7 @@
           %th When
       - @applicants.each do |a|
         %tr
-          %td= link_to (a.first_name + ' ' + a.last_name).to_str, admin_applicants_path(id: a.id)
+          %td= link_to (a.first_name + ' ' + a.last_name).to_str, admins_applicant_path(id: a.id)
           %td #{a.email_address}
           %td= status_string(a.status)
           %td= status_button(a)

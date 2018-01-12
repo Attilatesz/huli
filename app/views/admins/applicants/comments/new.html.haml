@@ -1,4 +1,6 @@
 = semantic_form_for [:admins, @commentable, @commentable.comments.build] do |f|
   = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field :commentable_type, value: "Applicant"
+  = f.hidden_field :commentable_id, value: @commentable_id
   = f.text_area :body, placeholder: "Add a comment"
   = f.submit "Add Comment"
