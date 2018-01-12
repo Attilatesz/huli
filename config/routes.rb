@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'welcome/profile'
   root 'welcome#index'
 
+  # get 'drt', to: 'drts#new', as: 'drt'
+
   namespace :admins  do
     get 'dashboard', to: 'admin_applicant#dashboard', as: 'dashboard'
     get 'dashboard/:status', to: 'admin_applicant#dashboard_filter', as: 'applicant_status'
@@ -27,6 +29,9 @@ Rails.application.routes.draw do
       get ':category', to: 'options#filter', as: 'filter', on: :collection
       delete ':category/:id', to: 'options#destroy', as: 'destroy', on: :collection
     end
+    # get 'drt', to: 'drts#new', as: 'drt'
+    # post 'drt', to: 'drts#create', as: 'drt_new'
+    resources :drts, only: [:new, :create], path_names: { new: '/', create:'new/'}
   end
   resources :applicants, except: [:edit, :destroy, :update, :show] do
   end
