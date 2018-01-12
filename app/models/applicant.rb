@@ -46,11 +46,8 @@ class Applicant < ApplicationRecord
   before_save do
     if status == 'drt'
       throw :abort unless cv_pp_approved?
+      assign_drt
     end
-  end
-
-  validate do
-    assign_drt if status == 'drt'
   end
 
   state_machine :status, initial: :basic do
@@ -73,12 +70,11 @@ class Applicant < ApplicationRecord
 
   def assign_drt
     drt = Drt.where(applicant_id: nil).first
-    byebug
     unless drt
       errors.add(:base, 'Applicant could not be assigned DRT. Add new DRTs!')
       throw :abort
     end
-    drt.applicant_id = self
+    drt.applicant_id = id
     drt.save
   end
 end
