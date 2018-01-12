@@ -32,5 +32,6 @@ Rails.application.routes.draw do
     get 'applicant/:id/comments', to: 'comments#show', as: 'show'
   end
   resources :applicants, except: [:edit, :destroy, :update, :show] do
+    #resources :comments
   end
 end

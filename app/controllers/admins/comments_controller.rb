@@ -22,6 +22,6 @@ class Admins::CommentsController < Admins::AdminController
   end
 
   def find_commentable
-    @commentable = Applicant.find_by_id(params[:id])
+    @commentable = Applicant.find(params[:id])
   end
 end
