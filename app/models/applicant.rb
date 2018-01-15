@@ -51,6 +51,14 @@ class Applicant < ApplicationRecord
                                             names, names, email)
                                           }
 
+  scope :needs_drt, -> {
+                         joins(:cv, :profile_picture)
+                           .where(
+                             cvs: { upload_state: 'approved' },
+                             profile_pictures: { upload_state: 'approved' }
+                           )
+                       }
+
   before_save do
     if status == 'drt'
       throw :abort unless cv_pp_approved?
