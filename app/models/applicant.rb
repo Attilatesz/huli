@@ -1,6 +1,8 @@
 class Applicant < ApplicationRecord
   has_one :cv, dependent: :destroy
   has_one :profile_picture, dependent: :destroy
+  has_many :comments, as: :commentable
+  has_one :drt, dependent: :destroy
 
   validates_presence_of :first_name,
                         :last_name,
@@ -29,7 +31,7 @@ class Applicant < ApplicationRecord
   validates_format_of :first_name,
                       :last_name,
                       allow_blank: true,
-                      with: /\A[a-zA-ZÀ-ÖØ-öø-ÿ]+\z/,
+                      with: /\A[a-zA-ZÀ-ŰØ-űø-ÿ]+\z/,
                       message: I18n.t('form.only_letters')
 
   validates_numericality_of :phone_number,
@@ -42,17 +44,45 @@ class Applicant < ApplicationRecord
                       allow_blank: true,
                       message: I18n.t('form.email_format')
 
+  scope :find_applicant_by_name_or_email, ->(names, email) {
+                                            where('first_name RLIKE ? OR
+                                            last_name RLIKE ? OR
+                                            email_address RLIKE ?',
+                                            names, names, email)
+                                          }
+
   before_save do
     if status == 'drt'
-      throw :abort unless (cv && profile_picture) &&
-                          cv.upload_state == 'approved' &&
-                          profile_picture.upload_state == 'approved'
+      throw :abort unless cv_pp_approved?
+      assign_drt
     end
   end
 
   state_machine :status, initial: :basic do
-    event :change do
-      transition basic: :drt
+    event :next do
+      transition basic: :drt, drt: :interview
     end
+
+    event :decline do
+      transition all: :declined
+    end
+  end
+
+  private
+
+  def cv_pp_approved?
+    (cv && profile_picture) &&
+      cv.upload_state == 'approved' &&
+      profile_picture.upload_state == 'approved'
+  end
+
+  def assign_drt
+    drt = Drt.where(applicant_id: nil).first
+    unless drt
+      errors.add(:base, 'Applicant could not be assigned DRT. Add new DRTs!')
+      throw :abort
+    end
+    drt.applicant_id = id
+    drt.save
   end
 end
