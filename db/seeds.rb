@@ -25,7 +25,9 @@ Option.create([
   {category: 'English_level', name: 'Beginner'},
   {category: 'English_level', name: 'Intermediate'},
   {category: 'English_level', name: 'Advanced'},
-  {category: 'English_level', name: 'Native'}
+  {category: 'English_level', name: 'Native'},
+  {category: 'Interview', name: 'Interview length', message: '1:00'},
+  {category: 'Interview', name: 'Interviewer', message: 'Kata Vámosi'}
 ])
 
 User.create(
