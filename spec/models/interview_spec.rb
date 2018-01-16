@@ -8,12 +8,20 @@ RSpec.describe Interview, type: :model do
   end
 
   describe 'invalid' do
-    it 'has no interviewer given' do
-      expect(build :interview, interviewer: nil).to be_invalid
+    it 'has no appplicant attached' do
+      expect(build :interview, applicant: nil).to be_invalid
+    end
+  end
+
+  describe 'automatic state change' do
+    before(:all) do
+      @interview = create :interview
     end
 
-    it 'has no start time given' do
-      expect(build :interview, start: nil).to be_invalid
+    it 'should update status when interview is scheduled' do
+      @interview.applicant_id = 1
+      @interview.save
+      expect(@interview.status).to eq('scheduled')
     end
   end
 end
