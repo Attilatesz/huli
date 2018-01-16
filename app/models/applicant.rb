@@ -54,9 +54,13 @@ class Applicant < ApplicationRecord
   scope :needs_drt, -> {
                          joins(:cv, :profile_picture)
                            .where(
+                             status: 'basic',
                              cvs: { upload_state: 'approved' },
                              profile_pictures: { upload_state: 'approved' }
-                           )
+                           ).left_outer_joins(:drt)
+                            .where(
+                             drts: { applicant_id: nil }
+                            )
                        }
 
   def assign_drt
