@@ -16,6 +16,7 @@ class Admins::ApplicantsController < Admins::AdminController
     @applicant = Applicant.find(params[:id])
     @commentable = Applicant.find(params[:id])
     @comment = Comment.new
+    @comments = Comment.where(commentable_id: @applicant.id)
   end
 
   def search

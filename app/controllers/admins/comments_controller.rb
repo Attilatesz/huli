@@ -15,6 +15,10 @@ class Admins::CommentsController < Admins::AdminController
     end
   end
 
+  def index
+    @comments = Comment.where(commentable_id: @commentable.id)
+  end
+
   private
 
   def comment_params

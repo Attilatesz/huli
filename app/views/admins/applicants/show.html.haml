@@ -72,12 +72,7 @@
           %th Comments
         %tr
           %td
-            Test
-            -if @applicant.comments
-              - @applicant.comments.each do |a|
-                = a.body
-            -else
-              No comments yet
+            = render template: 'admins/applicants/comments/index'
         %tr
           %td
             = render template:'admins/applicants/comments/new'
