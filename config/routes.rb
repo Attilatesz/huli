@@ -19,9 +19,11 @@ Rails.application.routes.draw do
   # get 'drt', to: 'drts#new', as: 'drt'
 
   namespace :admins  do
-    get 'dashboard', to: 'admin_applicant#dashboard', as: 'dashboard'
-    get 'dashboard/:status', to: 'admin_applicant#dashboard_filter', as: 'applicant_status'
-    get 'applicant/:id', to: 'admin_applicant#show', as: 'applicant'
+    get 'dashboard', to: 'applicants#dashboard', as: 'dashboard'
+    get 'dashboard/:status', to: 'applicants#dashboard_filter', as: 'applicant_status'
+    resources :applicants, except: [:edit, :index, :destroy, :new, :create, :update] do
+      resources :comments
+    end
     get 'decision/:status/:decision', to: 'admin_applicant#status_update', as: 'decision'
     post 'search', to: 'admin_applicant#search', as: 'applicant_search'
     resources :options, except: [:show, :index, :destroy],

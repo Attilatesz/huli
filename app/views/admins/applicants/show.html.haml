@@ -67,6 +67,14 @@
               = link_to admins_decision_path(applicant_id: @applicant.id, status: 'cv', decision: 'approve'), class: 'btn btn-success approve-button' do
                 %span.glyphicon.glyphicon-ok
               = link_to admins_decision_path(applicant_id: @applicant.id, status: 'cv', decision: 'decline'), class: 'btn btn-danger decline-button' do
-                %span.glyphicon.glyphicon-remove
+                %span.glyphicon.glyphicon-
+        %tr
+          %th Comments
+        %tr
+          %td
+            = render template: 'admins/applicants/comments/index'
+        %tr
+          %td
+            = render template:'admins/applicants/comments/new'
         %tr
           %td= link_to "Dashboard", admins_dashboard_path, class: 'btn btn-primary'

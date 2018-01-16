@@ -1,7 +1,7 @@
 class Applicant < ApplicationRecord
   has_one :cv, dependent: :destroy
   has_one :profile_picture, dependent: :destroy
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
   has_one :drt, dependent: :destroy
 
   validates_presence_of :first_name,
