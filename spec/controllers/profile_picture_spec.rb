@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe CvsController, type: :controller do
+RSpec.describe ProfilePicturesController, type: :controller do
   let(:user) { create(:user) }
 
   describe 'GET new' do
 
-    it 'returns status code 200 and renders cv/new' do
+    it 'returns status code 200 and renders profile_picture/new' do
       sign_in user
       get :new
       expect(response).to have_http_status(200)
-      expect(response).to render_template('cvs/new')
+      expect(response).to render_template('profile_pictures/new')
     end
 
     it 'returns status code 302 and redirect to root without user' do
@@ -27,23 +27,23 @@ RSpec.describe CvsController, type: :controller do
     end
 
     it 'it returns status code 302 and redirect to root' do
-      post :create, params: { cv: attributes_for(:cv, :pdf_upload) }
+      post :create, params: { profile_picture: attributes_for(:profile_picture, :image_upload) }
       expect(response).to have_http_status(302)
       expect(response).to redirect_to('/')
       expect(controller).to set_flash[:success]
     end
 
-    it 'increases the number of Cvs by one' do
+    it 'increases the number of Profile pictures by one' do
       expect do
-        post :create, params: { cv: attributes_for(:cv, :pdf_upload) }
-      end.to change(Cv, :count).by(1)
+      post :create, params: { profile_picture: attributes_for(:profile_picture, :image_upload) }
+      end.to change(ProfilePicture, :count).by(1)
     end
 
     it 'it returns status code 200 and reload page if the file format not valid' do
       sign_in user
       user.create_applicant(attributes_for(:applicant))
-      post :create, params: { cv: attributes_for(:cv, :doc_upload) }
-      expect(response).to render_template('cvs/new')
+      post :create, params: { profile_picture: attributes_for(:profile_picture, :wrong_image_format_upload) }
+      expect(response).to render_template('profile_pictures/new')
       expect(response).to have_http_status(200)
     end
   end
@@ -55,17 +55,17 @@ RSpec.describe CvsController, type: :controller do
       user.create_applicant(attributes_for(:applicant))
     end
 
-    it 'returns status code 200 and renders the cv/edit' do
-      user.applicant.create_cv(attributes_for(:cv, :pdf))
+    it 'returns status code 200 and renders the profile_picture/edit' do
+      user.applicant.create_profile_picture(attributes_for(:profile_picture, :image))
       get :edit
       expect(response).to have_http_status(200)
-      expect(response).to render_template('cvs/edit')
+      expect(response).to render_template('profile_pictures/edit')
     end
 
-    it 'returns status code 302 and redirect to cv/new without cv' do
+    it 'returns status code 302 and redirect to profile/new without image' do
       get :edit
       expect(response).to have_http_status(302)
-      expect(response).to redirect_to('/cv/new')
+      expect(response).to redirect_to('/profile_picture/new')
     end
   end
 
@@ -74,21 +74,21 @@ RSpec.describe CvsController, type: :controller do
     before(:each) do
       sign_in user
       user.create_applicant(attributes_for(:applicant))
-      user.applicant.create_cv(attributes_for(:cv, :pdf))
+      user.applicant.create_profile_picture(attributes_for(:profile_picture, :image))
     end
 
     it 'it returns status code 302 and redirect to root' do
-      put :update, params: { cv: attributes_for(:cv, :pdf_upload) }
+      put :update, params: { profile_picture: attributes_for(:profile_picture, :image2_upload) }
       expect(response).to have_http_status(302)
       expect(response).to redirect_to('/')
       expect(controller).to set_flash[:success]
     end
 
-    it "allows cv to be updated" do
-      created = user.applicant.cv.cv_uid
-      put :update, params: { cv: attributes_for(:cv, :pdf2_upload) }
-      user.applicant.cv.reload
-      expect(user.applicant.cv.cv_uid).not_to eq(created)
+    it "allows pp to be updated" do
+      created = user.applicant.profile_picture.image_uid
+      put :update, params: { profile_picture: attributes_for(:profile_picture, :image2_upload) }
+      user.applicant.profile_picture.reload
+      expect(user.applicant.profile_picture.image_uid).not_to eq(created)
     end
   end
 end

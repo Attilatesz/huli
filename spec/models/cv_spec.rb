@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Cv, type: :model do
   it 'has valid factory' do
-    cv = build :cv
+    cv = build :cv, :pdf
     expect(cv).to be_valid
   end
 
