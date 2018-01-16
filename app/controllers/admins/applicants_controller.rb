@@ -8,7 +8,9 @@ class Admins::ApplicantsController < Admins::AdminController
   end
 
   def status_update
-    Applicant.find(params[:applicant_id]).send(params[:status]).send(params[:decision])
+    applicant = Applicant.find(params[:applicant_id])
+    applicant.send(params[:status]).send(params[:decision])
+    flash[:danger] = applicant.errors.full_messages.first if applicant.errors.any?
     redirect_back fallback_location: root_path
   end
 
@@ -20,8 +22,13 @@ class Admins::ApplicantsController < Admins::AdminController
   end
 
   def search
-    names = params[:search][:search_term].split(' ').join('|')
-    @applicants = Applicant.where('first_name RLIKE ? OR last_name RLIKE ? OR email_address RLIKE ?',
-                                  names, names, params[:search][:search_term])
+    @applicants = Applicant.find_applicant_by_name_or_email(search_params, params[:search][:search_term])
+  end
+
+  private
+
+  def search_params
+    params.require(:search).permit(:search_term)
+    params[:search][:search_term].split(' ').join('|')
   end
 end

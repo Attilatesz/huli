@@ -48,3 +48,4 @@ en:
     upload_new_success: "Thank you for uploading your %{upload}. We will be in touch with you."
     upload_update_success: "You successfully updated your %{upload}."
     comment_success: "Your comment was successfully posted!"
+    drt_success: "DRTs were successfully created!"
