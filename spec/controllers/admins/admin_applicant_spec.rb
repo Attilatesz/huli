@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admins::AdminApplicantController, type: :controller do
+RSpec.describe Admins::ApplicantsController, type: :controller do
   let! (:admin) {create :user, admin: true}
   let! (:user) {create :user, admin: false}
   let! (:applicant) {create :applicant}

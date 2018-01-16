@@ -8,8 +8,12 @@ RSpec.describe Comment, type: :model do
   end
 
   describe 'invalid' do
-    it 'has no commenter given' do
-      expect(build :comment, commenter: nil).to be_invalid
+    it 'has no commentable_type given' do
+      expect(build :comment, commentable_type: nil).to be_invalid
+    end
+
+    it 'has no commentable_id given' do
+      expect(build :comment, commentable_id: nil).to be_invalid
     end
 
     it 'has no text body given' do
