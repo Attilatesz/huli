@@ -1,5 +1,6 @@
 class Admins::AdminController < ApplicationController
   before_action :redirect_unless_admin
+  layout 'admin_layout'
 
   private
 
