@@ -1,6 +1,6 @@
 class Interview < ApplicationRecord
   belongs_to :applicant
-
+  has_many :comments, as: :commentable
 
   after_save do
     schedule if interviewer && start
