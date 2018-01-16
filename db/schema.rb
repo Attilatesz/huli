@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180109092538) do
+ActiveRecord::Schema.define(version: 20180115133618) do
 
   create_table "applicants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20180109092538) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["applicant_id"], name: "index_drts_on_applicant_id"
+    t.index ["drt_hash"], name: "index_drts_on_drt_hash", unique: true
   end
 
   create_table "options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
