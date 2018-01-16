@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       resources :comments
     end
     get 'decision/:status/:decision', to: 'applicants#status_update', as: 'decision'
-    post 'search', to: 'admin_applicant#search', as: 'applicant_search'
+    post 'search', to: 'applicants#search', as: 'applicant_search'
     resources :options, except: [:show, :index, :destroy],
                         path_names: { new: 'new/:category', edit: ':category' } do
       get ':category', to: 'options#filter', as: 'filter', on: :collection
