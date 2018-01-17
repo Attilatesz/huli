@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115133618) do
+ActiveRecord::Schema.define(version: 20180116160250) do
 
   create_table "applicants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 20180115133618) do
     t.index ["drt_hash"], name: "index_drts_on_drt_hash", unique: true
   end
 
+  create_table "interviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "applicant_id"
+    t.string "interviewer"
+    t.timestamp "start"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["applicant_id"], name: "index_interviews_on_applicant_id"
+  end
+
   create_table "options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "category"
     t.string "name"
@@ -96,5 +106,6 @@ ActiveRecord::Schema.define(version: 20180115133618) do
 
   add_foreign_key "applicants", "users"
   add_foreign_key "cvs", "applicants"
+  add_foreign_key "interviews", "applicants"
   add_foreign_key "profile_pictures", "applicants"
 end
