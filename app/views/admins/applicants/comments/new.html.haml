@@ -2,5 +2,6 @@
   = f.hidden_field :user_id, value: current_user.id
   = f.hidden_field :commentable_type, value: "Applicant"
   = f.hidden_field :commentable_id, value: @commentable_id
-  = f.text_area :body, placeholder: "Add a comment"
+  = f.text_area :body, placeholder: "Write your comment here..."
+  %br
   = f.submit "Add Comment", class: 'btn btn-primary'
