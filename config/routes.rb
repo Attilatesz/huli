@@ -29,7 +29,6 @@ Rails.application.routes.draw do
       get ':category', to: 'options#filter', as: 'filter', on: :collection
       delete ':category/:id', to: 'options#destroy', as: 'destroy', on: :collection
     end
-
     resources :drts, only: [:new, :create], path_names: { new: '/', create:'new/'}
   end
   resources :applicants, except: [:edit, :destroy, :update, :show] do
