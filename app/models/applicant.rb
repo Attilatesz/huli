@@ -3,6 +3,7 @@ class Applicant < ApplicationRecord
   has_one :profile_picture, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   has_one :drt, dependent: :destroy
+  has_one :interview, dependent: :destroy
 
   validates_presence_of :first_name,
                         :last_name,
@@ -78,6 +79,11 @@ class Applicant < ApplicationRecord
       throw :abort unless cv_pp_approved?
       assign_drt
     end
+    if status == 'interview'
+      unless interview
+        Interview.create(applicant_id: id)
+      end
+    end
   end
 
   state_machine :status, initial: :basic do
@@ -97,5 +103,4 @@ class Applicant < ApplicationRecord
       cv.upload_state == 'approved' &&
       profile_picture.upload_state == 'approved'
   end
-
 end
