@@ -16,15 +16,14 @@ Rails.application.routes.draw do
   get 'welcome/profile'
   root 'welcome#index'
 
-
   namespace :admins  do
     get 'dashboard', to: 'applicants#dashboard', as: 'dashboard'
     get 'dashboard/:status', to: 'applicants#dashboard_filter', as: 'applicant_status'
     resources :applicants, except: [:edit, :index, :destroy, :new, :create, :update] do
       resources :comments
     end
-    get 'decision/:status/:decision', to: 'admin_applicant#status_update', as: 'decision'
-    post 'search', to: 'admin_applicant#search', as: 'applicant_search'
+    get 'decision/:status/:decision', to: 'applicants#status_update', as: 'decision'
+    post 'search', to: 'applicants#search', as: 'applicant_search'
     resources :options, except: [:show, :index, :destroy],
                         path_names: { new: 'new/:category', edit: ':category' } do
       get ':category', to: 'options#filter', as: 'filter', on: :collection

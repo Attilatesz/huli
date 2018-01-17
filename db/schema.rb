@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20180116160250) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["applicant_id"], name: "index_drts_on_applicant_id"
+    t.index ["drt_hash"], name: "index_drts_on_drt_hash", unique: true
   end
 
   create_table "interviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

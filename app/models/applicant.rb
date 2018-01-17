@@ -51,6 +51,28 @@ class Applicant < ApplicationRecord
                                             names, names, email)
                                           }
 
+  scope :needs_drt, -> {
+                         joins(:cv, :profile_picture)
+                           .where(
+                             status: 'basic',
+                             cvs: { upload_state: 'approved' },
+                             profile_pictures: { upload_state: 'approved' }
+                           ).left_outer_joins(:drt)
+                            .where(
+                             drts: { applicant_id: nil }
+                            )
+                       }
+
+  def assign_drt
+    drt = Drt.where(applicant_id: nil).first
+    unless drt
+      errors.add(:base, 'Applicant could not be assigned DRT. Add new DRTs!')
+      throw :abort
+    end
+    drt.applicant_id = id
+    drt.save
+  end
+
   before_save do
     if status == 'drt'
       throw :abort unless cv_pp_approved?
@@ -76,13 +98,4 @@ class Applicant < ApplicationRecord
       profile_picture.upload_state == 'approved'
   end
 
-  def assign_drt
-    drt = Drt.where(applicant_id: nil).first
-    unless drt
-      errors.add(:base, 'Applicant could not be assigned DRT. Add new DRTs!')
-      throw :abort
-    end
-    drt.applicant_id = id
-    drt.save
-  end
 end
