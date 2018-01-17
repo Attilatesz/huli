@@ -70,6 +70,7 @@ class Applicant < ApplicationRecord
       errors.add(:base, 'Applicant could not be assigned DRT. Add new DRTs!')
       throw :abort
     end
+    self.next if status == 'basic'
     drt.applicant_id = id
     drt.save
   end
@@ -80,9 +81,7 @@ class Applicant < ApplicationRecord
       assign_drt
     end
     if status == 'interview'
-      unless interview
-        Interview.create(applicant_id: id)
-      end
+      Interview.create(applicant_id: id) unless interview
     end
   end
 
