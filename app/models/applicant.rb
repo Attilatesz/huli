@@ -73,6 +73,7 @@ class Applicant < ApplicationRecord
     self.next if status == 'basic'
     drt.applicant_id = id
     drt.save
+    ExampleMailer.sample_email(self).deliver_now
   end
 
   before_save do
