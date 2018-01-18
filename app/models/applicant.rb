@@ -3,6 +3,7 @@ class Applicant < ApplicationRecord
   has_one :profile_picture, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   has_one :drt, dependent: :destroy
+  has_one :interview, dependent: :destroy
 
   validates_presence_of :first_name,
                         :last_name,
@@ -69,18 +70,18 @@ class Applicant < ApplicationRecord
       errors.add(:base, 'Applicant could not be assigned DRT. Add new DRTs!')
       throw :abort
     end
+    self.next if status == 'basic'
     drt.applicant_id = id
     drt.save
+    ExampleMailer.sample_email(self).deliver_now
   end
 
   before_save do
     if status == 'drt'
-      throw :abort unless (cv && profile_picture) &&
-                          cv.upload_state == 'approved' &&
-                          profile_picture.upload_state == 'approved'  
       throw :abort unless cv_pp_approved?
-      assign_drt
-      ExampleMailer.sample_email(self).deliver_now
+      assign_drt unless drt
+    elsif status == 'interview'
+      Interview.create(applicant_id: id) unless interview
     end
   end
 
@@ -101,5 +102,4 @@ class Applicant < ApplicationRecord
       cv.upload_state == 'approved' &&
       profile_picture.upload_state == 'approved'
   end
-
 end
