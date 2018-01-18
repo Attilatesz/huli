@@ -9,26 +9,43 @@
 # To set yourself admin profile plese fill in the below template with your details and run rails db:seed
 
 # To seed your database with below values please run rails db:seed
-
-Option.create([
-  {category: 'Language', name: 'English', message: 'Sure'},
-  {category: 'Language', name: 'Hungarian', message: 'No, thanks'},
-  {category: 'Payment', name: 'Prepayment-headhunting', message:'Prepayment with headhunting service (990 000 HUF + VAT)'},
-  {category: 'Payment', name: 'Prepayment', message: 'Prepayment without headhunting service (1 290 000 HUF + VAT)'},
-  {category: 'Payment', name: 'Post payment', message: 'Post-payment with headhunting service (1 290 000 HUF + VAT)'},
-  {category: 'Education', name: 'Primary school'},
-  {category: 'Education', name: 'Vocational secondary school'},
-  {category: 'Education', name: 'Secondary school'},
-  {category: 'Education', name: 'College/BSc/BA'},
-  {category: 'Education', name: 'University/MSc/MA'},
-  {category: 'Education', name: 'Doctoral'},
-  {category: 'English_level', name: 'Beginner'},
-  {category: 'English_level', name: 'Intermediate'},
-  {category: 'English_level', name: 'Advanced'},
-  {category: 'English_level', name: 'Native'},
-  {category: 'Interview', name: 'Interview length', message: '1:00'},
-  {category: 'Interview', name: 'Interviewer', message: 'Kata Vámosi'}
-])
+if Option.find_by_category('Language').nil?
+  Option.create([
+    {category: 'Language', name: 'English', message: 'Sure'},
+    {category: 'Language', name: 'Hungarian', message: 'No, thanks'}
+  ])
+end
+if Option.find_by_category('Payment').nil?
+  Option.create([
+    {category: 'Payment', name: 'Prepayment-headhunting', message:'Prepayment with headhunting service (990 000 HUF + VAT)'},
+    {category: 'Payment', name: 'Prepayment', message: 'Prepayment without headhunting service (1 290 000 HUF + VAT)'},
+    {category: 'Payment', name: 'Post payment', message: 'Post-payment with headhunting service (1 290 000 HUF + VAT)'}
+  ])
+end
+if Option.find_by_category('Education').nil?
+  Option.create([
+    {category: 'Education', name: 'Primary school'},
+    {category: 'Education', name: 'Vocational secondary school'},
+    {category: 'Education', name: 'Secondary school'},
+    {category: 'Education', name: 'College/BSc/BA'},
+    {category: 'Education', name: 'University/MSc/MA'},
+    {category: 'Education', name: 'Doctoral'}
+  ])
+end
+if Option.find_by_category('English_level').nil?
+  Option.create([
+    {category: 'English_level', name: 'Beginner'},
+    {category: 'English_level', name: 'Intermediate'},
+    {category: 'English_level', name: 'Advanced'},
+    {category: 'English_level', name: 'Native'}
+  ])
+end
+if Option.find_by_category('Interview').nil?
+  Option.create([
+    {category: 'Interview', name: 'Interview length', message: '1:00'},
+    {category: 'Interview', name: 'Interviewer', message: 'Fruzsina Ternovics'}
+  ])
+end
 
 User.create(
   email: "edesanna@hotmail.com", provider: "google_oauth2", uid: "123", access_token: 1,
