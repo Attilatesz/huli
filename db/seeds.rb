@@ -15,6 +15,7 @@ if Option.find_by_category('Language').nil?
     {category: 'Language', name: 'Hungarian', message: 'No, thanks'}
   ])
 end
+
 if Option.find_by_category('Payment').nil?
   Option.create([
     {category: 'Payment', name: 'Prepayment-headhunting', message:'Prepayment with headhunting service (990 000 HUF + VAT)'},
@@ -22,6 +23,7 @@ if Option.find_by_category('Payment').nil?
     {category: 'Payment', name: 'Post payment', message: 'Post-payment with headhunting service (1 290 000 HUF + VAT)'}
   ])
 end
+
 if Option.find_by_category('Education').nil?
   Option.create([
     {category: 'Education', name: 'Primary school'},
@@ -32,6 +34,7 @@ if Option.find_by_category('Education').nil?
     {category: 'Education', name: 'Doctoral'}
   ])
 end
+
 if Option.find_by_category('English_level').nil?
   Option.create([
     {category: 'English_level', name: 'Beginner'},
@@ -40,6 +43,7 @@ if Option.find_by_category('English_level').nil?
     {category: 'English_level', name: 'Native'}
   ])
 end
+
 if Option.find_by_category('Interview').nil?
   Option.create([
     {category: 'Interview', name: 'Interview length', message: '1:00'},
