@@ -1,12 +1,11 @@
 class Admins::InterviewController < ApplicationController
 
   def edit
-    @applicant= Applicant.find(params[:applicant_id])
-    @interview = @applicant.interview
+    @interview = Interview.find(params[:id])
   end
 
   def update
-    @interview = Applicant.find(params[:applicant_id]).interview
+    @interview = Interview.find(params[:id])
     if @interview.update(interview_params)
       redirect_to admins_dashboard_path
     else
@@ -17,6 +16,7 @@ class Admins::InterviewController < ApplicationController
   private
 
   def interview_params
-    params.require(:interview).permit(:start, :applicant_id)
+    params[:interview][:start] = Date.strptime(params[:interview][:start], '%m/%d/%Y')
+    params.require(:interview).permit(:start)
   end
 end
