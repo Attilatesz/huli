@@ -23,8 +23,10 @@ ActiveRecord::Schema.define(version: 20180116160250) do
     t.string "payment_option"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "profile_picture_id"
     t.bigint "user_id"
     t.string "status"
+    t.index ["profile_picture_id"], name: "fk_rails_a250c48eac"
     t.index ["user_id"], name: "index_applicants_on_user_id"
   end
 
@@ -41,9 +43,9 @@ ActiveRecord::Schema.define(version: 20180116160250) do
 
   create_table "cvs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "cv_uid"
-    t.string "upload_state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "upload_state"
     t.bigint "applicant_id"
     t.index ["applicant_id"], name: "index_cvs_on_applicant_id"
   end
@@ -79,16 +81,15 @@ ActiveRecord::Schema.define(version: 20180116160250) do
   end
 
   create_table "profile_pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "upload_state"
-    t.string "image_uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "upload_state"
+    t.string "image_uid"
     t.bigint "applicant_id"
     t.index ["applicant_id"], name: "index_profile_pictures_on_applicant_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.boolean "admin", default: false
     t.string "email", default: "", null: false
     t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0, null: false
@@ -100,10 +101,14 @@ ActiveRecord::Schema.define(version: 20180116160250) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
+    t.string "github_handle"
+    t.string "full_name"
     t.string "access_token"
+    t.boolean "admin", default: false
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
+  add_foreign_key "applicants", "profile_pictures"
   add_foreign_key "applicants", "users"
   add_foreign_key "cvs", "applicants"
   add_foreign_key "interviews", "applicants"

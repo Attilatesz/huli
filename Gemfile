@@ -29,6 +29,7 @@ gem 'state_machines-activerecord'
 
 # Image/asset management
 gem 'dragonfly'
+gem 'mime-types'
 group :production, :staging do
   gem 'dragonfly-s3_data_store'
 end
