@@ -75,8 +75,12 @@ class Applicant < ApplicationRecord
 
   before_save do
     if status == 'drt'
+      throw :abort unless (cv && profile_picture) &&
+                          cv.upload_state == 'approved' &&
+                          profile_picture.upload_state == 'approved'  
       throw :abort unless cv_pp_approved?
       assign_drt
+      ExampleMailer.sample_email(self).deliver_now
     end
   end
 
