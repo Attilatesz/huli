@@ -79,8 +79,7 @@ class Applicant < ApplicationRecord
     if status == 'drt'
       throw :abort unless cv_pp_approved?
       assign_drt unless drt
-    end
-    if status == 'interview'
+    elsif status == 'interview'
       Interview.create(applicant_id: id) unless interview
     end
   end
