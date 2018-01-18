@@ -57,7 +57,7 @@
               No CV uploaded
           %td
             -if @applicant.status == 'interview'
-              = link_to "Schedule interview", new_admins_interview_path(applicant_id: @applicant.id), class: 'btn btn-primary'
+              = link_to "Schedule interview", edit_admins_interview_path(applicant_id: @applicant.id), class: 'btn btn-primary'
         %tr
           %td
             -if @applicant.profile_picture && @applicant.profile_picture.upload_state == 'approval_pending'

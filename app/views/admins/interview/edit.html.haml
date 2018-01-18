@@ -2,7 +2,7 @@
   .transparent-container.interview-container
     %h1 Schedule interview date
     = render 'shared/error-messages', model: @interview
-    = semantic_form_for [:admins, @interview], url: admins_interview_index_path, local: true do |f|
+    = semantic_form_for [:admins, @interview], url: admins_interview_path, local: true do |f|
       = f.hidden_field :applicant_id, value: @applicant_id
       = f.text_field :start, data: { provide: 'datepicker' }
       %br

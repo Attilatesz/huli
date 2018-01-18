@@ -1,16 +1,16 @@
 class Admins::InterviewController < ApplicationController
 
-  def new
-    @interview = Interview.new
-    @applicant_id = params[:applicant_id]
+  def edit
+    @applicant= Applicant.find(params[:applicant_id])
+    @interview = @applicant.interview
   end
 
-  def create
-    @interview = Interview.create(interview_params)
-    if @interview.errors.any?
-      render 'new'
-    else
+  def update
+    @interview = Applicant.find(params[:applicant_id]).interview
+    if @interview.update(interview_params)
       redirect_to admins_dashboard_path
+    else
+      render 'edit'
     end
   end
 
