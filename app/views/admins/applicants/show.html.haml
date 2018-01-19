@@ -54,6 +54,7 @@
               %a{href: @applicant.cv.cv.url, download: @applicant.cv.cv.url, target: "blank"} CV
             -else
               No CV uploaded
+          %td
         %tr
           %td
             -if @applicant.profile_picture && @applicant.profile_picture.upload_state == 'approval_pending'
@@ -67,16 +68,12 @@
                 %span.glyphicon.glyphicon-ok
               = link_to admins_decision_path(applicant_id: @applicant.id, status: 'cv', decision: 'decline'), class: 'btn btn-danger decline-button' do
                 %span.glyphicon.glyphicon-remove
+          %td
         %tr
           %th Comments
-        %tr
           %td
-            = render template: 'admins/applicants/comments/index'
-        %tr
           %td
-            = render template:'admins/applicants/comments/new'
         %tr
-          %td= link_to "Dashboard", admins_dashboard_path, class: 'btn btn-primary'
-          %td
-            -if @applicant.status == 'interview'
-              = link_to "Schedule interview", class: 'btn btn-primary'
+          %td{colspan: '2'}= render template: 'admins/applicants/comments/index'
+        %tr
+          %td{colspan: '2'}= render template:'admins/applicants/comments/new'

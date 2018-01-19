@@ -10,6 +10,8 @@ module AdminsHelper
         link_to 'Check', admins_applicant_path(id: applicant.id), class: 'btn btn-primary'
     elsif applicant.status == 'drt'
       content_tag(:div, 'Add result', class: 'btn btn-primary')
+    elsif applicant.status == 'interview' && applicant.interview.status == 'unscheduled'
+      link_to "Schedule interview", edit_admins_interview_path(applicant.interview), class: 'btn btn-primary'
     end
   end
 end

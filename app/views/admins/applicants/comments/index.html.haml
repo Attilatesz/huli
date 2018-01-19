@@ -1,6 +1,9 @@
 -if @comments
   - @comments.each do |a|
-    = a.body
+    #{@current_user.email} #{"commented"} #{time_ago_in_words(a.created_at)} #{"ago"}:
+    .comment-body
+      = a.body
+      
     %br
 -else
   No comments yet

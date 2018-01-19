@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-datepicker-rails'
 gem 'autoprefixer-rails'
 gem 'jquery-rails'
 gem 'formtastic', '~> 3.0'
