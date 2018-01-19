@@ -46,8 +46,7 @@ end
 
 if Option.find_by_category('Interview').nil?
   Option.create([
-    {category: 'Interview', name: 'Interview length', message: '1:00'},
-    {category: 'Interview', name: 'Interviewer', message: 'Fruzsina Ternovics'}
+    {category: 'Interview', name: 'Interview length', message: '1:00'}
   ])
 end
 
