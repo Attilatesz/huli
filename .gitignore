@@ -26,3 +26,6 @@ secrets.yml
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+#Ignore test folder because it was deleted
+/test/*
