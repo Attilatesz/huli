@@ -7,7 +7,7 @@ class Cv < ApplicationRecord
   has_many :comments, as: :commentable
   dragonfly_accessor :cv
   validates_presence_of :cv, message: I18n.t('uploads.blank')
-  validates_size_of :cv, maximum: 5000.kilobytes,
+  validates_size_of :cv, maximum: 50.megabytes,
                          message: I18n.t('uploads.size', size: 5)
 
   # Check the file extension
