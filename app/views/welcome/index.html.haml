@@ -2,3 +2,9 @@
   %h1 Welcome!
   - unless current_user
     %p.start-instruction To start please hit the login button!
+  - if current_user && current_user.admin
+    %p.test-text Unused drt hashes:
+    %ul
+      - @drt.each do |a|
+        - if a.status == 'created'
+          %li '#{(a.drt_hash).to_str}'
