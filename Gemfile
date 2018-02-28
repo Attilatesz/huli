@@ -89,3 +89,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Added at 2018-02-27 15:01:47 +0100 by Dániel:
+gem "time_splitter", "~> 1.1"
