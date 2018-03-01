@@ -2,6 +2,7 @@ class Admins::InterviewController < ApplicationController
 
   def create
     @interview = Interview.new(params[:id])
+    @interview.save
   end
 
   def edit
