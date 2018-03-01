@@ -1,4 +1,8 @@
 class Applicant < ApplicationRecord
+  def to_s
+    first_name + " " + last_name
+  end
+
   has_one :cv, dependent: :destroy
   has_one :profile_picture, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
