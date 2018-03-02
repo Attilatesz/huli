@@ -13,7 +13,7 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
+  username: <%= Rails.application.secrets.database_username %>
   password: <%= Rails.application.secrets.database_password %>
   socket: /var/run/mysqld/mysqld.sock
 
