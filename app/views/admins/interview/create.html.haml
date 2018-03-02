@@ -4,6 +4,7 @@
     = render 'shared/error-messages', model: @interview
     = semantic_form_for [:admins, @interview], url: admins_interview_path, local: true do |f|
       = f.input :start, data: { provide: 'datepicker' }
+      = f.input :duration, as: :text, label: 'Duration (minutes)'
       = f.input :applicant, collection: @applicant
       = f.submit "Add", class: 'btn btn-primary'
     
