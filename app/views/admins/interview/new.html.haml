@@ -1,0 +1,10 @@
+.fluid-container.upload-form
+  .transparent-container.interview-container
+    %h1 Schedule interview date
+    = render 'shared/error-messages', model: @interview
+    = semantic_form_for [:admins, @interview], url: admins_interview_path, local: true do |f|
+      = f.input :start, data: { provide: 'datepicker' }, label: 'Starting date and time'
+      = f.input :duration, as: :select, collection: [15, 30, 45, 60, 75, 90, 105, 120], label: 'Duration (minutes)'
+      = f.input :applicant, collection: @applicant
+      = f.submit "Add", class: 'btn btn-primary'
+    
