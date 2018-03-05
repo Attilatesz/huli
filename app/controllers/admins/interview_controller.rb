@@ -7,6 +7,7 @@ class Admins::InterviewController < ApplicationController
   def create
     @interview = Interview.new(interview_params)
     @interview.save
+    redirect_to root_path
   end
 
   def edit
@@ -25,8 +26,7 @@ class Admins::InterviewController < ApplicationController
   private
 
   def interview_params
-    params[:interview][:start] = Date.strptime(params[:interview][:start], '%m/%d/%Y/%H/%m')
-    params[:duration]
-    params.require(:interview).permit(:start)
+    params[:interview][:start] = Date.strptime('2001-02-03', '%Y-%m-%d')
+    params.require(:interview).permit(:start, :duration, :applicant_id)
   end
 end
