@@ -1,5 +1,9 @@
 class Admins::InterviewController < ApplicationController
 
+  def new
+    @interview = Interview.new(params[:id])
+  end
+
   def create
     @interview = Interview.new(params[:id])
   end
