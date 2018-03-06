@@ -8,10 +8,10 @@
           %th Start
           %th Duration
           %th Status
-  -#    - @interviews.each do |a|
+      - @interviews.each do |a|
         %tr
-          %td= link_to (a.first_name + ' ' + a.last_name).to_str, admins_interviews_path(id: a.id)
+          %td= get_name(a.applicant_id)
           %td= a.interviewer
           %td= a.start
-          %td= a.status
           %td= a.duration
+          %td= a.status
