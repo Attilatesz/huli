@@ -10,7 +10,7 @@
           %th Status
       - @interviews.each do |a|
         %tr
-          %td= get_name(a.applicant_id)
+          %td= get_name(a.applicant_id, "first_name") + " " + get_name(a.applicant_id, "last_name")
           %td= a.interviewer
           %td= a.start
           %td= a.duration

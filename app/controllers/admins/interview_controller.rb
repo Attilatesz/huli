@@ -6,8 +6,12 @@ class Admins::InterviewController < ApplicationController
     Option.where(category: category).pluck(:message)
   end
 
-  def get_name(id)
-    Applicant.where(id: id).pluck(:first_name, :last_name)
+  def get_name(id, name)
+    if name == "first_name"
+      Applicant.where(id: id).pluck(:first_name).each do |a| return a end
+    elsif
+      Applicant.where(id: id).pluck(:last_name).each do |a| return a end
+    end
   end
 
   def new
