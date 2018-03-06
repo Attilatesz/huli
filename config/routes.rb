@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     end
     resources :drts, only: [:new, :create], path_names: { new: '/', create:'new/'}
     get 'interview', to: 'interview#new', as: 'interview'
-    resources :interview, only: [:create, :edit, :update], path_names: { new: '/', create:'new/'}
+    resources :interview, only: [:create, :edit, :update, :show], path_names: { new: '/', create:'new/'}
   end
   resources :applicants, except: [:edit, :destroy, :update, :show] do
   end

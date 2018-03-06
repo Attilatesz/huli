@@ -1,4 +1,9 @@
 class Admins::InterviewController < ApplicationController
+  helper_method :get_message
+
+  def get_message(category)
+    Option.where(category: category).pluck(:message)
+  end
 
   def new
     @interview = Interview.new(params[:id])
@@ -23,10 +28,14 @@ class Admins::InterviewController < ApplicationController
     end
   end
 
+  def show
+    @interviews = Interview.all
+  end
+
   private
 
   def interview_params
     params[:interview][:start] = DateTime.current
-    params.require(:interview).permit(:start, :duration, :applicant_id)
+    params.require(:interview).permit(:start, :message, :applicant_id)
   end
 end
