@@ -26,7 +26,7 @@ class Admins::InterviewController < ApplicationController
   private
 
   def interview_params
-    params[:interview][:start] = Date.strptime('2001-02-03', '%Y-%m-%d')
+    params[:interview][:start] = DateTime.current
     params.require(:interview).permit(:start, :duration, :applicant_id)
   end
 end
