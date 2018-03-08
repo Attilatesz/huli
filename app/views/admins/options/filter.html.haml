@@ -3,7 +3,7 @@
     %table.table.table-hover
       %thead
         %tr
-          %td #
+          %td
           %td Category
           %td Message
           %td
@@ -11,7 +11,7 @@
       %tbody
         - @options.each_with_index do |option, i|
           %tr
-            %td= i
+            %td= i+1
             %td= option.name
             %td= option.message
             %td
