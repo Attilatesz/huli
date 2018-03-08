@@ -17,6 +17,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require twitter/bootstrap/rails/confirm
+//= require 'confirm-delete.js'
 //= require 'cable.js'
 //= require 'flash-messages.js'
 //= require bootstrap-datepicker
