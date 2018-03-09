@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46e85e9d-1564-4cc6-bad7-610b4dedcb3c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admins/interview_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/admins/interview_controller.rb" />
-      <change beforePath="$PROJECT_DIR$/app/mailers/example_mailer.rb" afterPath="$PROJECT_DIR$/app/mailers/example_mailer.rb" />
-      <change beforePath="$PROJECT_DIR$/app/views/admins/applicants/_applicant_table.html.haml" afterPath="$PROJECT_DIR$/app/views/admins/applicants/_applicant_table.html.haml" />
-      <change beforePath="$PROJECT_DIR$/app/views/admins/applicants/dashboard.html.haml" afterPath="$PROJECT_DIR$/app/views/admins/applicants/dashboard.html.haml" />
-      <change beforePath="$PROJECT_DIR$/app/views/admins/applicants/dashboard_filter.html.haml" afterPath="$PROJECT_DIR$/app/views/admins/applicants/dashboard_filter.html.haml" />
-      <change beforePath="$PROJECT_DIR$/app/views/welcome/index.html.haml" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.haml" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change beforePath="$PROJECT_DIR$/spec/models/drt_spec.rb" afterPath="$PROJECT_DIR$/spec/models/drt_spec.rb" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -77,11 +69,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html.haml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="8" column="50" lean-forward="true" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="5" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -143,6 +145,7 @@
         <option value="$PROJECT_DIR$/app/helpers/admins_helper.rb" />
         <option value="$PROJECT_DIR$/app/views/admins/interview/new.html.haml" />
         <option value="$PROJECT_DIR$/app/views/welcome/index.html.haml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -375,12 +378,12 @@
       <workItem from="1520421455733" duration="10921000" />
       <workItem from="1520499225039" duration="1390000" />
       <workItem from="1520584175211" duration="633000" />
-      <workItem from="1520585396509" duration="308000" />
+      <workItem from="1520585396509" duration="450000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18966000" />
+    <option name="totallyTimeSpent" value="19108000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -439,14 +442,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/helpers/admins_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
@@ -812,6 +807,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="50" lean-forward="true" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="5" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
           <folding />
         </state>
       </provider>
