@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       delete ':category/:id', to: 'options#destroy', as: 'destroy', on: :collection
     end
     resources :drts, only: [:new, :create], path_names: { new: '/', create:'new/'}
-    resources :interview, only: [:edit, :update], path_names: { new: '/', create:'new/'}
+    resources :interview, only: [:edit, :update, :new], path_names: { new: '/', create:'new/'}
   end
   resources :applicants, except: [:edit, :destroy, :update, :show] do
   end

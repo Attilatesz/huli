@@ -1,5 +1,7 @@
 class Admins::InterviewController < ApplicationController
 
+  def new; end
+
   def edit
     @interview = Interview.find(params[:id])
   end
