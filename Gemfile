@@ -26,7 +26,8 @@ gem 'formtastic-bootstrap'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'validates_email_format_of'
 gem 'state_machines-activerecord'
-
+# For the delete confirm dialog
+gem 'twitter-bootstrap-rails-confirm'
 # Image/asset management
 gem 'dragonfly'
 gem 'mime-types'
