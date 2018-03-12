@@ -40,6 +40,6 @@ class Admins::InterviewController < ApplicationController
 
   def interview_params
     params[:interview][:start] = DateTime.current
-    params.require(:interview).permit(:start, :duration, :applicant_id, :user)
+    params.require(:interview).permit(:start, :duration, :applicant_id, :interviewer)
   end
 end
