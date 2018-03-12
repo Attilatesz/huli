@@ -1,5 +1,6 @@
 class Interview < ApplicationRecord
   belongs_to :applicant
+  has_one :user
   has_many :comments, as: :commentable
 
   after_save do

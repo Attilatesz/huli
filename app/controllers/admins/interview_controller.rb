@@ -1,22 +1,20 @@
 class Admins::InterviewController < ApplicationController
   helper_method :get_message
-  helper_method :get_name
+  helper_method :get_email
 
   def get_message(category)
     Option.where(category: category).pluck(:message)
   end
 
-  def get_name(id, name)
-    if name == "first_name"
-      Applicant.where(id: id).pluck(:first_name).each do |a| return a end
-    elsif
-      Applicant.where(id: id).pluck(:last_name).each do |a| return a end
-    end
+  def get_email
+    User.where(admin: 1).pluck(:email)
   end
 
   def new
     @interview = Interview.new(params[:id])
     @interviews = Interview.all
+    @user = get_email
+    @message = get_message( 'Interview' )
   end
 
   def create
@@ -42,6 +40,6 @@ class Admins::InterviewController < ApplicationController
 
   def interview_params
     params[:interview][:start] = DateTime.current
-    params.require(:interview).permit(:start, :duration, :applicant_id)
+    params.require(:interview).permit(:start, :duration, :applicant_id, :user)
   end
 end
