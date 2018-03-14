@@ -15,6 +15,8 @@ class Admins::InterviewController < ApplicationController
     @interviews = Interview.all
     @user = get_email
     @message = get_message( 'Interview' )
+    @comment = Comment.new
+    @comments = Comment.where(commentable_id: @interview.id)
   end
 
   def create
