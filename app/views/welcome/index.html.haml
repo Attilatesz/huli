@@ -3,8 +3,7 @@
   - unless current_user
     %p.start-instruction To start please hit the login button!
   - if current_user && current_user.admin
-    %p.test-text Unused drt hashes:
-    %ul
-      - @drt.each do |a|
-        - if a.status == 'created'
-          %li '#{(a.drt_hash).to_str}'
+    %p.start-instruction Number of unused DRT hashes: #{@drt.length}
+    - if @drt.length < 5
+      %p.test-text You have less than 5 DRT hashes, please create at least #{5 - @drt.length} new one(s):
+      %p= link_to raw('<strong>CREATE <em>DRT HASHES</em></strong>'), admins_drts_url
