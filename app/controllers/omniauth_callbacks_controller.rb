@@ -6,6 +6,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     session[:email] = auth['info']['email']
     session[:first_name] = auth['info']['first_name']
     session[:last_name] = auth['info']['last_name']
-    redirect_to new_applicant_path
+    redirect_to current_user.admin ? admins_dashboard_path : root_path
   end
 end
