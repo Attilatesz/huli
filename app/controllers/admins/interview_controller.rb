@@ -2,14 +2,6 @@ class Admins::InterviewController < ApplicationController
   helper_method :get_message
   helper_method :get_email
 
-  def get_message(category)
-    Option.where(category: category).pluck(:message)
-  end
-
-  def get_email
-    User.where(admin: 1).pluck(:email)
-  end
-
   def new
     @interview = Interview.new(params[:id])
     @interviews = Interview.all
