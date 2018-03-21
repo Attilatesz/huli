@@ -1,0 +1,17 @@
+.container
+  .table-responsive.transparent-container
+    %table.table
+      %thead
+        %tr
+          %th Applicant
+          %th Interviewer
+          %th Start
+          %th Duration
+          %th Status
+      - @interviews.each do |a|
+        %tr
+          %td= a.applicant.first_name + " " + a.applicant.last_name
+          %td= a.interviewer
+          %td= a.start
+          %td= a.duration
+          %td= a.status

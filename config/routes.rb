@@ -28,12 +28,13 @@ Rails.application.routes.draw do
     get 'decision/:status/:decision', to: 'applicants#status_update', as: 'decision'
     post 'search', to: 'applicants#search', as: 'applicant_search'
     resources :options, except: [:show, :index, :destroy],
-    path_names: { new: 'new/:category', edit: ':category' } do
+              path_names: { new: 'new/:category', edit: ':category' } do
       get ':category', to: 'options#filter', as: 'filter', on: :collection
       delete ':category/:id', to: 'options#destroy', as: 'destroy', on: :collection
     end
     resources :drts, only: [:new, :create], path_names: { new: '/', create:'new/'}
-    resources :interview, only: [:edit, :update, :new], path_names: { new: '/', create:'new/'}
+    get 'interview', to: 'interview#new', as: 'interview'
+    resources :interview, only: [:create, :edit, :update, :show], path_names: { new: '/', create:'new/'}
   end
   resources :applicants, except: [:edit, :destroy, :update, :show] do
   end
