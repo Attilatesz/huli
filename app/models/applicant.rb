@@ -20,7 +20,7 @@ class Applicant < ApplicationRecord
   validates_length_of :first_name,
                       :last_name,
                       allow_blank: true,
-                      minimum: 3,
+                      minimum: 2,
                       maximum: 35,
                       message: I18n.t('form.length', min: 3, max: 35)
 
@@ -32,12 +32,6 @@ class Applicant < ApplicationRecord
   validates_presence_of :english_class,
                         :payment_option,
                         message: I18n.t('form.select')
-
-  validates_format_of :first_name,
-                      :last_name,
-                      allow_blank: true,
-                      with: /\A[a-zA-ZÀ-ŰØ-űø-ÿ]+\z/,
-                      message: I18n.t('form.only_letters')
 
   validates_numericality_of :phone_number,
                             allow_blank: true,

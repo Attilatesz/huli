@@ -16,7 +16,7 @@ RSpec.describe Drt, type: :model do
 
   describe 'invalid' do
     it 'is not valid without drt_hash' do
-      expect(build(:drt, drt_hash: nil)).to be_invalid
+      expect(build(:drts, drt_hash: nil)).to be_invalid
     end
 
     it 'is not valid with .doc upload' do
@@ -32,7 +32,7 @@ RSpec.describe Drt, type: :model do
     it 'should update status when applicant is assigned' do
       @drt.applicant_id = 1
       @drt.save
-      expect(@drt.status).to eq('applicant_attached')
+      expect(@drts.status).to eq('applicant_attached')
     end
 
     it 'should update status when result is uploaded' do
