@@ -1,4 +1,21 @@
 class Admins::InterviewController < ApplicationController
+  helper_method :get_message
+  helper_method :get_email
+
+  def new
+    @interview = Interview.new(params[:id])
+    @interviews = Interview.all
+    @user = get_email
+    @message = get_message( 'Interview' )
+    @comment = Comment.new
+    @comments = Comment.where(commentable_id: @interview.id)
+  end
+
+  def create
+    @interview = Interview.new(interview_params)
+    @interview.save
+    redirect_to root_path
+  end
 
   def new; end
 
@@ -18,7 +35,7 @@ class Admins::InterviewController < ApplicationController
   private
 
   def interview_params
-    params[:interview][:start] = Date.strptime(params[:interview][:start], '%m/%d/%Y')
-    params.require(:interview).permit(:start)
+    params[:interview][:start] = DateTime.current
+    params.require(:interview).permit(:start, :duration, :applicant_id, :interviewer)
   end
 end
