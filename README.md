@@ -22,14 +22,11 @@ These steps currently are administered in an google document. The application's 
 
 (Ruby on Rails on Ubuntu 17)
 
-
 STEP 1: Install curl:
 
 ```bash
 sudo apt-get install curl
 ```
-
-
 
 STEP 2: Install Ruby 2.4.2:
 
@@ -59,8 +56,6 @@ STEP 4: Install Bundle:
 gem install bundler
 ```
 
-
-
 STEP 5: Installing Rails:
 
 ```bash
@@ -68,8 +63,6 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 gem install rails -v 5.1.4
 ```
-
-
 
 STEP 6: Setting Up MySQL:
 
@@ -79,17 +72,14 @@ rake db:create
 rake db:migrate
 ```
 
-
 STEP 7: start your local server from the app directory:
 
 ```bash
 rails server
 ```
 
-
 Further information:
 https://gorails.com/setup/ubuntu/17.10
-
 
 ## DEPLOY CODE TO A VIRTUAL MACHINE
 
@@ -113,4 +103,3 @@ STEP 3: Deploy the Project:
 
 Further information:
 https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_Ruby_rails.html#ruby-rails-tutorial-deploy
-
