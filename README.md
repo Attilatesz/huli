@@ -68,8 +68,8 @@ STEP 6: Setting Up MySQL:
 
 ```bash
 sudo apt-get install mysql-server mysql-client libmysqlclient-dev
-rake db:create
-rake db:migrate
+rails db:create
+rails db:migrate
 ```
 
 STEP 7: start your local server from the app directory:
