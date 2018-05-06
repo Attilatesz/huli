@@ -63,13 +63,12 @@ class Applicant < ApplicationRecord
                        }
 
   def assign_drt
-    drt = Drt.where(applicant_id: nil).first
+    self.drt = Drt.where(applicant_id: nil).first
     unless drt
       errors.add(:base, 'Applicant could not be assigned DRT. Add new DRTs!')
       throw :abort
     end
-    drt.applicant_id = id
-    drt.save
+    save
     self.next if status == 'basic'
     ExampleMailer.sample_email(self).deliver_now
   end
