@@ -8,7 +8,7 @@ Dragonfly.app.configure do
 
   url_format "/media/:job/:name"
 
-  if !Rails.env.development?
+  if Rails.env.production? || Rails.env.staging?
     datastore :s3,
               bucket_name: ENV['S3_BUCKET'],
               access_key_id: ENV['S3_KEY'],

@@ -16,7 +16,7 @@ RSpec.describe Drt, type: :model do
 
   describe 'invalid' do
     it 'is not valid without drt_hash' do
-      expect(build(:drts, drt_hash: nil)).to be_invalid
+      expect(build(:drt, drt_hash: nil)).to be_invalid
     end
 
     it 'is not valid with .doc upload' do
