@@ -11,10 +11,13 @@ class Admins::DrtsController < Admins::AdminController
     redirect_to root_path
   end
 
+  def result
+  end
+
 private
 
-def drt_params
-  params.require(:drt).permit(:drt_hash)
-end
+  def drt_params
+    params.require(:drt).permit(:drt_hash)
+  end
 
 end

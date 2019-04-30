@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       get ':category', to: 'options#filter', as: 'filter', on: :collection
       delete ':category/:id', to: 'options#destroy', as: 'destroy', on: :collection
     end
-    resources :drts, only: [:new, :create], path_names: { new: '/', create:'new/'}
+    resources :drts, only: [:new, :create], path_names: { new: '/', create: 'new/'}
     get 'interview', to: 'interview#new', as: 'interview'
     resources :interview, only: [:create, :edit, :update, :show], path_names: { new: '/', create:'new/'}
   end

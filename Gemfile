@@ -86,4 +86,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'sidekiq', '~> 5.0.5'
+  gem 'tzinfo-data', platforms: [:mingw, :mswin]
+
+  require 'rbconfig'
+  gem 'wdm', '>= 0.1.0' if RbConfig::CONFIG['target_os'] =~ /mswin|mingw|cygwin/i
 end

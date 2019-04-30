@@ -55,6 +55,10 @@
             -else
               No CV uploaded
           %td
+            -if @applicant.drt
+              %a{href: @applicant.drt.drt.url, download: @applicant.drt.drt.url, target: "blank"} DRT
+            -else
+              No DRT uploaded
         %tr
           %td
             -if @applicant.profile_picture && @applicant.profile_picture.upload_state == 'approval_pending'

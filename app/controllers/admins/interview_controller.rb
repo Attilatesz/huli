@@ -17,7 +17,8 @@ class Admins::InterviewController < ApplicationController
     redirect_to root_path
   end
 
-  def new; end
+  def new
+  end
 
   def edit
     @interview = Interview.find(params[:id])
